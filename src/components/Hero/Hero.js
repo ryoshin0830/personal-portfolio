@@ -1,5 +1,7 @@
 import React from 'react';
 import './Hero.css';
+import { FaGithub, FaTwitter } from 'react-icons/fa';
+import { SiZenn } from 'react-icons/si';
 
 const Hero = () => {
   return (
@@ -22,6 +24,18 @@ const Hero = () => {
             言語の壁を越える<span className="text-gradient-blue">革新的な</span>
             学習支援システムを開発しています
           </p>
+          
+          <div className="hero-social">
+            <a href="https://github.com/ryoshin0830" target="_blank" rel="noopener noreferrer" className="hero-social-link">
+              <FaGithub />
+            </a>
+            <a href="https://zenn.dev/ryoushin" target="_blank" rel="noopener noreferrer" className="hero-social-link">
+              <SiZenn />
+            </a>
+            <a href="https://x.com/ryoshin0830" target="_blank" rel="noopener noreferrer" className="hero-social-link">
+              <FaTwitter />
+            </a>
+          </div>
           
           <div className="hero-buttons">
             <a href="#skills" className="btn btn-primary">

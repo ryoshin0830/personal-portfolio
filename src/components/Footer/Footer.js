@@ -1,5 +1,7 @@
 import React from 'react';
 import './Footer.css';
+import { FaGithub, FaTwitter } from 'react-icons/fa';
+import { SiZenn } from 'react-icons/si';
 
 const Footer = () => {
   // スパム対策のためのメール表示コンポーネント
@@ -34,6 +36,22 @@ const Footer = () => {
             <div className="contact-links">
               <p>メール: <span className="protected-email"><ProtectedEmail /></span></p>
               <p className="email-note">※スパム対策のため、メールアドレスは分割表示・文字参照化しています。お手数ですが手動で入力してください。</p>
+            </div>
+          </div>
+
+          <div className="footer-social">
+            <h4>ソーシャルメディア</h4>
+            <p>各プラットフォームでの活動もご覧ください。</p>
+            <div className="social-links">
+              <a href="https://github.com/ryoshin0830" target="_blank" rel="noopener noreferrer" className="social-link github">
+                <FaGithub /> <span>GitHub</span>
+              </a>
+              <a href="https://zenn.dev/ryoushin" target="_blank" rel="noopener noreferrer" className="social-link zenn">
+                <SiZenn /> <span>Zenn</span>
+              </a>
+              <a href="https://x.com/ryoshin0830" target="_blank" rel="noopener noreferrer" className="social-link twitter">
+                <FaTwitter /> <span>X (Twitter)</span>
+              </a>
             </div>
           </div>
         </div>
