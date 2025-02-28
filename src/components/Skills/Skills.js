@@ -420,6 +420,88 @@ const Skills = () => {
   // アクティブカテゴリーのステート
   const [activeCategory, setActiveCategory] = useState('languages');
 
+  // プロジェクトごとの技術スタック定義
+  const projectsTechStack = [
+    {
+      id: 'japanese-learning',
+      name: '日本語学習アプリ',
+      description: '効率的な日本語単語学習とリスニング練習を提供するモバイルアプリ',
+      icon: <FaMobile />,
+      color: '#FF5757',
+      technologies: [
+        { name: 'React Native', icon: <FaReact />, category: 'フロントエンド', color: '#61DAFB' },
+        { name: 'Swift', icon: <FaSwift />, category: 'ネイティブ開発', color: '#FF7F50' },
+        { name: 'Node.js', icon: <FaNode />, category: 'バックエンド', color: '#339933' },
+        { name: 'MongoDB', icon: <SiMongodb />, category: 'データベース', color: '#47A248' },
+        { name: 'AliCloud Function Compute', icon: <FaCloud />, category: 'サーバーレス', color: '#FF6A00' }
+      ],
+      connections: [
+        { from: 'React Native', to: 'Node.js', label: 'API通信' },
+        { from: 'Swift', to: 'Node.js', label: 'API通信' },
+        { from: 'Node.js', to: 'MongoDB', label: 'データ永続化' },
+        { from: 'Node.js', to: 'AliCloud Function Compute', label: '処理実行' }
+      ]
+    },
+    {
+      id: 'vocabulary-profiler',
+      name: '語彙プロファイラー',
+      description: 'テキスト解析で単語の難易度を判定し、語彙レベルを可視化するウェブツール',
+      icon: <FaCode />,
+      color: '#4361EE',
+      technologies: [
+        { name: 'Next.js (フロントエンド)', icon: <SiNextdotjs />, category: 'フロントエンド', color: '#000000' },
+        { name: 'Next.js (バックエンド)', icon: <SiNextdotjs />, category: 'API Routes', color: '#000000' },
+        { name: 'AWS Lambda', icon: <FaAws />, category: 'MeCab形態素解析', color: '#FF9900' },
+        { name: 'Node.js', icon: <FaNode />, category: 'ランタイム', color: '#339933' },
+        { name: 'Vercel Postgres', icon: <FaDatabase />, category: 'データベース', color: '#000000' },
+        { name: 'TypeScript', icon: <SiTypescript />, category: '言語', color: '#3178C6' }
+      ],
+      connections: [
+        { from: 'Next.js (フロントエンド)', to: 'Next.js (バックエンド)', label: '内部API通信' },
+        { from: 'Next.js (バックエンド)', to: 'AWS Lambda', label: 'MeCab形態素解析実行' },
+        { from: 'Next.js (バックエンド)', to: 'Vercel Postgres', label: 'データ永続化' },
+        { from: 'TypeScript', to: 'Next.js (フロントエンド)', label: 'フロントエンド型安全化' },
+        { from: 'TypeScript', to: 'Next.js (バックエンド)', label: 'バックエンド型安全化' }
+      ]
+    },
+    {
+      id: 'lands-english',
+      name: 'LandS英語学習アプリ',
+      description: 'リスニングとスピーキングに特化した英語学習アプリケーション',
+      icon: <FaLaptopCode />,
+      color: '#10B981',
+      technologies: [
+        { name: 'Google Cloud Platform', icon: <FaGoogle />, category: 'クラウド', color: '#4285F4' },
+        { name: 'Swift', icon: <FaSwift />, category: 'フロントエンド', color: '#FF7F50' },
+        { name: 'Nginx', icon: <SiNginx />, category: 'Webサーバー', color: '#009639' },
+        { name: 'MariaDB', icon: <SiMariadb />, category: 'データベース', color: '#003545' }
+      ],
+      connections: [
+        { from: 'Swift', to: 'Nginx', label: 'API通信' },
+        { from: 'Nginx', to: 'MariaDB', label: 'データアクセス' },
+        { from: 'Google Cloud Platform', to: 'Nginx', label: 'ホスティング' },
+        { from: 'Google Cloud Platform', to: 'MariaDB', label: 'ホスティング' }
+      ]
+    },
+    {
+      id: 'llm-analysis',
+      name: 'LLM分析・ファインチューニング',
+      description: '外国語教育に特化したLLMの分析・カスタマイズ研究プロジェクト',
+      icon: <FaLaptopCode />,
+      color: '#8B5CF6',
+      technologies: [
+        { name: 'Python', icon: <FaPython />, category: '言語', color: '#3776AB' },
+        { name: 'TensorFlow', icon: <SiTensorflow />, category: 'フレームワーク', color: '#FF6F00' },
+        { name: 'Transformers', icon: <FaPython />, category: 'ライブラリ', color: '#FFD21E' }
+      ],
+      connections: [
+        { from: 'Python', to: 'TensorFlow', label: 'モデル構築' },
+        { from: 'Python', to: 'Transformers', label: 'モデル操作' },
+        { from: 'TensorFlow', to: 'Transformers', label: '連携' }
+      ]
+    }
+  ];
+
   // 主力スキルをフィルタリングする関数
   const getMainSkills = () => {
     return programmingSkills.flatMap(categorySkills => {
@@ -441,6 +523,9 @@ const Skills = () => {
     return techCategories.find(cat => cat.id === categoryId);
   };
 
+  // アクティブなプロジェクト
+  const [activeProject, setActiveProject] = useState('japanese-learning');
+
   return (
     <section id="skills" className="skills-section">
       <div className="container">
@@ -455,9 +540,9 @@ const Skills = () => {
           <p className="section-description">普段使用している技術スタックをご紹介します</p>
         </motion.div>
         
-        {/* 主力技術スキルセクション */}
+        {/* プロジェクト別技術スタックセクション */}
         <motion.div 
-          className="primary-skills-section"
+          className="primary-skills-section projects-section"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -466,45 +551,257 @@ const Skills = () => {
             className="primary-skills-title"
             variants={fadeInUp}
           >
-            主力技術スタック
+            プロジェクト別技術スタック
           </motion.h3>
-          <div className="primary-skills-grid">
-            {getMainSkills().map((skill, index) => (
-              <motion.div 
-                key={`primary-${index}`}
-                className="primary-skill-item"
-                variants={fadeInUp}
-                custom={index}
-                style={{ 
-                  borderLeftColor: skill.color,
-                  '--index': index 
+          
+          {/* プロジェクトセレクター */}
+          <motion.div 
+            className="project-selector"
+            variants={fadeInUp}
+          >
+            {projectsTechStack.map((project, index) => (
+              <motion.div
+                key={project.id}
+                className={`project-selector-item ${activeProject === project.id ? 'active' : ''}`}
+                onClick={() => setActiveProject(project.id)}
+                style={{
+                  borderBottom: activeProject === project.id ? `3px solid ${project.color}` : 'none'
                 }}
                 whileHover={{ 
-                  y: -5, 
-                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+                  y: -3, 
+                  backgroundColor: `${project.color}10`,
                   transition: { duration: 0.2 }
                 }}
+                variants={fadeInUp}
+                custom={index}
               >
                 <motion.div 
-                  className="primary-skill-icon" 
-                  style={{color: skill.color}}
+                  className="project-selector-icon"
+                  style={{ color: project.color }}
                   whileHover={{ 
                     rotate: 10, 
                     scale: 1.1,
                     transition: { duration: 0.2 }
                   }}
                 >
-                  {skill.icon}
+                  {project.icon}
                 </motion.div>
-                <div className="primary-skill-info">
-                  <h4 className="primary-skill-name">{skill.name}</h4>
-                  <p className="primary-skill-category">
-                    {getCategoryDetails(skill.category)?.name}
-                  </p>
-                </div>
+                <h4>{project.name}</h4>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
+          
+          {/* 選択したプロジェクトの詳細 */}
+          {projectsTechStack.map((project) => (
+            <motion.div
+              key={project.id}
+              className="project-details"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ 
+                opacity: activeProject === project.id ? 1 : 0,
+                y: activeProject === project.id ? 0 : 20,
+                display: activeProject === project.id ? 'block' : 'none'
+              }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div className="project-header">
+                <motion.div 
+                  className="project-icon" 
+                  style={{ backgroundColor: project.color }}
+                  initial={{ scale: 0.9 }}
+                  animate={{ 
+                    scale: [0.9, 1.05, 0.9],
+                    rotateZ: [0, 5, 0, -5, 0]
+                  }}
+                  transition={{ 
+                    duration: 5, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  {project.icon}
+                </motion.div>
+                <div className="project-info">
+                  <h3 style={{ color: project.color }}>{project.name}</h3>
+                  <p>{project.description}</p>
+                </div>
+              </motion.div>
+              
+              {/* 技術スタックの視覚化 */}
+              <motion.div 
+                className="tech-stack-visualization"
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer}
+              >
+                {/* 上部のテクノロジーアイコン */}
+                <div className="tech-icons-row">
+                  {project.technologies.map((tech, techIndex) => (
+                    <motion.div
+                      key={tech.name}
+                      className="tech-icon-wrapper"
+                      variants={fadeInUp}
+                      custom={techIndex}
+                      whileHover={{ scale: 1.1, y: -5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <motion.div 
+                        className="tech-icon" 
+                        style={{ color: tech.color, borderColor: tech.color }}
+                        animate={{ 
+                          y: [0, -3, 0],
+                          scale: [1, 1.03, 1]
+                        }}
+                        transition={{ 
+                          duration: 3, 
+                          repeat: Infinity,
+                          delay: techIndex * 0.2
+                        }}
+                      >
+                        {tech.icon}
+                      </motion.div>
+                      <div className="tech-label" style={{ color: tech.color }}>
+                        <span className="tech-name">{tech.name}</span>
+                        <span className="tech-category">{tech.category}</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                {/* 接続線のアニメーション */}
+                <div className="connections-container">
+                  {project.connections.map((connection, connIndex) => {
+                    // 接続元と接続先のインデックスを取得
+                    const fromIndex = project.technologies.findIndex(tech => tech.name === connection.from);
+                    const toIndex = project.technologies.findIndex(tech => tech.name === connection.to);
+                    
+                    // 両方の技術が見つからない場合はスキップ
+                    if (fromIndex === -1 || toIndex === -1) return null;
+                    
+                    // 接続元と接続先の位置（簡易計算）
+                    const fromPos = { x: (100 / (project.technologies.length - 1)) * fromIndex };
+                    const toPos = { x: (100 / (project.technologies.length - 1)) * toIndex };
+                    
+                    const fromColor = project.technologies[fromIndex].color;
+                    const toColor = project.technologies[toIndex].color;
+                    
+                    return (
+                      <div key={`connection-${connIndex}`} className="connection-wrapper">
+                        {/* カラーラベル付きの接続線 */}
+                        <motion.div
+                          className="connection-line"
+                          style={{
+                            position: 'absolute',
+                            top: '60px',
+                            left: `${Math.min(fromPos.x, toPos.x)}%`,
+                            width: `${Math.abs(toPos.x - fromPos.x)}%`,
+                            height: '4px',
+                            background: `linear-gradient(to right, ${fromColor}, ${toColor})`,
+                            zIndex: 1,
+                            borderRadius: '4px'
+                          }}
+                          initial={{ width: 0 }}
+                          animate={{ width: `${Math.abs(toPos.x - fromPos.x)}%` }}
+                          transition={{
+                            duration: 0.8,
+                            delay: connIndex * 0.2 + 0.3
+                          }}
+                        >
+                          {/* 流れるパーティクル */}
+                          <motion.div
+                            className="connection-particle"
+                            style={{ background: `linear-gradient(to right, ${fromColor}, ${toColor})` }}
+                            animate={{ left: ['0%', '100%'] }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: connIndex * 0.5
+                            }}
+                          />
+                        </motion.div>
+                        
+                        {/* 明確に表示するラベル */}
+                        <motion.div
+                          className="connection-badge"
+                          style={{
+                            position: 'absolute',
+                            top: `${20 + (connIndex % 2) * 30}px`, // 奇数と偶数で高さをずらす
+                            left: `${Math.min(fromPos.x, toPos.x) + Math.abs(toPos.x - fromPos.x) / 2}%`,
+                            transform: 'translateX(-50%)',
+                            background: 'white',
+                            color: '#333',
+                            fontWeight: 'bold',
+                            padding: '6px 12px',
+                            borderRadius: '20px',
+                            boxShadow: '0 3px 10px rgba(0,0,0,0.1)',
+                            border: '1px solid rgba(0,0,0,0.05)',
+                            zIndex: 10
+                          }}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            duration: 0.5,
+                            delay: connIndex * 0.2 + 0.8
+                          }}
+                        >
+                          {connection.label}
+                        </motion.div>
+                      </div>
+                    );
+                  })}
+                </div>
+                
+                {/* プロジェクト概要と使用技術の特徴 */}
+                <motion.div 
+                  className="tech-details-list"
+                  variants={fadeInUp}
+                >
+                  <motion.div 
+                    className="project-summary-card"
+                    variants={fadeInUp}
+                    custom={0}
+                  >
+                    <h3>プロジェクト概要</h3>
+                    <p>{project.description}</p>
+                    <div className="tech-stack-summary">
+                      <h4>主な特徴:</h4>
+                      <ul>
+                        {project.id === 'japanese-learning' && (
+                          <>
+                            <li>React NativeとSwiftでクロスプラットフォーム対応</li>
+                            <li>MongoDBによる柔軟なデータモデリング</li>
+                            <li>AliCloudでのサーバーレス処理</li>
+                          </>
+                        )}
+                        {project.id === 'vocabulary-profiler' && (
+                          <>
+                            <li>Next.jsによるフルスタック開発</li>
+                            <li>AWS Lambda上でのMeCab形態素解析</li>
+                            <li>TypeScriptによる堅牢なコード設計</li>
+                          </>
+                        )}
+                        {project.id === 'lands-english' && (
+                          <>
+                            <li>Google Cloudベースの堅牢なインフラ</li>
+                            <li>Swiftによるネイティブ体験の実現</li>
+                            <li>Nginxによる高速レスポンス</li>
+                          </>
+                        )}
+                        {project.id === 'llm-analysis' && (
+                          <>
+                            <li>TensorFlowによる大規模言語モデルの分析</li>
+                            <li>外国語教育向けLLMカスタマイズ</li>
+                            <li>Transformersライブラリ活用</li>
+                          </>
+                        )}
+                      </ul>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* 技術スタックカテゴリーセレクター */}
