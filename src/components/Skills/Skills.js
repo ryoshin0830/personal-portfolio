@@ -254,7 +254,34 @@ const Skills = () => {
         <div className="section-intro fade-in">
           <div className="section-subtitle">TECH STACK & SKILLS</div>
           <h2 className="with-decoration">プログラミングスキル・使用技術</h2>
-          <p className="section-description">メインで使用している技術スタックを中心にご紹介します</p>
+          <p className="section-description">普段使用している技術スタックをご紹介します</p>
+        </div>
+        
+        {/* 主力スキルセクション */}
+        <div className="primary-skills-section">
+          <h3 className="primary-skills-title">主力技術スタック</h3>
+          <div className="primary-skills-grid">
+            {programmingSkills.flatMap(category => 
+              category.skills.filter(skill => skill.main).map((skill, index) => (
+                <div 
+                  key={`primary-${index}`} 
+                  className="primary-skill-item"
+                  style={{ 
+                    borderLeftColor: skill.color,
+                    '--index': index 
+                  }}
+                >
+                  <div className="primary-skill-icon" style={{color: skill.color}}>
+                    {skill.icon}
+                  </div>
+                  <div className="primary-skill-info">
+                    <h4 className="primary-skill-name">{skill.name}</h4>
+                    <p className="primary-skill-category">{category.category}</p>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
         </div>
 
         <div className="programming-skills">
@@ -268,14 +295,14 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <div 
                     key={skillIndex} 
-                    className={`skill-card ${skill.main ? 'main-skill' : ''}`}
+                    className="skill-card"
                     style={{
                       borderTop: `3px solid ${skill.color}`
                     }}
                   >
                     <div className="skill-card-header" style={{color: skill.color}}>
                       {skill.icon}
-                      <h4>{skill.name}{skill.main && <span className="main-badge">主力</span>}</h4>
+                      <h4>{skill.name}</h4>
                     </div>
                     <p>{skill.description}</p>
                   </div>
@@ -297,14 +324,15 @@ const Skills = () => {
           {mlSkills.map((skill, index) => (
             <div 
               key={index} 
-              className={`ml-skill-item stagger-item ${skill.main ? 'main-skill' : ''}`}
+              className="ml-skill-item stagger-item"
               style={{
-                borderTop: `3px solid ${skill.color}`
+                borderTop: `3px solid ${skill.color}`,
+                '--i': index
               }}
             >
               <div className="ml-skill-header" style={{color: skill.color}}>
                 {skill.icon}
-                <h4>{skill.library}{skill.main && <span className="main-badge">主力</span>}</h4>
+                <h4>{skill.library}</h4>
               </div>
               <div className="ml-purpose">
                 {skill.purpose}
