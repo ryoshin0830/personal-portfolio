@@ -35,7 +35,7 @@ const Header = () => {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
         <div className="logo">
-          <h1>梁 震</h1>
+          <h1 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>梁 震</h1>
         </div>
         <button 
           className={`nav-button ${isMenuOpen ? 'active' : ''}`}

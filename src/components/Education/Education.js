@@ -120,8 +120,9 @@ const TimeLine = () => {
       ],
       title: '京都大学修士課程入学',
       icon: 'university',
-      highlight: false,
+      highlight: true,
       location: 'japan',
+      universityLogo: 'kyoto',
       transition: {
         from: 'education',
         to: 'education',
@@ -167,8 +168,9 @@ const TimeLine = () => {
       ],
       title: '京都大学博士課程入学',
       icon: 'research',
-      highlight: false,
+      highlight: true,
       location: 'japan',
+      universityLogo: 'kyoto',
       transition: {
         from: 'education',
         to: 'education',
@@ -227,7 +229,10 @@ const TimeLine = () => {
               )}
               
               {/* タイムラインアイテム */}
-              <div className={`timeline-item ${period.highlight ? 'highlight' : ''} ${period.location}`}>
+              <div 
+                className={`timeline-item ${period.highlight ? 'highlight' : ''} ${period.location}`}
+                data-kyoto-university={period.universityLogo === 'kyoto' ? 'true' : 'false'}
+              >
                 <div className="timeline-year">{period.year}</div>
                 <div className={`timeline-content ${period.items.length > 1 ? 'has-group' : ''}`}>
                   <div className="timeline-icon-container">
@@ -253,6 +258,13 @@ const TimeLine = () => {
                   {/* 国旗やロケーションマーカー */}
                   {period.location && (
                     <div className={`location-marker ${period.location}`}></div>
+                  )}
+                  
+                  {/* 大学ロゴの表示 */}
+                  {period.universityLogo === 'kyoto' && (
+                    <div className="university-logo-wrapper">
+                      <img src="/kyoto-u.png" alt="京都大学" className="university-logo" />
+                    </div>
                   )}
                 </div>
               </div>

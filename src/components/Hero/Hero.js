@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import { FaGithub, FaTwitter } from 'react-icons/fa';
 import { SiZenn } from 'react-icons/si';
 
 const Hero = () => {
+  const [nameVariant, setNameVariant] = useState(0);
+  const [isInitialized, setIsInitialized] = useState(false);
+  
+  const nameVariants = [
+    { text: 'りょう しん', className: 'name-reading' },
+    { text: 'RYO SHIN', className: 'name-romaji' },
+    { text: 'LIANG ZHEN', className: 'name-english' }
+  ];
+  
+  useEffect(() => {
+    // 最初の表示を遅延させる
+    const initTimer = setTimeout(() => {
+      setIsInitialized(true);
+    }, 800);
+    
+    // 名前のバリエーションを一定間隔で切り替える
+    const interval = setInterval(() => {
+      setNameVariant((prev) => (prev + 1) % nameVariants.length);
+    }, 3500); // 少し長めの間隔に変更
+    
+    return () => {
+      clearInterval(interval);
+      clearTimeout(initTimer);
+    };
+  }, [nameVariants.length]);
+  
   return (
     <section className="hero">
       <div className="hero-background">
@@ -16,9 +42,21 @@ const Hero = () => {
       <div className="container">
         <div className="hero-content">
           <div className="hero-tag">京都大学博士課程 / 株式会社EastLinker代表</div>
-          <h1 className="hero-title">
-            <span className="text-gradient-blue">梁 震</span>
-          </h1>
+          <div className="name-container">
+            <h1 className="hero-title">
+              <span className="text-gradient-blue main-name">梁 震</span>
+            </h1>
+            <div className="name-variants-container">
+              {isInitialized && nameVariants.map((variant, index) => (
+                <span 
+                  key={index}
+                  className={`name-variant ${variant.className} ${index === nameVariant ? 'active' : ''}`}
+                >
+                  {variant.text}
+                </span>
+              ))}
+            </div>
+          </div>
           <h2 className="hero-subtitle">外国語教育 × 機械学習</h2>
           <p className="hero-description">
             言語の壁を越える<span className="text-gradient-blue">革新的な</span>

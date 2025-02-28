@@ -85,14 +85,14 @@ const Skills = () => {
           name: 'JavaScript',
           icon: <SiJavascript className="skill-icon" />,
           color: '#F7DF1E',
-          description: 'フロントエンド・バックエンド開発の主力言語として使用。非同期処理やクロージャなどの高度な概念を理解し、モダンJavaScriptの機能を活用した効率的な開発を実践。React, Node.jsベースのアプリケーション構築に活用。',
+          description: 'フロントエンド・バックエンド開発の主力言語として使用。非同期処理やクロージャなどの高度な概念を理解し、モダンJavaScriptの機能を活用した効率的な開発を実践。React, Node.jsベースのアプリケーション構築に活用。プロトタイプの迅速な開発からパフォーマンス最適化まで幅広く対応。',
           main: true
         },
         {
           name: 'TypeScript',
           icon: <SiTypescript className="skill-icon" />,
           color: '#3178C6',
-          description: '大規模プロジェクトでのコード品質と保守性向上のために導入。型安全性を活かした堅牢なコード設計により、バグを事前に検出し開発効率を向上。Next.jsと組み合わせたフルスタック開発で、型の一貫性を保持したAPIインターフェースを構築。',
+          description: '大規模プロジェクトでのコード品質と保守性向上のために導入。型安全性を活かした堅牢なコード設計により、バグを事前に検出し開発効率を向上。Next.jsと組み合わせたフルスタック開発で、型の一貫性を保持したAPIインターフェースを構築。ジェネリクスや高度な型システムを活用した再利用可能なコンポーネント設計も実践。',
           main: true
         },
         {
@@ -109,10 +109,28 @@ const Skills = () => {
           description: '学部の卒業論文では、Swiftを用いて「LANDS」という英語学習アプリを開発。ユーザーが効率的に英語を学べる直感的UIを設計。Appleの開発ドキュメントやコミュニティのサポートを参考に、iOSの機能実装に挑戦。'
         },
         {
+          name: 'Objective-C',
+          icon: <FaApple className="skill-icon" />,
+          color: '#438EFF',
+          description: 'レガシーiOSアプリの保守と機能拡張で使用。既存のObjective-Cコードベースを理解し、最新のSwiftコードと連携させる混合開発手法を実践。古いアプリを現代的な設計に段階的に移行する際に活用。'
+        },
+        {
           name: 'C',
           icon: <SiC className="skill-icon" />,
           color: '#A8B9CC',
           description: '大学の基礎プログラミング科目で学習し、低レベルメモリ管理やアルゴリズム実装に使用。パフォーマンスが重要な計算処理部分の最適化や、組み込みシステム向けのコンポーネント開発に活用。'
+        },
+        {
+          name: 'Java',
+          icon: <FaJava className="skill-icon" />,
+          color: '#007396',
+          description: 'Androidアプリ開発とバックエンドシステム構築に使用。オブジェクト指向設計の原則を活用し、堅牢で拡張性の高いシステムを開発。大学のプロジェクトでは分散システムの実装にも活用。'
+        },
+        {
+          name: 'R',
+          icon: <SiR className="skill-icon" />,
+          color: '#276DC3',
+          description: '統計解析と学術研究データの可視化に使用。言語データの統計モデリングや、教育効果の実証研究において複雑なデータ分析を実施。ggplot2などのライブラリを活用した効果的なデータ可視化を実践。'
         }
       ]
     },
@@ -130,7 +148,7 @@ const Skills = () => {
           name: 'Next.js',
           icon: <SiNextdotjs className="skill-icon" />,
           color: '#000000',
-          description: 'Vercelを活用した高パフォーマンスなウェブアプリケーション開発に使用。SSRとSSGを効果的に組み合わせ、SEO最適化とユーザー体験の向上を実現。APIルートを活用したサーバーレスバックエンド構築により、フロントエンドとバックエンドの統合開発を効率化。',
+          description: 'Vercelを活用した高パフォーマンスなウェブアプリケーション開発に使用。SSRとSSGを効果的に組み合わせ、SEO最適化とユーザー体験の向上を実現。APIルートを活用したサーバーレスバックエンド構築により、フロントエンドとバックエンドの統合開発を効率化。App RouterやServer Componentsなど最新機能も積極的に取り入れたモダンな開発手法を実践。',
           main: true
         }
       ]
@@ -142,7 +160,7 @@ const Skills = () => {
           name: 'Next.js',
           icon: <SiNextdotjs className="skill-icon" />,
           color: '#000000',
-          description: 'APIルートを活用したサーバーレスバックエンド構築により、フロントエンドとバックエンドの統合開発を効率化。TypeScriptと組み合わせて型安全なAPIの構築を実現。',
+          description: 'APIルートを活用したサーバーレスバックエンド構築により、フロントエンドとバックエンドの統合開発を効率化。TypeScriptと組み合わせて型安全なAPIの構築を実現。Route HandlersやServer Actionsなど、最新のサーバーサイド機能を活用した効率的なAPI設計と認証フローの実装も経験。',
           main: true
         },
         {
@@ -200,6 +218,13 @@ const Skills = () => {
       category: 'infra',
       skills: [
         {
+          name: 'Linux',
+          icon: <FaLinux className="skill-icon" />,
+          color: '#FCC624',
+          description: 'サーバー環境構築と運用管理に使用。Debian系(UbuntuなどのDebian派生ディストリビューション)での実務経験が豊富で、シェルスクリプトを活用した自動化、パッケージ管理、セキュリティ設定など、幅広い管理業務を担当。',
+          main: true
+        },
+        {
           name: 'Caddy2',
           icon: <SiCaddy className="skill-icon" />,
           color: '#00ADD8',
@@ -211,6 +236,12 @@ const Skills = () => {
           icon: <SiNginx className="skill-icon" />,
           color: '#009639',
           description: '高トラフィックWebサイトのロードバランシングとリバースプロキシとして導入。静的コンテンツのキャッシュ設定や、SSL/TLS証明書の管理、HTTP/2対応など、パフォーマンスとセキュリティの最適化を実施。'
+        },
+        {
+          name: 'Apache',
+          icon: <SiApache className="skill-icon" />,
+          color: '#D22128',
+          description: '従来のウェブホスティング環境で使用。.htaccessによるURL書き換えやアクセス制御の設定、モジュール拡張機能を活用した機能拡張など、多機能なウェブサーバーとしての運用経験あり。'
         }
       ]
     },
@@ -225,11 +256,23 @@ const Skills = () => {
           main: true
         },
         {
+          name: 'Google Cloud Platform',
+          icon: <FaGoogle className="skill-icon" />,
+          color: '#4285F4',
+          description: 'LLMファインチューニングプロジェクトでのGPUリソース管理や、App Engineを使用したウェブアプリケーションのデプロイに活用。BigQueryでの大規模データ分析や、Cloud Storageを使用したデータセット管理も経験。'
+        },
+        {
           name: 'Vercel',
           icon: <SiVercel className="skill-icon" />,
           color: '#000000',
           description: 'Next.jsアプリケーションのデプロイと継続的インテグレーションに活用。ゼロコンフィグデプロイメントの利点を活かし、フロントエンド開発のワークフローを効率化。プレビュー環境の自動生成によるレビュープロセスの改善も実現。',
           main: true
+        },
+        {
+          name: 'Alibaba Cloud',
+          icon: <BiCloud className="skill-icon" />,
+          color: '#FF6A00',
+          description: '中国市場向けアプリケーションのホスティングと配信に使用。Function Computeでのサーバーレス機能実装や、Object Storage Serviceでのファイル管理、CDNによるコンテンツ配信の最適化を実施。'
         }
       ]
     },
@@ -240,15 +283,28 @@ const Skills = () => {
           name: 'Docker',
           icon: <FaDocker className="skill-icon" />,
           color: '#2496ED',
-          description: 'チーム開発で、開発環境と本番環境をコンテナ化して一致させることで、デプロイの効率化を実現。環境差異の問題を最小化し、開発プロセスをスムーズに。',
+          description: 'チーム開発で、開発環境と本番環境をコンテナ化して一致させることで、デプロイの効率化を実現。環境差異の問題を最小化し、開発プロセスをスムーズに。複数のマイクロサービスを連携させるDocker Composeの設定も経験。',
           main: true
         },
         {
-          name: 'Git',
+          name: 'Git & Git LFS',
           icon: <FaGit className="skill-icon" />,
           color: '#F05032',
-          description: 'コードのバージョン管理を徹底し、チームメンバー間の共同作業を容易に。ブランチ戦略を明確化し、複数開発者が同時に作業してもコンフリクトを最小化。',
+          description: 'コードのバージョン管理を徹底し、チームメンバー間の共同作業を容易に。ブランチ戦略を明確化し、複数開発者が同時に作業してもコンフリクトを最小化。大規模な機械学習プロジェクトでは、Git LFSを活用して大容量モデルファイルを効率的に管理。',
           main: true
+        },
+        {
+          name: 'PyTorch',
+          icon: <SiPytorch className="skill-icon" />,
+          color: '#EE4C2C',
+          description: '自然言語処理モデルの研究開発に使用。動的計算グラフの柔軟性を活かし、カスタムレイヤーや損失関数を実装。学習効率を高めるためのデータローダーの最適化や、モデルの推論速度向上のための量子化手法も実践。',
+          main: true
+        },
+        {
+          name: 'Axolotl',
+          icon: <FaPython className="skill-icon" />,
+          color: '#36B3A1',
+          description: '大規模言語モデル(LLM)のファインチューニングフレームワークとして活用。教育特化型LLMの開発において、少ないデータと計算リソースで効率的にモデルを調整。QLoRAなどの最適化手法を用いたモデル調整プロセスを効率化。'
         }
       ]
     }
@@ -276,6 +332,13 @@ const Skills = () => {
       color: '#FFD21E',
       purpose: '最先端NLPモデルの研究と応用',
       description: '事前学習済み言語モデルを活用した様々なNLPタスクの実装。テキスト生成、分類、要約などの機能を統合した教育支援システムの開発に貢献。モデルのカスタマイズとファインチューニングにより、教育コンテンツの自動生成の精度向上を実現。'
+    },
+    {
+      library: 'Axolotl',
+      icon: <FaPython className="skill-icon" />,
+      color: '#36B3A1',
+      purpose: 'LLMファインチューニングの効率化',
+      description: '計算リソース制約下での効率的なモデル調整に活用。QLoRA、LoRAなどの技術を用いて、GPU要件を最小化しながら教育特化型LLMを開発。正規言語学習者の特性を考慮した独自データセットによるファインチューニングを実施。'
     }
   ];
 

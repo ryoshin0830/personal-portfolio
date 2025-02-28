@@ -112,7 +112,7 @@
 .hero-title {
   font-size: 84px;
   line-height: 1;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   font-weight: 700;
   letter-spacing: -0.03em;
   animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
@@ -123,6 +123,105 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+}
+
+.name-container {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.main-name {
+  display: block;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  background: var(--gradient-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  animation: mainNamePulse 4s ease-in-out infinite;
+}
+
+@keyframes mainNamePulse {
+  0% {
+    text-shadow: 0 0 0 rgba(58, 134, 255, 0);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(58, 134, 255, 0.25);
+  }
+  100% {
+    text-shadow: 0 0 0 rgba(58, 134, 255, 0);
+  }
+}
+
+.name-variants-container {
+  height: 36px;
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.name-variant {
+  position: absolute;
+  font-size: 24px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  letter-spacing: 1px;
+  filter: blur(5px);
+}
+
+.name-variant.active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  animation: nameHighlight 3s ease-in-out;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes nameHighlight {
+  0% {
+    text-shadow: 0 0 0 rgba(94, 23, 235, 0);
+  }
+  20% {
+    text-shadow: 0 0 15px rgba(94, 23, 235, 0.3);
+  }
+  80% {
+    text-shadow: 0 0 15px rgba(94, 23, 235, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 0 rgba(94, 23, 235, 0);
+  }
+}
+
+.name-reading {
+  color: var(--primary-color);
+}
+
+.name-romaji {
+  background: linear-gradient(90deg, #3a86ff 0%, #5e17eb 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.name-english {
+  background: linear-gradient(90deg, #5e17eb 0%, #ff3dca 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
 .hero-subtitle {
@@ -324,6 +423,19 @@
     font-size: 64px;
   }
   
+  .name-container {
+    margin-bottom: 20px;
+  }
+  
+  .name-variants-container {
+    height: 32px;
+    margin-top: 6px;
+  }
+  
+  .name-variant {
+    font-size: 20px;
+  }
+  
   .hero-subtitle {
     font-size: 24px;
   }
@@ -351,7 +463,21 @@
   .hero-title {
     font-size: 42px;
     letter-spacing: -1px;
+    margin-bottom: 0;
+  }
+  
+  .name-container {
     margin-bottom: 18px;
+  }
+  
+  .name-variants-container {
+    height: 28px;
+    margin-top: 5px;
+    margin-bottom: 12px;
+  }
+  
+  .name-variant {
+    font-size: 18px;
   }
   
   .hero-subtitle {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 京都大学のロゴ - モダンでシンプルなデザイン -->
+  <circle cx="120" cy="120" r="116" fill="white" stroke="#004D9F" stroke-width="8"/>
+  
+  <!-- 「京」の文字 (スタイル化) -->
+  <path d="M75 70H105V90H120V60H75V70Z" fill="#004D9F"/>
+  <path d="M75 100H90V120H75V100Z" fill="#004D9F"/>
+  <path d="M75 130H90V180H75V130Z" fill="#004D9F"/>
+  <path d="M100 100H120V180H100V100Z" fill="#004D9F"/>
+  
+  <!-- 「都」の文字 (スタイル化) -->
+  <path d="M130 60H175V80H155V100H175V120H155V180H130V60Z" fill="#004D9F"/>
+  
+  <!-- 「大」の文字 (スタイル化) -->
+  <path d="M65 190H175V200H130V210H110V200H65V190Z" fill="#8B0018"/>
+  
+  <!-- 装飾的な要素 - 桜の花びら表現 -->
+  <circle cx="40" cy="50" r="12" fill="#8B0018" opacity="0.7"/>
+  <circle cx="200" cy="50" r="12" fill="#8B0018" opacity="0.7"/>
+  <circle cx="40" cy="190" r="12" fill="#8B0018" opacity="0.7"/>
+  <circle cx="200" cy="190" r="12" fill="#8B0018" opacity="0.7"/>
+</svg>
