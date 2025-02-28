@@ -281,15 +281,51 @@ section {
 /* Media queries */
 @media (max-width: 768px) {
   .heading-large {
-    font-size: 42px;
+    font-size: 40px;
   }
   
   .heading-medium {
-    font-size: 32px;
+    font-size: 30px;
+  }
+  
+  .heading-small {
+    font-size: 20px;
   }
   
   section {
-    padding: 80px 0;
+    padding: 70px 0;
+  }
+  
+  button, .btn {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-large {
+    font-size: 32px;
+  }
+  
+  .heading-medium {
+    font-size: 26px;
+  }
+  
+  .heading-small {
+    font-size: 18px;
+  }
+  
+  section {
+    padding: 60px 0;
+  }
+  
+  button, .btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  
+  .card, .glass-card {
+    padding: 24px;
   }
 }
 

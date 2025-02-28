@@ -302,25 +302,38 @@
 
 @media (max-width: 480px) {
   .hero-tag {
-    font-size: 12px;
+    font-size: 11px;
+    padding: 8px 16px;
+    margin-bottom: 24px;
   }
   
   .hero-title {
-    font-size: 48px;
+    font-size: 42px;
     letter-spacing: -1px;
+    margin-bottom: 18px;
   }
   
   .hero-subtitle {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 28px;
+  }
+  
+  .hero-subtitle:after {
+    bottom: -8px;
+    width: 60px;
+    height: 2px;
   }
   
   .hero-description {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 32px;
   }
   
   .btn {
     width: 100%;
-    font-size: 15px;
+    font-size: 14px;
+    padding: 14px 24px;
   }
   
   .hero-scroll {

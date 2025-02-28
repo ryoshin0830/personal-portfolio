@@ -43,10 +43,9 @@ const Header = () => {
           aria-label="Toggle menu"
         >
           <div className="nav-button-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span className="menu-line"></span>
+            <span className="menu-line"></span>
+            <span className="menu-line"></span>
           </div>
         </button>
         <nav className={`main-nav ${isMenuOpen ? 'active' : ''}`}>
