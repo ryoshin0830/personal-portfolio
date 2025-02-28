@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.5505ae3f.css",
-    "main.js": "/static/js/main.e928e64c.js",
+    "main.css": "/static/css/main.a9450f1b.css",
+    "main.js": "/static/js/main.1a5cd5ca.js",
     "static/js/453.b21437c2.chunk.js": "/static/js/453.b21437c2.chunk.js",
     "index.html": "/index.html",
-    "main.5505ae3f.css.map": "/static/css/main.5505ae3f.css.map",
-    "main.e928e64c.js.map": "/static/js/main.e928e64c.js.map",
+    "static/media/research.svg": "/static/media/research.1325ef2a6814743e23611f95cb7e0303.svg",
+    "static/media/university.svg": "/static/media/university.06c2c6a4dc5d2e7d0d26f914007ed29d.svg",
+    "static/media/plane.svg": "/static/media/plane.73dfd870e037d2ba2f083d38698e19d4.svg",
+    "static/media/birth.svg": "/static/media/birth.d2c76f8a3f8098d96b882d43b55c31ac.svg",
+    "static/media/school.svg": "/static/media/school.05f7bfe7741bda9425c7a884731a3817.svg",
+    "static/media/graduation.svg": "/static/media/graduation.a43a4973ed1ffa5cc67bd762eced4e06.svg",
+    "static/media/startup.svg": "/static/media/startup.001b8122b04515dc1bd701a19588fdb2.svg",
+    "static/media/vertical-flight-path.svg": "/static/media/vertical-flight-path.cb19ad6a1785979b835de49be3a4a144.svg",
+    "main.a9450f1b.css.map": "/static/css/main.a9450f1b.css.map",
+    "main.1a5cd5ca.js.map": "/static/js/main.1a5cd5ca.js.map",
     "453.b21437c2.chunk.js.map": "/static/js/453.b21437c2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5505ae3f.css",
-    "static/js/main.e928e64c.js"
+    "static/css/main.a9450f1b.css",
+    "static/js/main.1a5cd5ca.js"
   ]
 }
