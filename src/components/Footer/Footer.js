@@ -2,6 +2,23 @@ import React from 'react';
 import './Footer.css';
 
 const Footer = () => {
+  // スパム対策のためのメール表示コンポーネント
+  const ProtectedEmail = () => {
+    return (
+      <>
+        <span className="email-part">r&#121;o</span>
+        <span className="email-part">.</span>
+        <span className="email-part">sh&#105;n</span>
+        <span className="email-part">.</span>
+        <span className="email-part">j&#56;5</span>
+        <span className="email-part">&#64;</span>
+        <span className="email-part">k&#121;o&#116;o&#45;u</span>
+        <span className="email-part">.</span>
+        <span className="email-part">j&#112;</span>
+      </>
+    );
+  };
+
   return (
     <footer className="footer">
       <div className="container">
@@ -15,7 +32,8 @@ const Footer = () => {
             <h4>お問い合わせ</h4>
             <p>お仕事のご依頼やご質問などがございましたら、以下よりご連絡ください。</p>
             <div className="contact-links">
-              <a href="mailto:eastlinker@example.com">メール: eastlinker@example.com</a>
+              <p>メール: <span className="protected-email"><ProtectedEmail /></span></p>
+              <p className="email-note">※スパム対策のため、メールアドレスは分割表示・文字参照化しています。お手数ですが手動で入力してください。</p>
             </div>
           </div>
         </div>

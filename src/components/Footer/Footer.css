@@ -82,3 +82,24 @@
     width: 100%;
   }
 }
+
+.protected-email {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.email-part {
+  display: inline-block;
+  position: relative;
+  font-family: monospace;
+  margin: 0 1px;
+}
+
+.email-note {
+  font-size: 12px;
+  font-style: italic;
+  color: #bdc3c7;
+  margin-top: 8px;
+}
