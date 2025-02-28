@@ -10,70 +10,120 @@
   margin-top: 40px;
 }
 
+/* カテゴリーのスタイリング */
 .skill-category {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: none;
+}
+
+.skill-category-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.category-title {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-blue);
+  border-radius: 2px;
+}
+
+/* スキルカードのグリッド */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* スキルカードのスタイリング */
+.skill-card {
   background-color: var(--light-color);
-  padding: 32px;
+  padding: 25px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   border: 1px solid var(--card-border);
-  transition: var(--transition);
-}
-
-.skill-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-}
-
-.skill-category h3 {
-  color: var(--primary-color);
-  margin-bottom: 24px;
-  border-bottom: 2px solid rgba(58, 134, 255, 0.2);
-  padding-bottom: 12px;
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-}
-
-.skill-item {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
+  overflow: hidden;
+  opacity: 1;
 }
 
-.skill-item:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
+.skill-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
-.skill-item h4 {
-  color: var(--text-on-light);
-  margin-bottom: 12px;
+/* 主力技術のスタイル */
+.main-skill {
+  background-color: rgba(58, 134, 255, 0.03);
+  box-shadow: 0 10px 20px rgba(58, 134, 255, 0.1);
+  transform: scale(1.03);
+  z-index: 1;
+}
+
+.main-skill:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(58, 134, 255, 0.15);
+}
+
+.main-badge {
+  background: linear-gradient(90deg, #3a86ff, #5e60ce);
+  color: white;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.skill-icon {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.skill-card h4 {
   font-weight: 600;
   font-size: 18px;
-  display: inline-flex;
+  margin: 0;
+  display: flex;
   align-items: center;
-  position: relative;
 }
 
-.skill-item h4::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--primary-color);
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.skill-item p {
+.skill-card p {
   line-height: 1.7;
-  font-size: 16px;
+  font-size: 15px;
   color: var(--text-secondary-on-light);
+  margin: 0;
 }
 
+/* 機械学習カードのスタイリング */
 .ml-title, 
 .language-title {
   margin-top: 80px;
@@ -118,45 +168,51 @@
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   border: 1px solid var(--card-border);
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
-}
-
-.ml-skill-item::before,
-.language-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--gradient-blue);
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .ml-skill-item:hover, 
 .language-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.ml-skill-header,
+.language-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.ml-skill-header .skill-icon,
+.language-flag {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.language-flag {
+  font-size: 28px;
 }
 
 .ml-skill-item h4, 
 .language-item h4 {
-  color: var(--text-on-light);
-  margin-bottom: 12px;
   font-weight: 600;
   font-size: 18px;
-  position: relative;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .ml-purpose {
-  margin-bottom: 14px;
+  margin: 14px 0;
   color: var(--primary-color);
   font-weight: 500;
   font-size: 14px;
   background-color: rgba(58, 134, 255, 0.08);
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 30px;
   display: inline-block;
 }
@@ -164,14 +220,60 @@
 .language-level {
   color: var(--primary-color);
   font-weight: 600;
-  margin-bottom: 12px;
+  margin: 12px 0;
   background-color: rgba(58, 134, 255, 0.08);
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 30px;
   display: inline-block;
   font-size: 14px;
 }
 
+/* セクション区切りのデザイン */
+.tech-divider {
+  display: flex;
+  align-items: center;
+  margin: 60px 0;
+  justify-content: center;
+}
+
+.tech-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(58, 134, 255, 0.05), rgba(58, 134, 255, 0.3), rgba(58, 134, 255, 0.05));
+  max-width: 400px;
+}
+
+.tech-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  margin: 0 20px;
+  position: relative;
+}
+
+.tech-dot::before, .tech-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.tech-dot::before {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(58, 134, 255, 0.3);
+}
+
+.tech-dot::after {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(58, 134, 255, 0.1);
+}
+
+/* アピールポイントのスタイリング */
 .skill-highlights {
   margin-top: 80px;
 }
@@ -203,7 +305,7 @@
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   border: 1px solid var(--card-border);
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
 }
@@ -236,17 +338,38 @@
   color: var(--text-secondary-on-light);
 }
 
+/* アニメーション */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-item {
+  /* アニメーション削除 */
+}
+
+/* レスポンシブデザイン */
 @media (max-width: 767px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .ml-skills, 
   .language-skills {
     grid-template-columns: 1fr;
   }
   
-  .skill-category,
+  .skill-card,
   .ml-skill-item,
   .language-item,
   .highlight-item {
-    padding: 24px;
+    padding: 20px;
   }
   
   .ml-title, 
@@ -258,10 +381,24 @@
     font-size: 28px;
   }
   
-  .skill-item h4,
+  .category-title,
+  .skill-card h4,
   .ml-skill-item h4, 
   .language-item h4,
   .highlight-item h4 {
     font-size: 17px;
+  }
+  
+  .tech-divider {
+    margin: 40px 0;
+  }
+  
+  .tech-line {
+    max-width: 120px;
+  }
+  
+  .main-badge {
+    font-size: 9px;
+    padding: 2px 6px;
   }
 }

@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Profile from './components/Profile/Profile';
-import Education from './components/Education/Education';
+import TimeLine from './components/Education/Education';
 import Research from './components/Research/Research';
 import Publications from './components/Publications/Publications';
 import Skills from './components/Skills/Skills';
@@ -53,7 +53,7 @@ function App() {
       <Header />
       <Hero />
       <Profile />
-      <Education />
+      <TimeLine />
       <Research />
       <Publications />
       <Skills />

@@ -30,14 +30,14 @@
   top: 0;
   left: 135px;
   height: 100%;
-  width: 1px;
+  width: 2px;
   background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
   opacity: 0.4;
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 35px;
+  margin-bottom: 5px; /* 縮小してトランジション用のスペースを確保 */
   display: flex;
   transition: var(--transition);
   opacity: 0;
@@ -46,24 +46,224 @@
   animation-delay: calc(var(--delay, 0) * 100ms);
 }
 
+/* 国によって微妙な色の違いを持たせる */
+.timeline-item.china .timeline-content {
+  border-left: 3px solid rgba(222, 41, 16, 0.2);
+}
+
+.timeline-item.japan .timeline-content {
+  border-left: 3px solid rgba(0, 112, 243, 0.2);
+}
+
 .timeline-item:nth-child(1) { --delay: 1; }
-.timeline-item:nth-child(2) { --delay: 2; }
-.timeline-item:nth-child(3) { --delay: 3; }
-.timeline-item:nth-child(4) { --delay: 4; }
-.timeline-item:nth-child(5) { --delay: 5; }
-.timeline-item:nth-child(6) { --delay: 6; }
-.timeline-item:nth-child(7) { --delay: 7; }
-.timeline-item:nth-child(8) { --delay: 8; }
-.timeline-item:nth-child(9) { --delay: 9; }
-.timeline-item:nth-child(10) { --delay: 10; }
-.timeline-item:nth-child(11) { --delay: 11; }
-.timeline-item:nth-child(12) { --delay: 12; }
-.timeline-item:nth-child(13) { --delay: 13; }
-.timeline-item:nth-child(14) { --delay: 14; }
-.timeline-item:nth-child(15) { --delay: 15; }
+.timeline-item:nth-child(3) { --delay: 2; }
+.timeline-item:nth-child(5) { --delay: 3; }
+.timeline-item:nth-child(7) { --delay: 4; }
+.timeline-item:nth-child(9) { --delay: 5; }
+.timeline-item:nth-child(11) { --delay: 6; }
+.timeline-item:nth-child(13) { --delay: 7; }
+.timeline-item:nth-child(15) { --delay: 8; }
+.timeline-item:nth-child(17) { --delay: 9; }
+.timeline-item:nth-child(19) { --delay: 10; }
+
+/* トランジション用の遅延を調整 */
+.timeline-transition:nth-child(2) { --delay: 1.5; }
+.timeline-transition:nth-child(4) { --delay: 2.5; }
+.timeline-transition:nth-child(6) { --delay: 3.5; }
+.timeline-transition:nth-child(8) { --delay: 4.5; }
+.timeline-transition:nth-child(10) { --delay: 5.5; }
+.timeline-transition:nth-child(12) { --delay: 6.5; }
+.timeline-transition:nth-child(14) { --delay: 7.5; }
+.timeline-transition:nth-child(16) { --delay: 8.5; }
+.timeline-transition:nth-child(18) { --delay: 9.5; }
 
 .timeline-item:hover {
   transform: translateY(-5px) translateX(3px);
+}
+
+/* タイトルスタイル */
+.timeline-title {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.timeline-item.china .timeline-title {
+  color: #DE2910;
+}
+
+.timeline-item.highlight .timeline-title {
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary-color), #5DA8FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-item.highlight.china .timeline-title {
+  background: linear-gradient(90deg, #DE2910, #FF7761);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* トランジションセクションのスタイル - 縦方向に変更 */
+.timeline-transition {
+  position: relative;
+  width: 40px; /* 縦方向のフライトパスの幅 */
+  height: 80px; /* 縦方向のフライトパスの高さ */
+  margin: 0 0 15px 135px; /* 左のマージンをタイムラインの縦線と合わせる */
+  opacity: 0;
+  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--delay, 0) * 100ms);
+  z-index: 2;
+}
+
+.timeline-flight-path {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flight-path-icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: rgba(0, 112, 243, 0.25);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* 国ごとの飛行経路カラー */
+.flight-path-icon.china-to-japan {
+  color: rgba(0, 112, 243, 0.3);
+}
+
+.flight-path-icon.japan-to-china {
+  color: rgba(222, 41, 16, 0.3);
+  transform: scaleY(-1);
+}
+
+/* 動く飛行機 - 縦方向に変更 */
+.moving-plane-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  z-index: 2;
+  animation: verticalFlightPath 5s ease-in-out infinite alternate;
+}
+
+@keyframes verticalFlightPath {
+  0% {
+    top: 0;
+    transform: translateX(-50%) rotate(90deg);
+  }
+  25% {
+    transform: translateX(-40%) rotate(85deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(90deg);
+  }
+  75% {
+    transform: translateX(-60%) rotate(95deg);
+  }
+  100% {
+    top: calc(100% - 28px);
+    transform: translateX(-50%) rotate(90deg);
+  }
+}
+
+.moving-plane {
+  width: 28px;
+  height: 28px;
+  color: #0070F3;
+  filter: drop-shadow(0 2px 8px rgba(0, 112, 243, 0.3));
+  animation: planeVerticalTilt 5s ease-in-out infinite alternate;
+}
+
+.moving-plane.china-to-japan {
+  color: #0070F3;
+}
+
+.moving-plane.japan-to-china {
+  color: #DE2910;
+}
+
+.moving-plane.vertical {
+  transform: rotate(90deg);
+}
+
+@keyframes planeVerticalTilt {
+  0% {
+    transform: rotate(90deg) scale(1);
+  }
+  25% {
+    transform: rotate(85deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(90deg) scale(1.2);
+  }
+  75% {
+    transform: rotate(95deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(90deg) scale(1);
+  }
+}
+
+/* 飛行機の軌跡エフェクト */
+.moving-plane-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 112, 243, 0.1);
+  border-radius: 50%;
+  filter: blur(5px);
+  z-index: -1;
+  animation: trailEffect 0.5s ease-out infinite;
+}
+
+.moving-plane.japan-to-china + .moving-plane-container::after {
+  background: rgba(222, 41, 16, 0.1);
+}
+
+@keyframes trailEffect {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* ハイライト項目のスタイル */
+.timeline-item.highlight .timeline-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(237, 245, 255, 0.95));
+  box-shadow: 0 10px 30px rgba(0, 112, 243, 0.08);
+  border: 1px solid rgba(0, 112, 243, 0.15);
+}
+
+.timeline-item.highlight.china .timeline-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 240, 0.95));
+  box-shadow: 0 10px 30px rgba(222, 41, 16, 0.08);
+  border: 1px solid rgba(222, 41, 16, 0.15);
+}
+
+.timeline-item.highlight .timeline-content:hover {
+  box-shadow: 0 15px 40px rgba(0, 112, 243, 0.12);
+  transform: translateX(5px) translateY(-2px);
+}
+
+.timeline-item.highlight.china .timeline-content:hover {
+  box-shadow: 0 15px 40px rgba(222, 41, 16, 0.12);
 }
 
 .timeline-year {
@@ -73,9 +273,19 @@
   padding-right: 30px;
   flex-shrink: 0;
   color: var(--primary-color);
-  font-size: 14px;
+  font-size: 16px;
   padding-top: 22px;
   margin-right: 10px;
+}
+
+.timeline-item.highlight .timeline-year {
+  font-weight: 700;
+  color: var(--primary-color);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-item.china .timeline-year {
+  color: #DE2910;
 }
 
 .timeline-content {
@@ -83,10 +293,11 @@
   flex: 1;
   background: var(--card-bg);
   border-radius: var(--border-radius);
-  padding: 20px 24px;
+  padding: 20px 24px 20px 40px; /* 左側のパディングを増やしてアイコン用のスペースを確保 */
   box-shadow: var(--box-shadow);
   border: 1px solid var(--card-border);
-  transition: var(--transition);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
 .timeline-content:hover {
@@ -95,49 +306,245 @@
   transform: translateX(3px);
 }
 
-/* Styling for grouped items */
-.timeline-content.has-group {
-  padding-top: 28px;
-}
-
-.timeline-content-group {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 8px;
-  padding: 8px 0;
-  margin-top: 8px;
-  border-top: 1px dashed rgba(0, 113, 227, 0.15);
-}
-
-.group-indicator {
+/* ロケーションマーカー */
+.location-marker {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  z-index: 1;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  z-index: 3;
 }
 
-.group-count {
+.location-marker.japan::before {
+  content: '🇯🇵';
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.location-marker.china::before {
+  content: '🇨🇳';
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* アイコンのスタイル */
+.timeline-icon-container {
+  position: absolute;
+  top: 20px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: var(--primary-color);
-  color: white;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Add animation for grouped items */
+.timeline-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--primary-color);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-icon {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* 飛行機アイコンのスタイル */
+.timeline-icon.plane {
+  width: 22px;
+  height: 22px;
+  color: #0070F3;
+  filter: drop-shadow(0 2px 3px rgba(0, 112, 243, 0.2));
+  opacity: 1;
+}
+
+.timeline-icon.plane.vertical {
+  transform: rotate(90deg);
+}
+
+.timeline-item.china .timeline-icon.plane {
+  color: #DE2910;
+  filter: drop-shadow(0 2px 3px rgba(222, 41, 16, 0.2));
+}
+
+/* 飛行機の方向に応じたスタイル */
+.timeline-icon.plane.china-to-japan {
+  transform: rotate(-45deg);
+}
+
+.timeline-icon.plane.japan-to-china {
+  transform: rotate(135deg);
+}
+
+.timeline-item:hover .timeline-icon.plane {
+  transform: rotate(-45deg) translateY(-3px) translateX(3px) scale(1.2);
+  filter: drop-shadow(0 4px 6px rgba(0, 112, 243, 0.3));
+}
+
+.timeline-item:hover .timeline-icon.plane.vertical {
+  transform: rotate(90deg) scale(1.2);
+}
+
+.timeline-item:hover .timeline-icon.plane.japan-to-china {
+  transform: rotate(135deg) translateY(-3px) translateX(-3px) scale(1.2);
+}
+
+.timeline-item.china:hover .timeline-icon.plane {
+  filter: drop-shadow(0 4px 6px rgba(222, 41, 16, 0.3));
+}
+
+/* 卒業アイコン */
+.timeline-icon.graduation {
+  color: #6941C6;
+  filter: drop-shadow(0 2px 2px rgba(105, 65, 198, 0.15));
+}
+
+.timeline-item:hover .timeline-icon.graduation {
+  transform: scale(1.2);
+  filter: drop-shadow(0 3px 4px rgba(105, 65, 198, 0.2));
+}
+
+/* 学校アイコン */
+.timeline-icon.school {
+  color: #027A48;
+  filter: drop-shadow(0 1px 2px rgba(2, 122, 72, 0.1));
+}
+
+.timeline-item:hover .timeline-icon.school {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 3px rgba(2, 122, 72, 0.15));
+}
+
+/* 大学アイコン */
+.timeline-icon.university {
+  color: #363F72;
+  filter: drop-shadow(0 1px 2px rgba(54, 63, 114, 0.1));
+}
+
+.timeline-item:hover .timeline-icon.university {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 3px rgba(54, 63, 114, 0.15));
+}
+
+/* 研究アイコン */
+.timeline-icon.research {
+  color: #9E77ED;
+  filter: drop-shadow(0 1px 2px rgba(158, 119, 237, 0.1));
+}
+
+.timeline-item:hover .timeline-icon.research {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 3px rgba(158, 119, 237, 0.15));
+}
+
+/* 起業アイコン */
+.timeline-icon.startup {
+  color: #F59E0B;
+  filter: drop-shadow(0 1px 2px rgba(245, 158, 11, 0.1));
+}
+
+.timeline-item:hover .timeline-icon.startup {
+  transform: scale(1.2);
+  filter: drop-shadow(0 2px 5px rgba(245, 158, 11, 0.25));
+}
+
+/* 誕生アイコン */
+.timeline-icon.birth {
+  color: #F63D68;
+  filter: drop-shadow(0 1px 2px rgba(246, 61, 104, 0.1));
+}
+
+.timeline-item:hover .timeline-icon.birth {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 3px rgba(246, 61, 104, 0.15));
+}
+
+/* ハイライト項目のアイコン特別スタイル */
+.timeline-item.highlight .timeline-icon-container::after {
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(circle, rgba(0, 112, 243, 0.08) 0%, rgba(0, 112, 243, 0) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: pulse 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-item.highlight.china .timeline-icon-container::after {
+  background: radial-gradient(circle, rgba(222, 41, 16, 0.08) 0%, rgba(222, 41, 16, 0) 70%);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+/* Styling for grouped items */
+.timeline-content.has-group {
+  padding-top: 20px;
+}
+
+.timeline-content-group {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  padding: 12px 0;
+  margin-top: 10px;
+  border-top: 1px dashed rgba(0, 113, 227, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.timeline-item.highlight .timeline-content-group {
+  background: rgba(255, 255, 255, 0.7);
+  border-top: 1px dashed rgba(0, 113, 227, 0.25);
+}
+
+.timeline-item.highlight.china .timeline-content-group {
+  border-top: 1px dashed rgba(222, 41, 16, 0.25);
+}
+
+/* アイテムグループのスタイル調整 */
 .timeline-content-item {
-  transition: transform 0.3s ease;
-  padding: 4px 0 4px 16px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  padding: 6px 8px 6px 16px;
+  border-radius: 4px;
+  margin: 0 8px;
 }
 
 .timeline-content-item:hover {
   transform: translateX(3px);
   background: rgba(255, 255, 255, 0.8);
+}
+
+.timeline-item.highlight .timeline-content-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 112, 243, 0.05);
+}
+
+.timeline-item.highlight.china .timeline-content-item:hover {
+  box-shadow: 0 2px 8px rgba(222, 41, 16, 0.05);
 }
 
 .timeline-item:not(:first-child):not(:last-child) {
@@ -159,10 +566,33 @@
   transition: var(--transition);
 }
 
+.timeline-item.china .timeline-content::before {
+  border: 1px solid #DE2910;
+  box-shadow: 0 0 0 4px rgba(222, 41, 16, 0.05);
+}
+
 .timeline-item:hover .timeline-content::before {
   background: var(--primary-color);
   border-color: var(--primary-color);
   box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+.timeline-item.china:hover .timeline-content::before {
+  background: #DE2910;
+  border-color: #DE2910;
+  box-shadow: 0 0 0 4px rgba(222, 41, 16, 0.1);
+}
+
+.timeline-item.highlight .timeline-content::before {
+  background: #0070F3;
+  border-color: white;
+  box-shadow: 0 0 0 4px rgba(0, 112, 243, 0.1), 0 0 0 8px rgba(0, 112, 243, 0.05);
+}
+
+.timeline-item.highlight.china .timeline-content::before {
+  background: #DE2910;
+  border-color: white;
+  box-shadow: 0 0 0 4px rgba(222, 41, 16, 0.1), 0 0 0 8px rgba(222, 41, 16, 0.05);
 }
 
 .timeline-content::after {
@@ -171,9 +601,22 @@
   top: 22px;
   left: -24px;
   width: 14px;
-  height: 1px;
+  height: 2px;
   background: rgba(0, 113, 227, 0.3);
   z-index: 0;
+}
+
+.timeline-item.china .timeline-content::after {
+  background: rgba(222, 41, 16, 0.3);
+}
+
+.timeline-item.highlight .timeline-content::after {
+  background: rgba(0, 113, 227, 0.5);
+  height: 2px;
+}
+
+.timeline-item.highlight.china .timeline-content::after {
+  background: rgba(222, 41, 16, 0.5);
 }
 
 .timeline-content p {
@@ -182,6 +625,10 @@
   line-height: 1.5;
   color: var(--text-on-light);
   font-weight: 400;
+}
+
+.timeline-item.highlight .timeline-content p {
+  font-weight: 500;
 }
 
 .timeline-content-group {
@@ -206,6 +653,30 @@
   border-radius: 50%;
   background-color: var(--primary-color);
   opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.timeline-item.china .timeline-bullet {
+  background-color: #DE2910;
+}
+
+.timeline-content-item:hover .timeline-bullet {
+  background-color: var(--primary-color);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.timeline-item.china .timeline-content-item:hover .timeline-bullet {
+  background-color: #DE2910;
+}
+
+.timeline-item.highlight .timeline-bullet {
+  background-color: #0070F3;
+  opacity: 0.9;
+}
+
+.timeline-item.highlight.china .timeline-bullet {
+  background-color: #DE2910;
 }
 
 .timeline-item.no-year .timeline-content::before {
@@ -216,9 +687,40 @@
   opacity: 0;
 }
 
+/* アーティスティックな背景エフェクトを追加 */
+.timeline-item.highlight .timeline-content::before {
+  animation: glow 3s infinite alternate;
+}
+
+.timeline-item.highlight.china .timeline-content::before {
+  animation: glowRed 3s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 0 4px rgba(0, 112, 243, 0.1), 0 0 0 8px rgba(0, 112, 243, 0.05);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(0, 112, 243, 0.15), 0 0 0 8px rgba(0, 112, 243, 0.1);
+  }
+}
+
+@keyframes glowRed {
+  0% {
+    box-shadow: 0 0 0 4px rgba(222, 41, 16, 0.1), 0 0 0 8px rgba(222, 41, 16, 0.05);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(222, 41, 16, 0.15), 0 0 0 8px rgba(222, 41, 16, 0.1);
+  }
+}
+
 @media (max-width: 991px) {
   .education-section {
     padding: 120px 0;
+  }
+  
+  .timeline-transition {
+    margin-left: 100px;
   }
 }
 
@@ -235,7 +737,7 @@
   }
 
   .timeline-content {
-    padding: 18px 20px;
+    padding: 18px 20px 18px 36px;
   }
   
   .timeline-content::before {
@@ -250,8 +752,21 @@
     font-size: 15px;
   }
   
+  .timeline-icon-container {
+    left: 10px;
+  }
+  
   .timeline-item.no-year .timeline-content {
-    padding-left: 20px;
+    padding-left: 36px;
+  }
+  
+  .timeline-transition {
+    margin-left: 45px;
+    width: 30px;
+  }
+  
+  .timeline-title {
+    font-size: 15px;
   }
 }
 
@@ -270,5 +785,14 @@
   .timeline-content::after {
     width: 10px;
     left: -19px;
+  }
+  
+  .timeline-transition {
+    margin-left: 38px;
+    width: 24px;
+  }
+  
+  .timeline-title {
+    font-size: 14px;
   }
 }

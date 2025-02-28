@@ -51,7 +51,7 @@ const Header = () => {
         <nav className={`main-nav ${isMenuOpen ? 'active' : ''}`}>
           <ul>
             <li><a href="#profile" onClick={closeMenu}>プロフィール</a></li>
-            <li><a href="#education" onClick={closeMenu}>学歴</a></li>
+            <li><a href="#timeline" onClick={closeMenu}>経歴</a></li>
             <li><a href="#research" onClick={closeMenu}>研究</a></li>
             <li><a href="#publications" onClick={closeMenu}>論文</a></li>
             <li><a href="#skills" onClick={closeMenu}>スキル</a></li>
