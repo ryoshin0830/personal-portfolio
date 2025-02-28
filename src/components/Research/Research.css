@@ -1,0 +1,40 @@
+.research-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.research-block {
+  margin-bottom: 40px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.research-block h3 {
+  color: #3498db;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+}
+
+.research-block h4 {
+  color: #2c3e50;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.research-block ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.research-block li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.research-block p {
+  line-height: 1.6;
+  font-size: 16px;
+}

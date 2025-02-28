@@ -1,0 +1,40 @@
+.profile-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.profile-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-details li {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.profile-summary p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .profile-content {
+    flex-direction: row;
+  }
+
+  .profile-details {
+    flex: 1;
+  }
+
+  .profile-summary {
+    flex: 2;
+  }
+}

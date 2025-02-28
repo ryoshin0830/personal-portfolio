@@ -1,23 +1,63 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import Profile from './components/Profile/Profile';
+import Education from './components/Education/Education';
+import Research from './components/Research/Research';
+import Publications from './components/Publications/Publications';
+import Skills from './components/Skills/Skills';
+import About from './components/About/About';
+import Footer from './components/Footer/Footer';
 
 function App() {
+  // Animation effect for scroll reveal
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll('.fade-in');
+      const staggerItems = document.querySelectorAll('.stagger-item');
+      
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible');
+        }
+      });
+      
+      staggerItems.forEach((item, index) => {
+        const itemTop = item.getBoundingClientRect().top;
+        const itemVisible = 150;
+        
+        if (itemTop < window.innerHeight - itemVisible) {
+          setTimeout(() => {
+            item.classList.add('visible');
+          }, index * 100);
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    // Trigger on initial load
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Hero />
+      <Profile />
+      <Education />
+      <Research />
+      <Publications />
+      <Skills />
+      <About />
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,58 @@
+.about-section {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.company-info {
+  margin-top: 40px;
+}
+
+.company-detail,
+.mission-vision,
+.vision-statement,
+.career-goals {
+  margin-bottom: 30px;
+  background-color: #f8f9fa;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.company-detail h3,
+.mission-vision h3,
+.vision-statement h3,
+.career-goals h3 {
+  color: #3498db;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+}
+
+.company-detail p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.mission-vision p,
+.vision-statement p,
+.career-goals p {
+  line-height: 1.8;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.company-detail ul,
+.vision-statement ul {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.company-detail li,
+.vision-statement li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.vision-statement strong {
+  color: #2980b9;
+}
