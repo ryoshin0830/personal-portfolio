@@ -1,6 +1,7 @@
 .skills-section {
   padding: 120px 0;
   background-color: var(--off-white);
+  overflow: hidden; /* アニメーション要素がはみ出さないように */
 }
 
 .programming-skills, 
@@ -66,6 +67,7 @@
   opacity: 1;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  will-change: transform;
 }
 
 .skill-card:hover {
@@ -73,9 +75,33 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* リセットした主力技術のスタイル */
-.main-skill {
-  /* 主力スキルの特別なスタイルは削除 - 新しいセクションで主力スキルを表示します */
+/* 主力スキルのバッジ */
+.main-badge {
+  font-size: 12px;
+  font-weight: 600;
+  background: linear-gradient(45deg, #3a86ff, #4361ee);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 20px;
+  margin-left: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s infinite;
+  transform-origin: center;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* アニメーション定義 */
@@ -110,12 +136,6 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
-  animation: fadeIn 0.8s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 .primary-skills-section::before {
@@ -167,11 +187,9 @@
   display: flex;
   align-items: center;
   border-left: 3px solid;
-  animation: fadeInUp 0.5s ease-out forwards;
-  animation-delay: calc(var(--index) * 0.1s);
-  opacity: 0;
   position: relative;
   overflow: hidden;
+  will-change: transform;
 }
 
 .primary-skill-item::before {
@@ -184,11 +202,6 @@
   background: currentColor;
   transition: width 0.4s ease;
   opacity: 0.3;
-}
-
-.primary-skill-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .primary-skill-item:hover::before {
@@ -207,11 +220,7 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-}
-
-.primary-skill-item:hover .primary-skill-icon {
-  transform: translateY(-3px) rotate(10deg);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  will-change: transform;
 }
 
 .primary-skill-info {
@@ -242,10 +251,7 @@
   font-size: 24px;
   margin-right: 12px;
   transition: all 0.3s ease;
-}
-
-.skill-card:hover .skill-icon {
-  transform: translateY(-3px) rotate(5deg);
+  will-change: transform;
 }
 
 .skill-card h4 {
@@ -261,6 +267,144 @@
   font-size: 15px;
   color: var(--text-secondary-on-light);
   margin: 0;
+}
+
+/* 技術カテゴリーセレクター */
+.tech-category-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin: 60px 0 40px;
+  position: relative;
+}
+
+.tech-category-item {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 15px;
+  min-width: 120px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.tech-category-item:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tech-category-item.active {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.tech-category-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.tech-category-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  will-change: transform;
+}
+
+.tech-category-item h4 {
+  font-size: 14px;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* 選択されたカテゴリーの詳細 */
+.selected-category-skills {
+  margin-top: 40px;
+  position: relative;
+}
+
+.selected-category-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.selected-category-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: white;
+  font-size: 28px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  position: relative;
+  overflow: hidden;
+}
+
+.selected-category-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  animation: pulse-light 3s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes pulse-light {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.selected-category-info {
+  flex: 1;
+}
+
+.selected-category-info h3 {
+  font-size: 24px;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+}
+
+.selected-category-info p {
+  margin: 0;
+  color: var(--text-secondary-on-light);
+  font-size: 15px;
 }
 
 /* 機械学習カードのスタイリング */
@@ -311,13 +455,7 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
-  opacity: 1;
-}
-
-.ml-skill-item:hover, 
-.language-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  will-change: transform;
 }
 
 .ml-skill-header,
@@ -331,6 +469,7 @@
 .language-flag {
   font-size: 24px;
   margin-right: 12px;
+  will-change: transform;
 }
 
 .language-flag {
@@ -366,6 +505,33 @@
   border-radius: 30px;
   display: inline-block;
   font-size: 14px;
+}
+
+/* ML固有のアニメーション要素 */
+.ml-animation-element {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  bottom: -100px;
+  right: -100px;
+  z-index: 0;
+  opacity: 0.4;
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+/* 言語固有のアニメーション要素 */
+.language-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 /* セクション区切りのデザイン */
@@ -448,6 +614,7 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
+  will-change: transform;
 }
 
 .highlight-item::before {
@@ -458,11 +625,6 @@
   width: 4px;
   height: 100%;
   background: var(--gradient-purple);
-}
-
-.highlight-item:hover {
-  transform: translateY(-5px) translateX(5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .highlight-item h4 {
@@ -476,24 +638,6 @@
   line-height: 1.7;
   font-size: 16px;
   color: var(--text-secondary-on-light);
-}
-
-/* アニメーション */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.stagger-item {
-  animation: fadeInUp 0.5s ease-out forwards;
-  opacity: 0;
-  animation-delay: calc(var(--i, 0) * 0.1s);
 }
 
 /* レスポンシブデザイン */
@@ -541,5 +685,32 @@
     max-width: 120px;
   }
   
-  /* Remove main-badge class as we're not using it anymore */
+  .tech-category-selector {
+    gap: 10px;
+  }
+  
+  .tech-category-item {
+    min-width: 80px;
+    padding: 10px;
+  }
+  
+  .tech-category-icon {
+    font-size: 20px;
+  }
+  
+  .tech-category-item h4 {
+    font-size: 12px;
+  }
+  
+  .selected-category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .selected-category-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
 }

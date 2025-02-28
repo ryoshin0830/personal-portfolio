@@ -1,13 +1,85 @@
 import React, { useState, useEffect } from 'react';
 import './Skills.css';
-import { FaPython, FaJava, FaReact, FaNode, FaSwift, FaLinux, FaDocker, FaAws, FaGoogle, FaGit, FaServer, FaApple, FaCloud } from 'react-icons/fa';
+import { FaPython, FaJava, FaReact, FaNode, FaSwift, FaLinux, FaDocker, FaAws, FaGoogle, FaGit, FaServer, FaApple, FaCloud, FaCode, FaLaptopCode, FaDatabase, FaMobile, FaServer as FaServerIcon } from 'react-icons/fa';
 import { SiTypescript, SiJavascript, SiNextdotjs, SiDjango, SiMongodb, SiMariadb, SiNginx, SiApache, SiTensorflow, SiPytorch, SiC, SiVercel, SiR, SiCaddy, SiLatex } from 'react-icons/si';
-import { DiGitBranch } from 'react-icons/di';
+import { BiCloud } from 'react-icons/bi';
+import { VscTools } from 'react-icons/vsc';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const Skills = () => {
+  // 技術スタックのカテゴリー定義
+  const techCategories = [
+    {
+      id: 'languages',
+      name: 'プログラミング言語',
+      icon: <FaCode />,
+      color: '#6366F1',
+      animation: 'typing',
+      description: '実務経験を持つプログラミング言語',
+    },
+    {
+      id: 'frontend',
+      name: 'フロントエンド開発',
+      icon: <FaLaptopCode />,
+      color: '#06B6D4',
+      animation: 'rotate',
+      description: 'モダンなUI開発技術',
+    },
+    {
+      id: 'backend',
+      name: 'バックエンド開発',
+      icon: <FaServerIcon />,
+      color: '#10B981',
+      animation: 'pulse',
+      description: 'サーバーサイド開発技術',
+    },
+    {
+      id: 'database',
+      name: 'データベース',
+      icon: <FaDatabase />,
+      color: '#8B5CF6',
+      animation: 'scale',
+      description: 'データ管理・保存技術',
+    },
+    {
+      id: 'mobile',
+      name: 'モバイルアプリ開発',
+      icon: <FaMobile />,
+      color: '#EC4899',
+      animation: 'shake',
+      description: 'iOS/Androidアプリ開発',
+    },
+    {
+      id: 'infra',
+      name: 'インフラ・ミドルウェア',
+      icon: <FaServer />,
+      color: '#F59E0B',
+      animation: 'float',
+      description: 'サーバー/デプロイ技術',
+    },
+    {
+      id: 'cloud',
+      name: 'クラウド・デプロイメント',
+      icon: <BiCloud />,
+      color: '#3B82F6',
+      animation: 'float',
+      description: 'クラウドサービス活用技術',
+    },
+    {
+      id: 'tools',
+      name: 'コンテナ・開発ツール',
+      icon: <VscTools />,
+      color: '#EF4444',
+      animation: 'bounce',
+      description: '開発効率化ツール',
+    }
+  ];
+
+  // 各カテゴリーに対応するスキル
   const programmingSkills = [
     {
-      category: 'プログラミング言語',
+      category: 'languages',
       skills: [
         {
           name: 'JavaScript',
@@ -45,7 +117,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'フロントエンド開発',
+      category: 'frontend',
       skills: [
         {
           name: 'React',
@@ -64,7 +136,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'バックエンド開発',
+      category: 'backend',
       skills: [
         {
           name: 'Next.js',
@@ -89,7 +161,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'データベース',
+      category: 'database',
       skills: [
         {
           name: 'MongoDB',
@@ -107,7 +179,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'モバイルアプリ開発',
+      category: 'mobile',
       skills: [
         {
           name: 'React Native',
@@ -125,7 +197,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'サーバー・ミドルウェア',
+      category: 'infra',
       skills: [
         {
           name: 'Caddy2',
@@ -143,7 +215,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'クラウド・デプロイメント',
+      category: 'cloud',
       skills: [
         {
           name: 'AWS',
@@ -162,19 +234,21 @@ const Skills = () => {
       ]
     },
     {
-      category: 'コンテナ・バージョン管理',
+      category: 'tools',
       skills: [
         {
           name: 'Docker',
           icon: <FaDocker className="skill-icon" />,
           color: '#2496ED',
-          description: 'チーム開発で、開発環境と本番環境をコンテナ化して一致させることで、デプロイの効率化を実現。環境差異の問題を最小化し、開発プロセスをスムーズに。'
+          description: 'チーム開発で、開発環境と本番環境をコンテナ化して一致させることで、デプロイの効率化を実現。環境差異の問題を最小化し、開発プロセスをスムーズに。',
+          main: true
         },
         {
           name: 'Git',
           icon: <FaGit className="skill-icon" />,
           color: '#F05032',
-          description: 'コードのバージョン管理を徹底し、チームメンバー間の共同作業を容易に。ブランチ戦略を明確化し、複数開発者が同時に作業してもコンフリクトを最小化。'
+          description: 'コードのバージョン管理を徹底し、チームメンバー間の共同作業を容易に。ブランチ戦略を明確化し、複数開発者が同時に作業してもコンフリクトを最小化。',
+          main: true
         }
       ]
     }
@@ -210,8 +284,8 @@ const Skills = () => {
       language: '日本語',
       icon: '🇯🇵',
       color: '#BC002D',
-      level: '日本で生活経験15年。JLPT N1 180点（満点）。',
-      details: '新東方日本語教師として7年、5,000時間以上の教育経験あり。'
+      level: '日本で生活経験15年',
+      details: 'JLPT N1 180点（満点）。新東方日本語教師として7年、5,000時間以上の教育経験あり。'
     },
     {
       language: '中国語',
@@ -228,173 +302,534 @@ const Skills = () => {
       details: '研究論文の執筆や読解で使用。'
     }
   ];
-  
-  // アニメーション用のステート
-  const [visibleCategory, setVisibleCategory] = useState(null);
-  
-  // スクロール検出用のエフェクト（即時表示）
-  useEffect(() => {
-    const handleScroll = () => {
-      const skillCategories = document.querySelectorAll('.skill-category');
-      
-      // すべてのカテゴリーを一度に表示
-      setVisibleCategory(skillCategories.length);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    // 初期表示時にすぐ実行
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+  // アニメーション設定
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  // カテゴリーごとのアニメーション設定
+  const motionVariants = {
+    typing: {
+      initial: { scale: 1 },
+      animate: { 
+        scale: [1, 1.05, 1],
+        transition: {
+          duration: 1.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        }
+      }
+    },
+    rotate: {
+      initial: { rotate: 0 },
+      animate: { 
+        rotate: 360,
+        transition: {
+          duration: 15,
+          repeat: Infinity,
+          ease: "linear"
+        }
+      }
+    },
+    pulse: {
+      initial: { scale: 1, opacity: 1 },
+      animate: { 
+        scale: [1, 1.1, 1],
+        opacity: [1, 0.8, 1],
+        transition: {
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }
+      }
+    },
+    scale: {
+      initial: { scale: 1 },
+      animate: { 
+        scale: [1, 1.2, 1],
+        transition: {
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }
+      }
+    },
+    shake: {
+      initial: { x: 0 },
+      animate: { 
+        x: [-2, 2, -2, 2, 0],
+        transition: {
+          duration: 0.5,
+          repeat: Infinity,
+          repeatType: "loop",
+          repeatDelay: 2
+        }
+      }
+    },
+    float: {
+      initial: { y: 0 },
+      animate: { 
+        y: [0, -6, 0],
+        transition: {
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }
+      }
+    },
+    bounce: {
+      initial: { y: 0 },
+      animate: { 
+        y: [0, -8, 0],
+        transition: {
+          duration: 0.6,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeOut"
+        }
+      }
+    }
+  };
+
+  // InView Hook
+  const [techCategoryRef, techCategoryInView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1
+  });
+
+  // アクティブカテゴリーのステート
+  const [activeCategory, setActiveCategory] = useState('languages');
+
+  // 主力スキルをフィルタリングする関数
+  const getMainSkills = () => {
+    return programmingSkills.flatMap(categorySkills => {
+      return categorySkills.skills.filter(skill => skill.main).map(skill => ({
+        ...skill,
+        category: categorySkills.category
+      }));
+    });
+  };
+
+  // 選択されたカテゴリーのスキルを取得
+  const getSkillsByCategory = (categoryId) => {
+    const categorySkills = programmingSkills.find(cat => cat.category === categoryId);
+    return categorySkills ? categorySkills.skills : [];
+  };
+
+  // カテゴリーの詳細を取得
+  const getCategoryDetails = (categoryId) => {
+    return techCategories.find(cat => cat.id === categoryId);
+  };
 
   return (
     <section id="skills" className="skills-section">
       <div className="container">
-        <div className="section-intro fade-in">
+        <motion.div 
+          className="section-intro"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+        >
           <div className="section-subtitle">TECH STACK & SKILLS</div>
           <h2 className="with-decoration">プログラミングスキル・使用技術</h2>
           <p className="section-description">普段使用している技術スタックをご紹介します</p>
-        </div>
+        </motion.div>
         
-        {/* 主力スキルセクション */}
-        <div className="primary-skills-section">
-          <h3 className="primary-skills-title">主力技術スタック</h3>
+        {/* 主力技術スキルセクション */}
+        <motion.div 
+          className="primary-skills-section"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <motion.h3 
+            className="primary-skills-title"
+            variants={fadeInUp}
+          >
+            主力技術スタック
+          </motion.h3>
           <div className="primary-skills-grid">
-            {programmingSkills.flatMap(category => 
-              category.skills.filter(skill => skill.main).map((skill, index) => (
-                <div 
-                  key={`primary-${index}`} 
-                  className="primary-skill-item"
-                  style={{ 
-                    borderLeftColor: skill.color,
-                    '--index': index 
+            {getMainSkills().map((skill, index) => (
+              <motion.div 
+                key={`primary-${index}`}
+                className="primary-skill-item"
+                variants={fadeInUp}
+                custom={index}
+                style={{ 
+                  borderLeftColor: skill.color,
+                  '--index': index 
+                }}
+                whileHover={{ 
+                  y: -5, 
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+                  transition: { duration: 0.2 }
+                }}
+              >
+                <motion.div 
+                  className="primary-skill-icon" 
+                  style={{color: skill.color}}
+                  whileHover={{ 
+                    rotate: 10, 
+                    scale: 1.1,
+                    transition: { duration: 0.2 }
                   }}
                 >
-                  <div className="primary-skill-icon" style={{color: skill.color}}>
-                    {skill.icon}
-                  </div>
-                  <div className="primary-skill-info">
-                    <h4 className="primary-skill-name">{skill.name}</h4>
-                    <p className="primary-skill-category">{category.category}</p>
-                  </div>
+                  {skill.icon}
+                </motion.div>
+                <div className="primary-skill-info">
+                  <h4 className="primary-skill-name">{skill.name}</h4>
+                  <p className="primary-skill-category">
+                    {getCategoryDetails(skill.category)?.name}
+                  </p>
                 </div>
-              ))
-            )}
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="programming-skills">
-          {programmingSkills.map((category, index) => (
-            <div 
-              key={index} 
-              className="skill-category skill-category-visible"
+        {/* 技術スタックカテゴリーセレクター */}
+        <motion.div 
+          ref={techCategoryRef}
+          className="tech-category-selector"
+          initial="hidden"
+          animate={techCategoryInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          {techCategories.map((category, index) => (
+            <motion.div
+              key={category.id}
+              className={`tech-category-item ${activeCategory === category.id ? 'active' : ''}`}
+              variants={fadeInUp}
+              custom={index}
+              onClick={() => setActiveCategory(category.id)}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
-              <h3 className="category-title">{category.category}</h3>
-              <div className="skills-grid">
-                {category.skills.map((skill, skillIndex) => (
-                  <div 
-                    key={skillIndex} 
-                    className="skill-card"
-                    style={{
-                      borderTop: `3px solid ${skill.color}`
-                    }}
-                  >
-                    <div className="skill-card-header" style={{color: skill.color}}>
-                      {skill.icon}
-                      <h4>{skill.name}</h4>
-                    </div>
-                    <p>{skill.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+              <motion.div 
+                className="tech-category-icon" 
+                style={{ color: category.color }}
+                initial="initial"
+                animate="animate"
+                variants={motionVariants[category.animation]}
+              >
+                {category.icon}
+              </motion.div>
+              <h4>{category.name}</h4>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="tech-divider">
+        {/* 選択されたカテゴリーのスキル */}
+        <motion.div 
+          className="selected-category-skills"
+          key={activeCategory}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="selected-category-header">
+            <div className="selected-category-icon" style={{ backgroundColor: getCategoryDetails(activeCategory)?.color }}>
+              {getCategoryDetails(activeCategory)?.icon}
+            </div>
+            <div className="selected-category-info">
+              <h3>{getCategoryDetails(activeCategory)?.name}</h3>
+              <p>{getCategoryDetails(activeCategory)?.description}</p>
+            </div>
+          </div>
+          
+          <motion.div 
+            className="skills-grid"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            {getSkillsByCategory(activeCategory).map((skill, skillIndex) => (
+              <motion.div 
+                key={skillIndex}
+                className={`skill-card ${skill.main ? 'main-skill' : ''}`}
+                variants={fadeInUp}
+                custom={skillIndex}
+                style={{
+                  borderTop: `3px solid ${skill.color}`
+                }}
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.12)',
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <div className="skill-card-header" style={{color: skill.color}}>
+                  <motion.div
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {skill.icon}
+                  </motion.div>
+                  <h4>{skill.name}</h4>
+                  {skill.main && <span className="main-badge">主力</span>}
+                </div>
+                <p>{skill.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        <motion.div 
+          className="tech-divider"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 1 }}
+        >
           <div className="tech-line"></div>
           <div className="tech-dot"></div>
           <div className="tech-line"></div>
-        </div>
+        </motion.div>
 
-        <h2 className="ml-title fade-in">機械学習関連</h2>
-        <h3 className="ml-subtitle fade-in">使用ライブラリと主なアルゴリズム</h3>
-        <div className="ml-skills">
+        <motion.h2 
+          className="ml-title"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+        >
+          機械学習関連
+        </motion.h2>
+        <motion.h3 
+          className="ml-subtitle"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          使用ライブラリと主なアルゴリズム
+        </motion.h3>
+        <motion.div 
+          className="ml-skills"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          variants={staggerContainer}
+        >
           {mlSkills.map((skill, index) => (
-            <div 
-              key={index} 
-              className="ml-skill-item stagger-item"
+            <motion.div 
+              key={index}
+              className="ml-skill-item"
+              variants={fadeInUp}
+              custom={index}
               style={{
                 borderTop: `3px solid ${skill.color}`,
                 '--i': index
               }}
+              whileHover={{ 
+                y: -10, 
+                boxShadow: '0 15px 30px rgba(0, 0, 0, 0.12)',
+                transition: { duration: 0.3 }
+              }}
             >
               <div className="ml-skill-header" style={{color: skill.color}}>
-                {skill.icon}
+                <motion.div
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {skill.icon}
+                </motion.div>
                 <h4>{skill.library}</h4>
               </div>
               <div className="ml-purpose">
                 {skill.purpose}
               </div>
               <p>{skill.description}</p>
-            </div>
+              {/* ML固有のアニメーション要素 */}
+              <motion.div 
+                className="ml-animation-element"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ 
+                  scale: [0.8, 1, 0.8],
+                  opacity: [0.3, 0.7, 0.3]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                style={{ backgroundColor: `${skill.color}20` }}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="tech-divider">
+        <motion.div 
+          className="tech-divider"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 1 }}
+        >
           <div className="tech-line"></div>
           <div className="tech-dot"></div>
           <div className="tech-line"></div>
-        </div>
+        </motion.div>
 
-        <h2 className="language-title fade-in">言語スキル</h2>
-        <div className="language-skills">
+        <motion.h2 
+          className="language-title"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+        >
+          言語スキル
+        </motion.h2>
+        <motion.div 
+          className="language-skills"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          variants={staggerContainer}
+        >
           {languageSkills.map((lang, index) => (
-            <div 
-              key={index} 
-              className="language-item stagger-item"
+            <motion.div 
+              key={index}
+              className="language-item"
+              variants={fadeInUp}
+              custom={index}
               style={{
                 borderTop: `3px solid ${lang.color}`
               }}
+              whileHover={{ 
+                y: -10, 
+                boxShadow: '0 15px 30px rgba(0, 0, 0, 0.12)',
+                transition: { duration: 0.3 }
+              }}
             >
               <div className="language-header">
-                <span className="language-flag">{lang.icon}</span>
+                <motion.span 
+                  className="language-flag"
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ duration: 0.3 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  {lang.icon}
+                </motion.span>
                 <h4>{lang.language}</h4>
               </div>
               <p className="language-level">{lang.level}</p>
               <p>{lang.details}</p>
-            </div>
+              {/* 言語固有のアニメーション要素 */}
+              <motion.div 
+                className="language-wave"
+                style={{ backgroundColor: `${lang.color}10` }}
+                initial={{ 
+                  opacity: 0.5,
+                  pathLength: 0 
+                }}
+                animate={{ 
+                  opacity: [0.5, 0.8, 0.5],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut" 
+                }}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="tech-divider">
+        <motion.div 
+          className="tech-divider"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 1 }}
+        >
           <div className="tech-line"></div>
           <div className="tech-dot"></div>
           <div className="tech-line"></div>
-        </div>
+        </motion.div>
 
-        <div className="skill-highlights">
-          <h3>アピールポイント・今後のビジョン</h3>
-          <div className="highlight-item">
+        <motion.div 
+          className="skill-highlights"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          variants={staggerContainer}
+        >
+          <motion.h3 
+            variants={fadeInUp}
+          >
+            アピールポイント・今後のビジョン
+          </motion.h3>
+          <motion.div 
+            className="highlight-item"
+            variants={fadeInUp}
+            custom={1}
+            whileHover={{ 
+              y: -5, 
+              x: 5,
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
+              transition: { duration: 0.3 }
+            }}
+          >
             <h4>多言語・多文化バックグラウンド</h4>
             <p>
               日中バイリンガルとして、異なる文化や言語環境での生活経験を強みとしています。この経験は、国際的なチーム環境での円滑なコミュニケーションや、多様な視点からの問題解決に役立っています。さらに、新東方での日本語教師としての経験（7年、5,000時間以上）は、教育コンテンツ開発や効果的な知識伝達の基盤となっています。
             </p>
-          </div>
-          <div className="highlight-item">
+          </motion.div>
+          <motion.div 
+            className="highlight-item"
+            variants={fadeInUp}
+            custom={2}
+            whileHover={{ 
+              y: -5, 
+              x: 5,
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
+              transition: { duration: 0.3 }
+            }}
+          >
             <h4>教育テクノロジーにおけるイノベーション</h4>
             <p>
               研究者としての専門知識とエンジニアとしての技術スキルを組み合わせ、教育と技術の融合に独自の価値を提供できます。語彙問題自動生成アルゴリズムの開発実績や、語彙難易度推定モデルの構築経験は、効率的な学習支援ツールの設計に直結します。国立国語研究所のプロジェクトでは、理論研究を実践的なWebアプリケーションとして具現化した経験があります。
             </p>
-          </div>
-          <div className="highlight-item">
+          </motion.div>
+          <motion.div 
+            className="highlight-item"
+            variants={fadeInUp}
+            custom={3}
+            whileHover={{ 
+              y: -5, 
+              x: 5,
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
+              transition: { duration: 0.3 }
+            }}
+          >
             <h4>LLM特化型の言語学習プラットフォーム構築</h4>
             <p>
               今後5年間のビジョンとして、言語学習に特化した独自LLMの開発と、それを活用した包括的な学習プラットフォームの構築を目指しています。言語学の知見を取り入れた独自のトレーニングデータセットによる高精度なモデル構築、パーソナライズされた学習体験の提供、そして学習者の習熟度に合わせた適応型学習システムの実現に取り組みたいと考えています。また、これらの技術を通じて、言語教育のアクセシビリティ向上にも貢献していきたいです。
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
