@@ -1,35 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './ZennFeed.css';
 
-const ZennFeed = () => {
+// 記事を取得するカスタムフック
+const useZennArticles = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
   useEffect(() => {
-    // ウィンドウサイズの変更を監視
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    // 画面幅に応じて表示数を決定
-    const getArticleCount = () => {
-      if (windowWidth <= 480) {
-        return 2; // スマホサイズでは2記事
-      } else if (windowWidth <= 992) {
-        return 3; // タブレットサイズでは3記事
-      } else {
-        return 4; // デスクトップでは4記事
-      }
-    };
-
     const fetchRssFeed = async () => {
       try {
         setLoading(true);
@@ -69,8 +47,7 @@ const ZennFeed = () => {
           });
         });
         
-        // 表示数を制限
-        setArticles(parsedArticles.slice(0, getArticleCount()));
+        setArticles(parsedArticles);
         setLoading(false);
       } catch (err) {
         console.error('RSSフィード取得エラー:', err);
@@ -80,30 +57,102 @@ const ZennFeed = () => {
     };
     
     fetchRssFeed();
-  }, [windowWidth]);
+  }, []);
 
-  // 日付フォーマット関数
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}年${month}月${day}日`;
-  };
-  
-  // HTML文字列からプレーンテキストを抽出する関数
-  const stripHtml = (html) => {
-    const temp = document.createElement('div');
-    temp.innerHTML = html;
-    return temp.textContent || temp.innerText || '';
+  return { articles, loading, error };
+};
+
+// 共通ユーティリティ関数
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}年${month}月${day}日`;
+};
+
+const stripHtml = (html) => {
+  const temp = document.createElement('div');
+  temp.innerHTML = html;
+  return temp.textContent || temp.innerText || '';
+};
+
+const formatDescription = (description, maxLength = 100) => {
+  const plainText = stripHtml(description);
+  if (plainText.length <= maxLength) return plainText;
+  return plainText.substring(0, maxLength) + '...';
+};
+
+// ハイライト記事コンポーネント
+export const ZennHighlight = () => {
+  const { articles, loading, error } = useZennArticles();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // アニメーション開始の少し遅延
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading || error || articles.length === 0) return null;
+
+  // 最新記事だけを表示
+  const latestArticle = articles[0];
+
+  return (
+    <section className={`zenn-highlight fade-in ${isVisible ? 'slide-in' : ''}`} id="zenn-highlight">
+      <div className="container">
+        <div className="zenn-highlight-content">
+          <div className="zenn-highlight-badge">
+            <span>NEW</span>
+          </div>
+          <a 
+            href={latestArticle.link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="zenn-highlight-card"
+          >
+            <h3 className="zenn-highlight-title">
+              <span className="zenn-highlight-label">最新のZenn記事</span>
+              {latestArticle.title}
+            </h3>
+            <p className="zenn-highlight-date">{formatDate(latestArticle.pubDate)}</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// メインのZennフィードコンポーネント
+const ZennFeed = () => {
+  const { articles, loading, error } = useZennArticles();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    // ウィンドウサイズの変更を監視
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // 画面幅に応じて表示数を決定
+  const getArticleCount = () => {
+    if (windowWidth <= 480) {
+      return 2; // スマホサイズでは2記事
+    } else if (windowWidth <= 992) {
+      return 3; // タブレットサイズでは3記事
+    } else {
+      return 4; // デスクトップでは4記事
+    }
   };
 
-  // 説明文を短く整形する関数
-  const formatDescription = (description, maxLength = 100) => {
-    const plainText = stripHtml(description);
-    if (plainText.length <= maxLength) return plainText;
-    return plainText.substring(0, maxLength) + '...';
-  };
+  const displayArticles = articles.slice(0, getArticleCount());
 
   return (
     <section className="zenn-feed fade-in" id="zenn-feed">
@@ -133,7 +182,7 @@ const ZennFeed = () => {
         ) : (
           <>
             <div className="zenn-articles">
-              {articles.map((article) => (
+              {displayArticles.map((article) => (
                 <a 
                   key={article.id} 
                   href={article.link} 
