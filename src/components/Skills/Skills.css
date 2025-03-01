@@ -85,23 +85,7 @@
   border-radius: 20px;
   margin-left: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  animation: pulse 2s infinite;
   transform-origin: center;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 /* アニメーション定義 */
@@ -648,22 +632,7 @@
     rgba(255, 255, 255, 0.3) 0%,
     rgba(255, 255, 255, 0) 60%
   );
-  animation: pulse-light 3s infinite linear;
   pointer-events: none;
-}
-
-@keyframes pulse-light {
-  0% {
-    transform: scale(0.3);
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    transform: scale(1.2);
-    opacity: 0;
-  }
 }
 
 .selected-category-info {
