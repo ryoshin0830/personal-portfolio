@@ -10,6 +10,7 @@ import Skills from './components/Skills/Skills';
 import ZennFeed from './components/ZennFeed/ZennFeed';
 import About from './components/About/About';
 import Footer from './components/Footer/Footer';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
   // Animation effect for scroll reveal
@@ -49,18 +50,20 @@ function App() {
   }, []);
   
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <Profile />
-      <TimeLine />
-      <Research />
-      <Publications />
-      <Skills />
-      <ZennFeed />
-      <About />
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="App">
+        <Header />
+        <Hero />
+        <Profile />
+        <TimeLine />
+        <Research />
+        <Publications />
+        <Skills />
+        <ZennFeed />
+        <About />
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

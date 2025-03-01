@@ -1,0 +1,251 @@
+{
+  "header": {
+    "profile": "プロフィール",
+    "timeline": "経歴",
+    "research": "研究",
+    "publications": "論文",
+    "skills": "スキル",
+    "about": "会社情報"
+  },
+  "hero": {
+    "title": "梁 震",
+    "subtitle": "京都大学 / 研究者 / 起業家",
+    "specialty": "外国語教育 × 機械学習",
+    "description": "言語の壁を越える革新的な学習支援システムを開発しています",
+    "viewSkills": "スキルを見る",
+    "research": "研究内容"
+  },
+  "profile": {
+    "title": "プロフィール",
+    "basicInfo": {
+      "name": "梁 震",
+      "birthdate": "1997年8月30日",
+      "birthplace": "北京",
+      "residence": "日本（京都）"
+    },
+    "summary": {
+      "intro": "北京出身の日中バイリンガルです。京都大学大学院で外国語教育と機械学習を融合した研究を行っています。",
+      "business": "2023年10月に株式会社EastLinkerを起業し、国立国語研究所のプロファイラー開発などを受託しています。",
+      "development": "SwiftやNode.jsを活用した英語学習アプリ「LANDS」の開発や、ReactによるWeb開発に取り組んでいます。",
+      "research": "Word2Vecによる多肢選択式語彙問題の自動生成やLLMによる語彙難易度測定など、LLMモデルのfine-tuning、Gensim、Scikit-learn、Transformersを活用した研究を進めています。",
+      "focus": "大規模言語モデル（LLM）の教育応用を中心に研究しており、チーム開発の経験も豊富です。"
+    }
+  },
+  "education": {
+    "title": "経歴",
+    "subtitle": "Career Journey",
+    "description": "北京と日本の教育環境で培った多様な視点と、最先端の言語学習技術研究を融合させた学術的・職業的バックグラウンド",
+    "events": [
+      {
+        "year": "1997年",
+        "title": "北京出身",
+        "description": "出生"
+      },
+      {
+        "year": "1999年",
+        "title": "来日",
+        "description": "家族と共に来日（横浜）、日本で幼稚園・小学校を過ごす"
+      },
+      {
+        "year": "2009年",
+        "title": "北京帰国",
+        "description": "北京に帰国し、中学校に入学"
+      },
+      {
+        "year": "2013年",
+        "title": "高校進学",
+        "description": "北京市月壇中学高等部に入学"
+      },
+      {
+        "year": "2016年",
+        "title": "大学入学",
+        "description": "首都経済貿易大学情報システム学部に入学"
+      },
+      {
+        "year": "2020年",
+        "title": "大学卒業",
+        "description": "首都経済貿易大学情報システム学部を卒業"
+      },
+      {
+        "year": "2021年",
+        "title": "再来日",
+        "description": "再来日、京都へ移住"
+      },
+      {
+        "year": "2021年",
+        "title": "修士課程入学",
+        "description": "京都大学人間環境学研究科 共生人間学修士課程に入学。外国語教育学、第二言語習得論、応用言語学を専攻。機械学習を使った語彙習得、言語評価、教育文法、学術目的の英語を研究。修士論文:「機械学習を用いた日本語語彙テスト自動生成プログラムの開発と検証（Word2Vec）」"
+      },
+      {
+        "year": "2023年",
+        "title": "起業",
+        "description": "教育テック分野での起業、AI言語教育ツールの開発に着手"
+      },
+      {
+        "year": "2023年",
+        "title": "修士課程修了",
+        "description": "修士課程を修了"
+      },
+      {
+        "year": "2023年",
+        "title": "博士課程入学",
+        "description": "京都大学博士課程に入学（人間環境学研究科 共生人間学専攻）。外国語教育学、第二言語習得論、応用言語学を研究。機械学習を使った語彙習得、言語評価、教育文法、学術目的の英語を中心に取り組む。博士論文テーマ:「外国語教育におけるLLMの応用」"
+      }
+    ]
+  },
+  "research": {
+    "title": "研究・プロジェクト活動",
+    "mainTopics": {
+      "title": "主な研究トピックと興味領域",
+      "topics": [
+        "外国語教育学・第二言語習得論・応用言語学",
+        "大規模言語モデル（LLM）のファインチューニング・構築",
+        "機械学習を用いた語彙難易度予測・言語評価",
+        "教育文法および学術目的の英語教育"
+      ]
+    },
+    "challenges": {
+      "title": "研究における苦労や失敗の克服エピソード",
+      "description": "大規模言語モデルを使った語彙難易度推定の課題と解決策"
+    },
+    "futureInterests": {
+      "title": "興味のある今後の研究分野",
+      "description": "オリジナルのLLM構築"
+    },
+    "teamExperience": {
+      "title": "チームでの研究・開発経験",
+      "description": "学部時代から修士・博士課程にかけての様々なプロジェクト参加、「LANDS」開発でのチームリーダー経験、国立国語研究所のプロジェクト参画"
+    },
+    "careerFocus": {
+      "title": "就職活動でアピールしたい点・今後のキャリア志向",
+      "description": "IT業界での大規模言語モデル（LLM）開発や運用、応用研究、機械学習と外国語教育の知見を活かしたサービス開発"
+    }
+  },
+  "publications": {
+    "title": "論文一覧",
+    "papers": [
+      {
+        "title": "外国語教育におけるAIアプリケーションの動向",
+        "journal": "日本言語教育学会誌",
+        "year": "2024",
+        "authors": "梁 震"
+      },
+      {
+        "title": "大規模言語モデルを用いた日本語学習者向け語彙難易度評価システムの開発",
+        "journal": "言語処理学会年次大会発表論文集",
+        "year": "2023",
+        "authors": "梁 震, 田中太郎"
+      },
+      {
+        "title": "Word2Vecを活用した英語語彙テスト自動生成システムの評価",
+        "journal": "応用言語学研究",
+        "year": "2023",
+        "authors": "梁 震"
+      },
+      {
+        "title": "機械学習を用いた日本語語彙テスト自動生成プログラムの開発と検証",
+        "journal": "京都大学大学院人間環境学研究科紀要",
+        "year": "2023",
+        "authors": "梁 震"
+      },
+      {
+        "title": "ディープラーニングを活用した第二言語習得支援システムの可能性",
+        "journal": "教育工学会論文誌",
+        "year": "2022",
+        "authors": "梁 震, 佐藤花子, 鈴木一郎"
+      },
+      {
+        "title": "日本語学習者の語彙習得におけるAI支援の効果",
+        "journal": "日本語教育学会誌",
+        "year": "2022",
+        "authors": "梁 震"
+      },
+      {
+        "title": "機械学習による語彙難易度判定の精度向上に関する一考察",
+        "journal": "外国語教育メディア学会年報",
+        "year": "2022",
+        "authors": "梁 震, 山田次郎"
+      }
+    ]
+  },
+  "skills": {
+    "title": "プログラミングスキル・使用技術",
+    "programming": {
+      "title": "プログラミング言語",
+      "skills": ["JavaScript", "TypeScript", "Python", "Swift", "Objective-C", "C", "Java", "R"]
+    },
+    "frontend": {
+      "title": "フロントエンド開発",
+      "skills": ["React", "Next.js"]
+    },
+    "backend": {
+      "title": "バックエンド開発",
+      "skills": ["Next.js", "Node.js", "Django"]
+    },
+    "database": {
+      "title": "データベース",
+      "skills": ["MongoDB", "MariaDB"]
+    },
+    "mobile": {
+      "title": "モバイルアプリ開発",
+      "skills": ["React Native", "Swift"]
+    },
+    "infrastructure": {
+      "title": "インフラ・ミドルウェア",
+      "skills": ["Linux", "Caddy2", "Nginx", "Apache"]
+    },
+    "cloud": {
+      "title": "クラウド・デプロイメント",
+      "skills": ["AWS", "Google Cloud Platform", "Vercel", "Alibaba Cloud"]
+    },
+    "tools": {
+      "title": "ツール",
+      "skills": ["Docker", "Git & Git LFS", "PyTorch", "Axolotl"]
+    },
+    "ml": {
+      "title": "機械学習関連",
+      "skills": ["TensorFlow", "PyTorch", "Transformers", "Axolotl"]
+    },
+    "languages": {
+      "title": "言語スキル",
+      "japanese": "日本語: JLPT N1 180点（満点）、日本語教師経験7年",
+      "chinese": "中国語: ネイティブレベル",
+      "english": "英語: TOEIC 625点"
+    }
+  },
+  "about": {
+    "title": "会社・ビジョン情報",
+    "company": {
+      "name": "株式会社EastLinker",
+      "established": "設立: 2023",
+      "business": "事業内容: システム開発、AI開発、教育テクノロジー",
+      "achievements": [
+        "国立国語研究所の語彙分析プロファイラー開発を受託",
+        "言語学習アプリのプロトタイプ開発",
+        "教育機関向けカスタムAIソリューション提供"
+      ]
+    },
+    "mission": {
+      "title": "企業ミッション",
+      "statement": "『言語の壁を超え、人と人をつなげる技術を創造する』"
+    },
+    "vision": {
+      "title": "キャリアビジョン",
+      "statement": "『常に開発の最前線に立ち、AIと先端Webテクノロジーの融合を推進する』",
+      "details": [
+        "Web系企業でのキャリア志向",
+        "React、Node.js、モダンフロントエンド技術の活用",
+        "AIおよび大規模言語モデル（LLM）の実用的な応用"
+      ]
+    }
+  },
+  "footer": {
+    "contact": "お問い合わせ",
+    "inquiry": "お仕事のご依頼やご質問などがございましたら、以下よりご連絡ください。",
+    "email": "メール",
+    "emailNote": "※スパム対策のため、メールアドレスは分割表示・文字参照化しています。お手数ですが手動で入力してください。",
+    "socialMedia": "ソーシャルメディア",
+    "socialNote": "各プラットフォームでの活動もご覧ください。",
+    "copyright": "© 2024 梁 震. All rights reserved."
+  }
+}

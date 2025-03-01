@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './ZennFeed.css';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 const ZennFeed = () => {
+  const { language } = useContext(LanguageContext);
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -100,14 +102,26 @@ const ZennFeed = () => {
     <section className="zenn-feed fade-in" id="zenn-feed">
       <div className="container">
         <div className="section-header">
-          <h2>最新のZenn記事</h2>
-          <p>技術ブログでの発信内容をご覧いただけます</p>
+          <h2>
+            {language === 'ja' && '最新のZenn記事'}
+            {language === 'en' && 'Latest Zenn Articles'}
+            {language === 'zh' && '最新Zenn文章'}
+          </h2>
+          <p>
+            {language === 'ja' && '技術ブログでの発信内容をご覧いただけます'}
+            {language === 'en' && 'Check out my technical blog posts'}
+            {language === 'zh' && '查看我的技术博客内容'}
+          </p>
         </div>
         
         {loading ? (
           <div className="zenn-loading">
             <div className="spinner"></div>
-            <p>記事を読み込み中...</p>
+            <p>
+              {language === 'ja' && '記事を読み込み中...'}
+              {language === 'en' && 'Loading articles...'}
+              {language === 'zh' && '正在加载文章...'}
+            </p>
           </div>
         ) : error ? (
           <div className="zenn-error">
@@ -118,7 +132,9 @@ const ZennFeed = () => {
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              Zennで直接見る
+              {language === 'ja' && 'Zennで直接見る'}
+              {language === 'en' && 'View directly on Zenn'}
+              {language === 'zh' && '直接在Zenn上查看'}
             </a>
           </div>
         ) : (
@@ -151,7 +167,9 @@ const ZennFeed = () => {
                 rel="noopener noreferrer"
                 className="btn btn-glass"
               >
-                もっと見る
+                {language === 'ja' && 'もっと見る'}
+                {language === 'en' && 'View More'}
+                {language === 'zh' && '查看更多'}
               </a>
             </div>
           </>

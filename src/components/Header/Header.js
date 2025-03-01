@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Header.css';
+import { LanguageContext } from '../../contexts/LanguageContext';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useContext(LanguageContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,13 +53,14 @@ const Header = () => {
         </button>
         <nav className={`main-nav ${isMenuOpen ? 'active' : ''}`}>
           <ul>
-            <li><a href="#profile" onClick={closeMenu}>プロフィール</a></li>
-            <li><a href="#timeline" onClick={closeMenu}>経歴</a></li>
-            <li><a href="#research" onClick={closeMenu}>研究</a></li>
-            <li><a href="#publications" onClick={closeMenu}>論文</a></li>
-            <li><a href="#skills" onClick={closeMenu}>スキル</a></li>
-            <li><a href="#about" onClick={closeMenu}>会社情報</a></li>
+            <li><a href="#profile" onClick={closeMenu}>{t.header.profile}</a></li>
+            <li><a href="#timeline" onClick={closeMenu}>{t.header.timeline}</a></li>
+            <li><a href="#research" onClick={closeMenu}>{t.header.research}</a></li>
+            <li><a href="#publications" onClick={closeMenu}>{t.header.publications}</a></li>
+            <li><a href="#skills" onClick={closeMenu}>{t.header.skills}</a></li>
+            <li><a href="#about" onClick={closeMenu}>{t.header.about}</a></li>
           </ul>
+          <LanguageSwitcher />
         </nav>
       </div>
     </header>

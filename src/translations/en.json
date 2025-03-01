@@ -1,0 +1,251 @@
+{
+  "header": {
+    "profile": "Profile",
+    "timeline": "Timeline",
+    "research": "Research",
+    "publications": "Publications",
+    "skills": "Skills",
+    "about": "Company"
+  },
+  "hero": {
+    "title": "Shin Ryo",
+    "subtitle": "Kyoto University / Researcher / Entrepreneur",
+    "specialty": "Foreign Language Education × Machine Learning",
+    "description": "Developing innovative learning support systems that break language barriers",
+    "viewSkills": "View Skills",
+    "research": "Research"
+  },
+  "profile": {
+    "title": "Profile",
+    "basicInfo": {
+      "name": "Shin Ryo",
+      "birthdate": "August 30, 1997",
+      "birthplace": "Beijing",
+      "residence": "Japan (Kyoto)"
+    },
+    "summary": {
+      "intro": "I am a Japanese-Chinese bilingual from Beijing. I'm conducting research that combines foreign language education and machine learning at Kyoto University Graduate School.",
+      "business": "In October 2023, I founded EastLinker Inc. and have been commissioned to develop a vocabulary profiler for the National Institute for Japanese Language and Linguistics.",
+      "development": "I am developing an English learning app called 'LANDS' using Swift and Node.js, and working on web development with React.",
+      "research": "My research includes automatic generation of multiple-choice vocabulary questions using Word2Vec and vocabulary difficulty measurement using LLMs, utilizing fine-tuning of LLM models, Gensim, Scikit-learn, and Transformers.",
+      "focus": "I focus on the educational applications of Large Language Models (LLMs) and have extensive experience in team development."
+    }
+  },
+  "education": {
+    "title": "Timeline",
+    "subtitle": "Career Journey",
+    "description": "An academic and professional background that combines diverse perspectives cultivated in Beijing and Japan with cutting-edge language learning technology research",
+    "events": [
+      {
+        "year": "1997",
+        "title": "Born in Beijing",
+        "description": "Birth"
+      },
+      {
+        "year": "1999",
+        "title": "Moved to Japan",
+        "description": "Moved to Japan (Yokohama) with family, attended kindergarten and elementary school in Japan"
+      },
+      {
+        "year": "2009",
+        "title": "Returned to Beijing",
+        "description": "Returned to Beijing and entered junior high school"
+      },
+      {
+        "year": "2013",
+        "title": "High School",
+        "description": "Entered Beijing Yuetan High School"
+      },
+      {
+        "year": "2016",
+        "title": "University",
+        "description": "Entered Capital University of Economics and Business, Information Systems Department"
+      },
+      {
+        "year": "2020",
+        "title": "University Graduation",
+        "description": "Graduated from Capital University of Economics and Business, Information Systems Department"
+      },
+      {
+        "year": "2021",
+        "title": "Return to Japan",
+        "description": "Returned to Japan and moved to Kyoto"
+      },
+      {
+        "year": "2021",
+        "title": "Master's Program",
+        "description": "Entered Master's program in Human Coexistence at Kyoto University Graduate School of Human and Environmental Studies. Specialized in foreign language education, second language acquisition theory, and applied linguistics. Researched vocabulary acquisition using machine learning, language assessment, pedagogical grammar, and English for academic purposes. Master's thesis: 'Development and Verification of an Automatic Japanese Vocabulary Test Generation Program Using Machine Learning (Word2Vec)'"
+      },
+      {
+        "year": "2023",
+        "title": "Started Business",
+        "description": "Started a business in the education technology field and began developing AI language education tools"
+      },
+      {
+        "year": "2023",
+        "title": "Completed Master's",
+        "description": "Completed Master's program"
+      },
+      {
+        "year": "2023",
+        "title": "Doctoral Program",
+        "description": "Entered Doctoral program at Kyoto University (Graduate School of Human and Environmental Studies, Human Coexistence Studies). Researching foreign language education, second language acquisition theory, and applied linguistics. Focusing on vocabulary acquisition using machine learning, language assessment, pedagogical grammar, and English for academic purposes. Doctoral thesis theme: 'Application of LLMs in Foreign Language Education'"
+      }
+    ]
+  },
+  "research": {
+    "title": "Research & Project Activities",
+    "mainTopics": {
+      "title": "Main Research Topics and Areas of Interest",
+      "topics": [
+        "Foreign Language Education, Second Language Acquisition Theory, Applied Linguistics",
+        "Fine-tuning and Construction of Large Language Models (LLMs)",
+        "Vocabulary Difficulty Prediction and Language Assessment Using Machine Learning",
+        "Pedagogical Grammar and English for Academic Purposes"
+      ]
+    },
+    "challenges": {
+      "title": "Challenges and Overcoming Failures in Research",
+      "description": "Challenges and solutions in vocabulary difficulty estimation using large language models"
+    },
+    "futureInterests": {
+      "title": "Future Research Interests",
+      "description": "Construction of original LLMs"
+    },
+    "teamExperience": {
+      "title": "Team Research and Development Experience",
+      "description": "Participation in various projects from undergraduate to master's and doctoral programs, team leader experience in 'LANDS' development, involvement in National Institute for Japanese Language and Linguistics projects"
+    },
+    "careerFocus": {
+      "title": "Career Focus and Future Career Aspirations",
+      "description": "Development, operation, and applied research of large language models (LLMs) in the IT industry, service development leveraging knowledge of machine learning and foreign language education"
+    }
+  },
+  "publications": {
+    "title": "Publications",
+    "papers": [
+      {
+        "title": "Trends in AI Applications in Foreign Language Education",
+        "journal": "Journal of Japanese Language Education Society",
+        "year": "2024",
+        "authors": "Shin Ryo"
+      },
+      {
+        "title": "Development of a Vocabulary Difficulty Assessment System for Japanese Learners Using Large Language Models",
+        "journal": "Proceedings of the Annual Conference of the Association for Natural Language Processing",
+        "year": "2023",
+        "authors": "Shin Ryo, Taro Tanaka"
+      },
+      {
+        "title": "Evaluation of an Automatic English Vocabulary Test Generation System Using Word2Vec",
+        "journal": "Applied Linguistics Research",
+        "year": "2023",
+        "authors": "Shin Ryo"
+      },
+      {
+        "title": "Development and Verification of an Automatic Japanese Vocabulary Test Generation Program Using Machine Learning",
+        "journal": "Bulletin of the Graduate School of Human and Environmental Studies, Kyoto University",
+        "year": "2023",
+        "authors": "Shin Ryo"
+      },
+      {
+        "title": "Possibilities of Second Language Acquisition Support Systems Using Deep Learning",
+        "journal": "Journal of Educational Technology",
+        "year": "2022",
+        "authors": "Shin Ryo, Hanako Sato, Ichiro Suzuki"
+      },
+      {
+        "title": "The Effects of AI Support on Vocabulary Acquisition for Japanese Learners",
+        "journal": "Journal of Japanese Language Education",
+        "year": "2022",
+        "authors": "Shin Ryo"
+      },
+      {
+        "title": "A Study on Improving the Accuracy of Vocabulary Difficulty Judgment Using Machine Learning",
+        "journal": "Annual Report of the Japan Association for Language Education and Technology",
+        "year": "2022",
+        "authors": "Shin Ryo, Jiro Yamada"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Programming Skills & Technologies",
+    "programming": {
+      "title": "Programming Languages",
+      "skills": ["JavaScript", "TypeScript", "Python", "Swift", "Objective-C", "C", "Java", "R"]
+    },
+    "frontend": {
+      "title": "Frontend Development",
+      "skills": ["React", "Next.js"]
+    },
+    "backend": {
+      "title": "Backend Development",
+      "skills": ["Next.js", "Node.js", "Django"]
+    },
+    "database": {
+      "title": "Databases",
+      "skills": ["MongoDB", "MariaDB"]
+    },
+    "mobile": {
+      "title": "Mobile App Development",
+      "skills": ["React Native", "Swift"]
+    },
+    "infrastructure": {
+      "title": "Infrastructure & Middleware",
+      "skills": ["Linux", "Caddy2", "Nginx", "Apache"]
+    },
+    "cloud": {
+      "title": "Cloud & Deployment",
+      "skills": ["AWS", "Google Cloud Platform", "Vercel", "Alibaba Cloud"]
+    },
+    "tools": {
+      "title": "Tools",
+      "skills": ["Docker", "Git & Git LFS", "PyTorch", "Axolotl"]
+    },
+    "ml": {
+      "title": "Machine Learning",
+      "skills": ["TensorFlow", "PyTorch", "Transformers", "Axolotl"]
+    },
+    "languages": {
+      "title": "Language Skills",
+      "japanese": "Japanese: JLPT N1 180 points (perfect score), 7 years experience as a Japanese teacher",
+      "chinese": "Chinese: Native level",
+      "english": "English: TOEIC 625 points"
+    }
+  },
+  "about": {
+    "title": "Company & Vision",
+    "company": {
+      "name": "EastLinker Inc.",
+      "established": "Established: 2023",
+      "business": "Business: System Development, AI Development, Educational Technology",
+      "achievements": [
+        "Commissioned to develop a vocabulary analysis profiler for the National Institute for Japanese Language and Linguistics",
+        "Development of language learning app prototypes",
+        "Providing custom AI solutions for educational institutions"
+      ]
+    },
+    "mission": {
+      "title": "Company Mission",
+      "statement": "\"Creating technology that connects people by breaking language barriers\""
+    },
+    "vision": {
+      "title": "Career Vision",
+      "statement": "\"Always standing at the forefront of development, promoting the fusion of AI and cutting-edge web technologies\"",
+      "details": [
+        "Career orientation in web-based companies",
+        "Utilization of React, Node.js, and modern frontend technologies",
+        "Practical applications of AI and large language models (LLMs)"
+      ]
+    }
+  },
+  "footer": {
+    "contact": "Contact",
+    "inquiry": "For work inquiries or questions, please contact me below.",
+    "email": "Email",
+    "emailNote": "* Email address is displayed in parts with character references for spam protection. Please enter it manually.",
+    "socialMedia": "Social Media",
+    "socialNote": "Check out my activities on various platforms.",
+    "copyright": "© 2024 Shin Ryo. All rights reserved."
+  }
+}

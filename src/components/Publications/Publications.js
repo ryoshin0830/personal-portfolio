@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Publications.css';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 const Publications = () => {
+  const { t, language } = useContext(LanguageContext);
   const publications = [
     {
       id: 1,
@@ -78,22 +80,20 @@ const Publications = () => {
   return (
     <section id="publications" className="publications-section">
       <div className="container">
-        <h2>論文一覧</h2>
+        <h2>{t.publications.title}</h2>
         <div className="publications-list">
-          {publications.map((pub) => (
-            <div key={pub.id} className="publication-item">
+          {t.publications.papers.map((pub, index) => (
+            <div key={index} className="publication-item">
               <div className="publication-year">{pub.year}</div>
               <div className="publication-content">
                 <h3>{pub.title}</h3>
                 <p className="publication-authors">{pub.authors}</p>
                 <p className="publication-journal">
                   <em>{pub.journal}</em>
-                  {pub.volume && <span>, {pub.volume}</span>}
-                  {pub.pages && <span>, {pub.pages}</span>}
                 </p>
                 {pub.doi && (
                   <a href={pub.doi} target="_blank" rel="noopener noreferrer" className="publication-link">
-                    論文リンク
+                    {language === 'ja' ? '論文リンク' : language === 'en' ? 'Paper Link' : '论文链接'}
                   </a>
                 )}
               </div>

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Skills.css';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { FaPython, FaJava, FaReact, FaNode, FaSwift, FaLinux, FaDocker, FaAws, FaGoogle, FaGit, FaServer, FaApple, FaCloud, FaCode, FaLaptopCode, FaDatabase, FaMobile, FaServer as FaServerIcon } from 'react-icons/fa';
 import { SiTypescript, SiJavascript, SiNextdotjs, SiDjango, SiMongodb, SiMariadb, SiNginx, SiApache, SiTensorflow, SiPytorch, SiC, SiVercel, SiR, SiCaddy, SiLatex } from 'react-icons/si';
 import { BiCloud } from 'react-icons/bi';
@@ -8,6 +9,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const Skills = () => {
+  const { t, language } = useContext(LanguageContext);
   // 技術スタックのカテゴリー定義
   const techCategories = [
     {
@@ -599,8 +601,12 @@ const Skills = () => {
           variants={fadeInUp}
         >
           <div className="section-subtitle">TECH STACK & SKILLS</div>
-          <h2 className="with-decoration">プログラミングスキル・使用技術</h2>
-          <p className="section-description">普段使用している技術スタックをご紹介します</p>
+          <h2 className="with-decoration">{t.skills.title}</h2>
+          <p className="section-description">
+            {language === 'ja' && '普段使用している技術スタックをご紹介します'}
+            {language === 'en' && 'Introducing the tech stack that I regularly use'}
+            {language === 'zh' && '介绍我日常使用的技术栈'}
+          </p>
         </motion.div>
         
         {/* プロジェクト別技術スタックセクション */}
@@ -614,7 +620,9 @@ const Skills = () => {
             className="primary-skills-title"
             variants={fadeInUp}
           >
-            プロジェクト別技術スタック
+            {language === 'ja' && 'プロジェクト別技術スタック'}
+            {language === 'en' && 'Tech Stack by Project'}
+            {language === 'zh' && '按项目分类的技术栈'}
           </motion.h3>
           
           {/* プロジェクトセレクター */}
@@ -973,7 +981,9 @@ const Skills = () => {
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          機械学習関連
+          {language === 'ja' && '機械学習関連'}
+          {language === 'en' && 'Machine Learning'}
+          {language === 'zh' && '机器学习相关'}
         </motion.h2>
         <motion.h3 
           className="ml-subtitle"
@@ -982,7 +992,9 @@ const Skills = () => {
           viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          使用ライブラリと主なアルゴリズム
+          {language === 'ja' && '使用ライブラリと主なアルゴリズム'}
+          {language === 'en' && 'Libraries and Main Algorithms'}
+          {language === 'zh' && '使用的库和主要算法'}
         </motion.h3>
         <motion.div 
           className="ml-skills"
@@ -1058,7 +1070,9 @@ const Skills = () => {
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          言語スキル
+          {language === 'ja' && '言語スキル'}
+          {language === 'en' && 'Language Skills'}
+          {language === 'zh' && '语言能力'}
         </motion.h2>
         <motion.div 
           className="language-skills"
@@ -1139,7 +1153,9 @@ const Skills = () => {
           <motion.h3 
             variants={fadeInUp}
           >
-            アピールポイント・今後のビジョン
+            {language === 'ja' && 'アピールポイント・今後のビジョン'}
+            {language === 'en' && 'Strengths & Future Vision'}
+            {language === 'zh' && '优势特点与未来愿景'}
           </motion.h3>
           <motion.div 
             className="highlight-item"

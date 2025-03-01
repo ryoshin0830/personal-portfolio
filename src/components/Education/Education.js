@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Education.css';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { ReactComponent as PlaneIcon } from '../../assets/icons/plane.svg';
 import { ReactComponent as GraduationIcon } from '../../assets/icons/graduation.svg';
 import { ReactComponent as BirthIcon } from '../../assets/icons/birth.svg';
@@ -10,174 +11,156 @@ import { ReactComponent as StartupIcon } from '../../assets/icons/startup.svg';
 import { ReactComponent as VerticalFlightPath } from '../../assets/icons/vertical-flight-path.svg';
 
 const TimeLine = () => {
-  // Restructure timeline data to group items with same timestamp
-  const timelineData = [
-    { 
-      year: '1997', 
-      age: '', 
-      items: ['北京出身'],
-      title: '出生',
-      icon: 'birth',
-      highlight: false,
-      location: 'china'
-    },
-    { 
-      year: '1999', 
-      age: '', 
-      items: ['家族と共に来日（横浜）。日本で幼稚園・小学校を過ごす'],
-      title: '日本へ移住',
-      icon: 'plane',
-      direction: 'china-to-japan',
-      highlight: true,
-      location: 'japan',
-      transition: {
-        from: 'china',
-        to: 'japan',
-        type: 'international'
-      }
-    },
-    { 
-      year: '2009', 
-      age: '', 
-      items: ['北京に帰国し、中学校に入学'],
-      title: '中国へ帰国',
-      icon: 'plane',
-      direction: 'japan-to-china',
-      highlight: true,
-      location: 'china',
-      transition: {
-        from: 'japan',
-        to: 'china',
-        type: 'international'
-      }
-    },
-    { 
-      year: '2013', 
-      age: '', 
-      items: ['北京市月壇中学高等部に入学'],
-      title: '高校入学',
-      icon: 'school',
-      highlight: false,
-      location: 'china',
-      transition: {
-        from: 'education',
-        to: 'education',
-        type: 'educational'
-      }
-    },
-    { 
-      year: '2016', 
-      age: '', 
-      items: ['首都経済貿易大学情報システム学部に入学'],
-      title: '大学入学',
-      icon: 'university',
-      highlight: false,
-      location: 'china',
-      transition: {
-        from: 'education',
-        to: 'education',
-        type: 'educational'
-      }
-    },
-    { 
-      year: '2020', 
-      age: '', 
-      items: ['首都経済貿易大学情報システム学部を卒業'],
-      title: '大学卒業',
-      icon: 'graduation',
-      highlight: false,
-      location: 'china',
-      transition: {
-        from: 'education',
-        to: 'education',
-        type: 'educational'
-      }
-    },
-    { 
-      year: '2021', 
-      age: '', 
-      items: ['再来日、京都へ移住'],
-      title: '再来日',
-      icon: 'plane',
-      direction: 'china-to-japan',
-      highlight: true,
-      location: 'japan',
-      transition: {
-        from: 'china',
-        to: 'japan',
-        type: 'international',
-        direction: 'vertical'
-      }
-    },
-    { 
-      year: '2021', 
-      age: '', 
-      items: [
-        '京都大学人間環境学研究科 共生人間学修士課程に入学',
-        '外国語教育学、第二言語習得論、応用言語学を専攻',
-        '機械学習を使った語彙習得、言語評価、教育文法、学術目的の英語を研究',
-        '修士論文: 「機械学習を用いた日本語語彙テスト自動生成プログラムの開発と検証（Word2Vec）」'
-      ],
-      title: '京都大学修士課程入学',
-      icon: 'university',
-      highlight: true,
-      location: 'japan',
-      universityLogo: 'kyoto',
-      transition: {
-        from: 'education',
-        to: 'education',
-        type: 'educational'
-      }
-    },
-    { 
-      year: '2023', 
-      age: '', 
-      items: ['教育テック分野での起業、AI言語教育ツールの開発に着手'],
-      title: '起業',
-      icon: 'startup',
-      highlight: true,
-      location: 'japan',
-      transition: {
-        from: 'education',
-        to: 'business',
-        type: 'career'
-      }
-    },
-    { 
-      year: '2023', 
-      age: '', 
-      items: ['修士課程を修了'],
-      title: '修士課程修了',
-      icon: 'graduation',
-      highlight: false,
-      location: 'japan',
-      transition: {
-        from: 'education',
-        to: 'education',
-        type: 'educational'
-      }
-    },
-    { 
-      year: '2023', 
-      age: '', 
-      items: [
-        '京都大学博士課程に入学（人間環境学研究科 共生人間学専攻）',
-        '外国語教育学、第二言語習得論、応用言語学を研究',
-        '機械学習を使った語彙習得、言語評価、教育文法、学術目的の英語を中心に取り組む',
-        '博士論文テーマ: 「外国語教育におけるLLMの応用」'
-      ],
-      title: '京都大学博士課程入学',
-      icon: 'research',
-      highlight: true,
-      location: 'japan',
-      universityLogo: 'kyoto',
-      transition: {
-        from: 'education',
-        to: 'education',
-        type: 'educational'
-      }
+  const { t, language } = useContext(LanguageContext);
+  // タイムラインデータをt.education.eventsから取得
+  const timelineData = t.education.events.map(event => {
+    // アイコンとロケーションのマッピング
+    let icon = 'birth';
+    let location = 'china';
+    let highlight = false;
+    let direction = '';
+    let transition = {};
+    let universityLogo = '';
+    
+    // 年に基づいてアイコンとその他の属性を設定
+    switch(event.year) {
+      case '1997年':
+      case '1997':
+        icon = 'birth';
+        location = 'china';
+        break;
+      case '1999年':
+      case '1999':
+        icon = 'plane';
+        location = 'japan';
+        highlight = true;
+        direction = 'china-to-japan';
+        transition = {
+          from: 'china',
+          to: 'japan',
+          type: 'international'
+        };
+        break;
+      case '2009年':
+      case '2009':
+        icon = 'plane';
+        location = 'china';
+        highlight = true;
+        direction = 'japan-to-china';
+        transition = {
+          from: 'japan',
+          to: 'china',
+          type: 'international'
+        };
+        break;
+      case '2013年':
+      case '2013':
+        icon = 'school';
+        location = 'china';
+        transition = {
+          from: 'education',
+          to: 'education',
+          type: 'educational'
+        };
+        break;
+      case '2016年':
+      case '2016':
+        icon = 'university';
+        location = 'china';
+        transition = {
+          from: 'education',
+          to: 'education',
+          type: 'educational'
+        };
+        break;
+      case '2020年':
+      case '2020':
+        icon = 'graduation';
+        location = 'china';
+        transition = {
+          from: 'education',
+          to: 'education',
+          type: 'educational'
+        };
+        break;
+      case '2021年':
+      case '2021':
+        // タイトルで分岐
+        if (event.title.includes('再来日') || event.title.includes('Return') || event.title.includes('再次来到')) {
+          icon = 'plane';
+          location = 'japan';
+          highlight = true;
+          direction = 'china-to-japan';
+          transition = {
+            from: 'china',
+            to: 'japan',
+            type: 'international',
+            direction: 'vertical'
+          };
+        } else {
+          icon = 'university';
+          location = 'japan';
+          highlight = true;
+          universityLogo = 'kyoto';
+          transition = {
+            from: 'education',
+            to: 'education',
+            type: 'educational'
+          };
+        }
+        break;
+      case '2023年':
+      case '2023':
+        // タイトルで分岐
+        if (event.title.includes('起業') || event.title.includes('Business') || event.title.includes('创业')) {
+          icon = 'startup';
+          location = 'japan';
+          highlight = true;
+          transition = {
+            from: 'education',
+            to: 'business',
+            type: 'career'
+          };
+        } else if (event.title.includes('修了') || event.title.includes('Completed') || event.title.includes('完成')) {
+          icon = 'graduation';
+          location = 'japan';
+          transition = {
+            from: 'education',
+            to: 'education',
+            type: 'educational'
+          };
+        } else {
+          icon = 'research';
+          location = 'japan';
+          highlight = true;
+          universityLogo = 'kyoto';
+          transition = {
+            from: 'education',
+            to: 'education',
+            type: 'educational'
+          };
+        }
+        break;
+      default:
+        break;
     }
-  ];
+    
+    // 説明をアイテムの配列に変換
+    const items = [event.description];
+    
+    return {
+      year: event.year,
+      age: '',
+      items,
+      title: event.title,
+      icon,
+      highlight,
+      location,
+      direction,
+      transition,
+      universityLogo: universityLogo || undefined
+    };
+  });
 
   // アイコンを取得する関数
   const getIcon = (iconType, direction) => {
@@ -205,11 +188,10 @@ const TimeLine = () => {
     <section id="timeline" className="education-section">
       <div className="container">
         <div className="section-intro fade-in">
-          <div className="section-subtitle">Career Journey</div>
-          <h2 className="heading-medium with-decoration">経歴</h2>
+          <div className="section-subtitle">{t.education.subtitle}</div>
+          <h2 className="heading-medium with-decoration">{t.education.title}</h2>
           <p className="section-description">
-            北京と日本の教育環境で培った多様な視点と、
-            最先端の言語学習技術研究を融合させた学術的・職業的バックグラウンド
+            {t.education.description}
           </p>
         </div>
         

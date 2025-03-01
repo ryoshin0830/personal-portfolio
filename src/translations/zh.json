@@ -1,0 +1,251 @@
+{
+  "header": {
+    "profile": "简介",
+    "timeline": "经历",
+    "research": "研究",
+    "publications": "论文",
+    "skills": "技能",
+    "about": "公司信息"
+  },
+  "hero": {
+    "title": "梁 震",
+    "subtitle": "京都大学 / 研究员 / 创业者",
+    "specialty": "外语教育 × 机器学习",
+    "description": "开发创新的学习支持系统，打破语言障碍",
+    "viewSkills": "查看技能",
+    "research": "研究内容"
+  },
+  "profile": {
+    "title": "简介",
+    "basicInfo": {
+      "name": "梁 震",
+      "birthdate": "1997年8月30日",
+      "birthplace": "北京",
+      "residence": "日本（京都）"
+    },
+    "summary": {
+      "intro": "我是来自北京的日中双语者。在京都大学研究生院进行外语教育与机器学习融合的研究。",
+      "business": "2023年10月创立了EastLinker株式会社，承接了国立国语研究所的词汇分析器开发等项目。",
+      "development": "使用Swift和Node.js开发英语学习应用'LANDS'，并从事React的Web开发。",
+      "research": "研究包括使用Word2Vec自动生成多选词汇题和使用LLM测量词汇难度等，利用LLM模型的微调、Gensim、Scikit-learn和Transformers。",
+      "focus": "主要研究大型语言模型（LLM）在教育中的应用，拥有丰富的团队开发经验。"
+    }
+  },
+  "education": {
+    "title": "经历",
+    "subtitle": "职业旅程",
+    "description": "结合了在北京和日本的教育环境中培养的多样化视角与前沿语言学习技术研究的学术和职业背景",
+    "events": [
+      {
+        "year": "1997年",
+        "title": "出生于北京",
+        "description": "出生"
+      },
+      {
+        "year": "1999年",
+        "title": "移居日本",
+        "description": "与家人一起移居日本（横滨），在日本上幼儿园和小学"
+      },
+      {
+        "year": "2009年",
+        "title": "回到北京",
+        "description": "回到北京并进入初中"
+      },
+      {
+        "year": "2013年",
+        "title": "高中",
+        "description": "进入北京市月坛中学高中部"
+      },
+      {
+        "year": "2016年",
+        "title": "大学",
+        "description": "进入首都经济贸易大学信息系统学部"
+      },
+      {
+        "year": "2020年",
+        "title": "大学毕业",
+        "description": "毕业于首都经济贸易大学信息系统学部"
+      },
+      {
+        "year": "2021年",
+        "title": "再次来到日本",
+        "description": "再次来到日本并移居京都"
+      },
+      {
+        "year": "2021年",
+        "title": "硕士课程",
+        "description": "进入京都大学人类环境学研究科共生人类学硕士课程。专攻外语教育学、第二语言习得论和应用语言学。研究使用机器学习的词汇习得、语言评估、教育语法和学术英语。硕士论文：《使用机器学习的日语词汇测试自动生成程序的开发与验证（Word2Vec）》"
+      },
+      {
+        "year": "2023年",
+        "title": "创业",
+        "description": "在教育科技领域创业，开始开发AI语言教育工具"
+      },
+      {
+        "year": "2023年",
+        "title": "完成硕士课程",
+        "description": "完成硕士课程"
+      },
+      {
+        "year": "2023年",
+        "title": "博士课程",
+        "description": "进入京都大学博士课程（人类环境学研究科共生人类学专攻）。研究外语教育学、第二语言习得论和应用语言学。专注于使用机器学习的词汇习得、语言评估、教育语法和学术英语。博士论文主题：《大型语言模型在外语教育中的应用》"
+      }
+    ]
+  },
+  "research": {
+    "title": "研究与项目活动",
+    "mainTopics": {
+      "title": "主要研究主题和兴趣领域",
+      "topics": [
+        "外语教育学、第二语言习得论、应用语言学",
+        "大型语言模型（LLM）的微调和构建",
+        "使用机器学习的词汇难度预测和语言评估",
+        "教育语法和学术英语"
+      ]
+    },
+    "challenges": {
+      "title": "研究中的挑战和克服失败的经历",
+      "description": "使用大型语言模型进行词汇难度估计的挑战和解决方案"
+    },
+    "futureInterests": {
+      "title": "未来感兴趣的研究领域",
+      "description": "构建原创的大型语言模型"
+    },
+    "teamExperience": {
+      "title": "团队研究和开发经验",
+      "description": "从本科到硕士、博士期间参与各种项目，'LANDS'开发中的团队领导经验，参与国立国语研究所的项目"
+    },
+    "careerFocus": {
+      "title": "求职重点和未来职业发展方向",
+      "description": "IT行业中大型语言模型（LLM）的开发、运营和应用研究，利用机器学习和外语教育知识开发服务"
+    }
+  },
+  "publications": {
+    "title": "论文列表",
+    "papers": [
+      {
+        "title": "外语教育中AI应用的趋势",
+        "journal": "日本语言教育学会志",
+        "year": "2024",
+        "authors": "梁 震"
+      },
+      {
+        "title": "使用大型语言模型开发面向日语学习者的词汇难度评估系统",
+        "journal": "语言处理学会年度大会论文集",
+        "year": "2023",
+        "authors": "梁 震, 田中太郎"
+      },
+      {
+        "title": "利用Word2Vec的英语词汇测试自动生成系统评估",
+        "journal": "应用语言学研究",
+        "year": "2023",
+        "authors": "梁 震"
+      },
+      {
+        "title": "使用机器学习的日语词汇测试自动生成程序的开发与验证",
+        "journal": "京都大学研究生院人类环境学研究科纪要",
+        "year": "2023",
+        "authors": "梁 震"
+      },
+      {
+        "title": "利用深度学习的第二语言习得支持系统的可能性",
+        "journal": "教育工学会论文志",
+        "year": "2022",
+        "authors": "梁 震, 佐藤花子, 铃木一郎"
+      },
+      {
+        "title": "AI辅助对日语学习者词汇习得的效果",
+        "journal": "日本语教育学会志",
+        "year": "2022",
+        "authors": "梁 震"
+      },
+      {
+        "title": "关于提高机器学习词汇难度判断精度的考察",
+        "journal": "外国语教育媒体学会年报",
+        "year": "2022",
+        "authors": "梁 震, 山田次郎"
+      }
+    ]
+  },
+  "skills": {
+    "title": "编程技能与使用技术",
+    "programming": {
+      "title": "编程语言",
+      "skills": ["JavaScript", "TypeScript", "Python", "Swift", "Objective-C", "C", "Java", "R"]
+    },
+    "frontend": {
+      "title": "前端开发",
+      "skills": ["React", "Next.js"]
+    },
+    "backend": {
+      "title": "后端开发",
+      "skills": ["Next.js", "Node.js", "Django"]
+    },
+    "database": {
+      "title": "数据库",
+      "skills": ["MongoDB", "MariaDB"]
+    },
+    "mobile": {
+      "title": "移动应用开发",
+      "skills": ["React Native", "Swift"]
+    },
+    "infrastructure": {
+      "title": "基础设施与中间件",
+      "skills": ["Linux", "Caddy2", "Nginx", "Apache"]
+    },
+    "cloud": {
+      "title": "云服务与部署",
+      "skills": ["AWS", "Google Cloud Platform", "Vercel", "Alibaba Cloud"]
+    },
+    "tools": {
+      "title": "工具",
+      "skills": ["Docker", "Git & Git LFS", "PyTorch", "Axolotl"]
+    },
+    "ml": {
+      "title": "机器学习相关",
+      "skills": ["TensorFlow", "PyTorch", "Transformers", "Axolotl"]
+    },
+    "languages": {
+      "title": "语言技能",
+      "japanese": "日语：JLPT N1 180分（满分），7年日语教师经验",
+      "chinese": "中文：母语水平",
+      "english": "英语：TOEIC 625分"
+    }
+  },
+  "about": {
+    "title": "公司与愿景信息",
+    "company": {
+      "name": "EastLinker株式会社",
+      "established": "成立：2023年",
+      "business": "业务内容：系统开发、AI开发、教育技术",
+      "achievements": [
+        "承接国立国语研究所的词汇分析器开发",
+        "语言学习应用原型开发",
+        "为教育机构提供定制AI解决方案"
+      ]
+    },
+    "mission": {
+      "title": "企业使命",
+      "statement": "『创造跨越语言障碍，连接人与人的技术』"
+    },
+    "vision": {
+      "title": "职业愿景",
+      "statement": "『始终站在开发最前沿，推动AI与先进Web技术的融合』",
+      "details": [
+        "Web领域企业的职业发展方向",
+        "运用React、Node.js、现代前端技术",
+        "AI及大型语言模型（LLM）的实用应用"
+      ]
+    }
+  },
+  "footer": {
+    "contact": "联系我们",
+    "inquiry": "如有工作委托或问题，请通过以下方式联系我们。",
+    "email": "邮箱",
+    "emailNote": "※为防止垃圾邮件，邮箱地址已被分割显示且使用字符引用。请手动输入。",
+    "socialMedia": "社交媒体",
+    "socialNote": "请查看我在各平台上的活动。",
+    "copyright": "© 2024 梁 震. 版权所有。"
+  }
+}

@@ -1,0 +1,33 @@
+.language-switcher {
+  display: flex;
+  gap: 8px;
+  margin-left: 24px;
+}
+
+.language-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+  color: #333;
+  background-color: rgba(0,0,0,0.05);
+}
+
+.language-btn.active {
+  color: #000;
+  font-weight: 600;
+  background-color: rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .language-switcher {
+    margin: 16px 0 0;
+  }
+}
