@@ -17,6 +17,12 @@
   },
   "profile": {
     "title": "プロフィール",
+    "labels": {
+      "name": "名前:",
+      "birthdate": "生年月日:",
+      "birthplace": "出身地:",
+      "residence": "現住所:"
+    },
     "basicInfo": {
       "name": "梁 震",
       "birthdate": "1997年8月30日",
@@ -123,6 +129,7 @@
   },
   "publications": {
     "title": "論文一覧",
+    "paperLink": "論文リンク",
     "papers": [
       {
         "title": "外国語教育におけるAIアプリケーションの動向",
@@ -169,83 +176,170 @@
     ]
   },
   "skills": {
-    "title": "プログラミングスキル・使用技術",
-    "programming": {
-      "title": "プログラミング言語",
-      "skills": ["JavaScript", "TypeScript", "Python", "Swift", "Objective-C", "C", "Java", "R"]
+    "title": "スキル",
+    "introduction": "私のスキルセットは、フルスタック開発、機械学習、言語能力を含みます。",
+    "categories": {
+      "programming": {
+        "title": "プログラミング言語",
+        "description": "実務経験のあるプログラミング言語"
+      },
+      "frontend": {
+        "title": "フロントエンド開発",
+        "description": "モダンUIの開発技術"
+      },
+      "backend": {
+        "title": "バックエンド開発",
+        "description": "サーバーサイド開発技術"
+      },
+      "database": {
+        "title": "データベース",
+        "description": "データ管理技術"
+      },
+      "mobile": {
+        "title": "モバイルアプリ開発",
+        "description": "クロスプラットフォーム開発技術"
+      },
+      "infrastructure": {
+        "title": "インフラストラクチャ",
+        "description": "システム基盤技術"
+      },
+      "cloud": {
+        "title": "クラウド",
+        "description": "クラウドサービス活用技術"
+      },
+      "tools": {
+        "title": "ツール",
+        "description": "開発・運用支援ツール"
+      },
+      "ml": {
+        "title": "機械学習",
+        "description": "AI・機械学習関連技術",
+        "tensorflow": {
+          "purpose": "深層学習フレームワーク",
+          "description": "画像認識、自然言語処理、音声認識などの実装に使用"
+        },
+        "pytorch": {
+          "purpose": "研究指向の深層学習フレームワーク",
+          "description": "柔軟なモデル構築と実験に最適"
+        },
+        "transformers": {
+          "purpose": "自然言語処理ライブラリ",
+          "description": "最新の言語モデルを簡単に利用可能"
+        },
+        "axolotl": {
+          "purpose": "LLM微調整ツール",
+          "description": "大規模言語モデルの効率的な微調整を実現"
+        }
+      },
+      "languages": {
+        "title": "言語スキル",
+        "description": "コミュニケーション言語能力",
+        "japanese": {
+          "name": "日本語",
+          "level": "ネイティブ",
+          "details": "母国語として日常会話から専門的な文書作成まで対応可能"
+        },
+        "chinese": {
+          "name": "中国語",
+          "level": "HSK5級",
+          "details": "日常会話と基本的な読み書きが可能"
+        },
+        "english": {
+          "name": "英語",
+          "level": "TOEIC 625点",
+          "details": "研究論文の執筆や読解に使用"
+        }
+      }
     },
-    "frontend": {
-      "title": "フロントエンド開発",
-      "skills": ["React", "Next.js"]
-    },
-    "backend": {
-      "title": "バックエンド開発",
-      "skills": ["Next.js", "Node.js", "Django"]
-    },
-    "database": {
-      "title": "データベース",
-      "skills": ["MongoDB", "MariaDB"]
-    },
-    "mobile": {
-      "title": "モバイルアプリ開発",
-      "skills": ["React Native", "Swift"]
-    },
-    "infrastructure": {
-      "title": "インフラ・ミドルウェア",
-      "skills": ["Linux", "Caddy2", "Nginx", "Apache"]
-    },
-    "cloud": {
-      "title": "クラウド・デプロイメント",
-      "skills": ["AWS", "Google Cloud Platform", "Vercel", "Alibaba Cloud"]
-    },
-    "tools": {
-      "title": "ツール",
-      "skills": ["Docker", "Git & Git LFS", "PyTorch", "Axolotl"]
-    },
-    "ml": {
-      "title": "機械学習関連",
-      "skills": ["TensorFlow", "PyTorch", "Transformers", "Axolotl"]
-    },
-    "languages": {
-      "title": "言語スキル",
-      "japanese": "日本語: JLPT N1 180点（満点）、日本語教師経験7年",
-      "chinese": "中国語: ネイティブレベル",
-      "english": "英語: TOEIC 625点"
+    "projects": {
+      "japaneseApp": {
+        "name": "日本語学習アプリ",
+        "description": "効率的な日本語単語学習とリスニング練習を提供するモバイルアプリ"
+      },
+      "llmAnalysis": {
+        "name": "LLM分析・微調整",
+        "description": "大規模言語モデルの性能評価と特定タスク向け微調整プロジェクト"
+      }
     }
   },
   "about": {
-    "title": "会社・ビジョン情報",
+    "title": "会社情報",
     "company": {
-      "name": "株式会社EastLinker",
-      "established": "設立: 2023",
+      "name": "株式会社イーストリンカー",
+      "established": "設立: 2023年10月",
       "business": "事業内容: システム開発、AI開発、教育テクノロジー",
+      "achievementsLabel": "主な実績:",
       "achievements": [
-        "国立国語研究所の語彙分析プロファイラー開発を受託",
+        "国立国語研究所からの語彙分析プロファイラー開発の受託",
         "言語学習アプリのプロトタイプ開発",
-        "教育機関向けカスタムAIソリューション提供"
+        "教育機関向けカスタムAIソリューションの提供"
       ]
     },
     "mission": {
-      "title": "企業ミッション",
-      "statement": "『言語の壁を超え、人と人をつなげる技術を創造する』"
+      "title": "企業理念",
+      "statement": "「言語の壁を取り除き、人々をつなぐテクノロジーの創造」",
+      "description": "EastLinkerは、最先端のAI技術と言語教育学の専門知識を融合させ、言語学習と異文化コミュニケーションの障壁を取り除くソリューションを提供します。日中の文化的・言語的な架け橋として、教育とテクノロジーの力で、より豊かな国際交流の未来を切り拓きます。"
     },
     "vision": {
       "title": "キャリアビジョン",
-      "statement": "『常に開発の最前線に立ち、AIと先端Webテクノロジーの融合を推進する』",
+      "statement": "「常に開発の最前線に立ち、AIと最先端Webテクノロジーの融合を推進する」",
+      "description": "Web系企業でのキャリアを目指し、最先端の開発環境で常にテクノロジーの最前線に立ち続けたいと考えています。特にReact、Node.js、モダンフロントエンド技術を活用したWebアプリケーション開発と、AIおよび大規模言語モデル（LLM）の実用的な応用に携わることで、技術革新の中心で活躍したいと思っています。",
       "details": [
         "Web系企業でのキャリア志向",
         "React、Node.js、モダンフロントエンド技術の活用",
-        "AIおよび大規模言語モデル（LLM）の実用的な応用"
+        "AIと大規模言語モデル（LLM）の実用的応用"
       ]
     }
   },
   "footer": {
     "contact": "お問い合わせ",
-    "inquiry": "お仕事のご依頼やご質問などがございましたら、以下よりご連絡ください。",
+    "inquiry": "お仕事のご依頼やご質問は、以下よりお願いします。",
     "email": "メール",
-    "emailNote": "※スパム対策のため、メールアドレスは分割表示・文字参照化しています。お手数ですが手動で入力してください。",
+    "emailNote": "※ スパム対策のため、メールアドレスは文字参照を使用して分割表示しています。手動で入力してください。",
     "socialMedia": "ソーシャルメディア",
-    "socialNote": "各プラットフォームでの活動もご覧ください。",
+    "socialNote": "各プラットフォームでの活動をご覧ください。",
     "copyright": "© 2024 梁 震. All rights reserved."
+  },
+  "zennFeed": {
+    "title": "最新のZenn記事",
+    "description": "技術ブログでの発信内容をご覧いただけます",
+    "viewMore": "もっと見る",
+    "loading": "記事を読み込み中...",
+    "error": "記事を読み込めませんでした。",
+    "viewOnZenn": "Zennで直接見る",
+    "articles": [
+      {
+        "id": "1",
+        "title": "コマンドラインでGitログをおしゃれに表示！",
+        "description": "Gitログに変更行数も表示！ コミットの内訳をひも解くカラフルな冒険 Gitのコミット履歴を眺めると、まるで無機質なタイムカプセルのよう。でも、あなたの変更がどのくらいの情熱（行数）を伴っていたのか、もっと詳しく見てみたくありませんか？",
+        "link": "https://zenn.dev/ryoushin/articles/e62c5e0c0a3d8f",
+        "pubDate": "Sun, 16 Feb 2025 02:59:32 GMT",
+        "creator": "梁 震"
+      },
+      {
+        "id": "2",
+        "title": "Githubのレポジトリを全てPrivateにする方法",
+        "description": "「世界から見られている」というと、一見華やかでカッコいいかもしれません。しかし、あなたのGitHubリポジトリが「おっと、うっかり中身を公開していた…」となっていたらどうでしょう。そもそも間違ってAPIキー丸出しのコミットをしていたり、秘伝のソースコードを晒していたり…",
+        "link": "https://zenn.dev/ryoushin/articles/6a07f7935f6966",
+        "pubDate": "Thu, 30 Jan 2025 12:00:03 GMT",
+        "creator": "梁 震"
+      },
+      {
+        "id": "3",
+        "title": "エンジニアよ、さらばPowerPoint！VS CodeでCoolなスライドを作ろう",
+        "description": "GitHubリポジトリー:https://github.com/ryoshin0830/markdown_slide こんな人にオススメ！ 「PowerPointを開くとため息が出る」エンジニア 「スライド作成中にコード書きたくなる」プログラマー 「バージョン管理したい！」という潔癖性GitHuber",
+        "link": "https://zenn.dev/ryoushin/articles/dac1c7058e08b7",
+        "pubDate": "Fri, 10 Jan 2025 02:04:29 GMT",
+        "creator": "梁 震"
+      },
+      {
+        "id": "4",
+        "title": "日本語で論文を書く際のLaTeXテンプレート",
+        "description": "日本語で論文（博士論文など）を書く際に、BibLaTeX管理を簡単にしながら日本語と英語の文献をきちんと整理したい人向けのテンプレート紹介記事です。「日本語の論文をLaTeXで書きたい」「参考文献管理が面倒…」「日本語論文引用のスタイルが違いすぎる…」",
+        "link": "https://zenn.dev/ryoushin/articles/d3e815a2af8a1e",
+        "pubDate": "Fri, 03 Jan 2025 12:27:16 GMT",
+        "creator": "梁 震"
+      }
+    ]
   }
 }

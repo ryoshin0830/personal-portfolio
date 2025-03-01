@@ -11,72 +11,77 @@ import { useInView } from 'react-intersection-observer';
 const Skills = () => {
   const { t, language } = useContext(LanguageContext);
   // 技術スタックのカテゴリー定義
-  const techCategories = [
-    {
-      id: 'languages',
-      name: 'プログラミング言語',
-      icon: <FaCode />,
-      color: '#6366F1',
-      animation: 'typing',
-      description: '実務経験を持つプログラミング言語',
-    },
-    {
-      id: 'frontend',
-      name: 'フロントエンド開発',
-      icon: <FaLaptopCode />,
-      color: '#06B6D4',
-      animation: 'rotate',
-      description: 'モダンなUI開発技術',
-    },
-    {
-      id: 'backend',
-      name: 'バックエンド開発',
-      icon: <FaServerIcon />,
-      color: '#10B981',
-      animation: 'pulse',
-      description: 'サーバーサイド開発技術',
-    },
-    {
-      id: 'database',
-      name: 'データベース',
-      icon: <FaDatabase />,
-      color: '#8B5CF6',
-      animation: 'scale',
-      description: 'データ管理・保存技術',
-    },
-    {
-      id: 'mobile',
-      name: 'モバイルアプリ開発',
-      icon: <FaMobile />,
-      color: '#EC4899',
-      animation: 'shake',
-      description: 'iOS/Androidアプリ開発',
-    },
-    {
-      id: 'infra',
-      name: 'インフラ・ミドルウェア',
-      icon: <FaServer />,
-      color: '#F59E0B',
-      animation: 'float',
-      description: 'サーバー/デプロイ技術',
-    },
-    {
-      id: 'cloud',
-      name: 'クラウド・デプロイメント',
-      icon: <BiCloud />,
-      color: '#3B82F6',
-      animation: 'float',
-      description: 'クラウドサービス活用技術',
-    },
-    {
-      id: 'tools',
-      name: 'コンテナ・開発ツール',
-      icon: <VscTools />,
-      color: '#EF4444',
-      animation: 'bounce',
-      description: '開発効率化ツール',
-    }
-  ];
+  const getTechCategories = () => {
+    return [
+      {
+        id: 'languages',
+        name: t.skills.programming.title,
+        icon: <FaCode />,
+        color: '#6366F1',
+        animation: 'typing',
+        description: t.skills.programming.description,
+      },
+      {
+        id: 'frontend',
+        name: t.skills.frontend.title,
+        icon: <FaLaptopCode />,
+        color: '#06B6D4',
+        animation: 'rotate',
+        description: t.skills.frontend.description,
+      },
+      {
+        id: 'backend',
+        name: t.skills.backend.title,
+        icon: <FaServerIcon />,
+        color: '#10B981',
+        animation: 'pulse',
+        description: t.skills.backend.description,
+      },
+      {
+        id: 'database',
+        name: t.skills.database.title,
+        icon: <FaDatabase />,
+        color: '#8B5CF6',
+        animation: 'scale',
+        description: t.skills.database.description,
+      },
+      {
+        id: 'mobile',
+        name: t.skills.mobile.title,
+        icon: <FaMobile />,
+        color: '#EC4899',
+        animation: 'shake',
+        description: t.skills.mobile.description,
+      },
+      {
+        id: 'infra',
+        name: t.skills.infrastructure.title,
+        icon: <FaServer />,
+        color: '#F59E0B',
+        animation: 'float',
+        description: t.skills.infrastructure.description,
+      },
+      {
+        id: 'cloud',
+        name: t.skills.cloud.title,
+        icon: <BiCloud />,
+        color: '#3B82F6',
+        animation: 'float',
+        description: t.skills.cloud.description,
+      },
+      {
+        id: 'tools',
+        name: t.skills.tools.title,
+        icon: <VscTools />,
+        color: '#EF4444',
+        animation: 'bounce',
+        description: t.skills.tools.description,
+      }
+    ];
+  };
+
+  // Get the categories with translated names
+  const techCategories = getTechCategories();
 
   // 各カテゴリーに対応するスキル
   const programmingSkills = [
@@ -317,54 +322,82 @@ const Skills = () => {
       library: 'TensorFlow',
       icon: <SiTensorflow className="skill-icon" />,
       color: '#FF6F00',
-      purpose: '博士論文「外国語教育におけるLLMの応用」',
-      description: '大規模言語モデル（LLM）のファインチューニング・構築に取り組む。外国語教育への応用を念頭におき、パラメータ調整やトレーニングプロセスの最適化を実施。TensorFlowのエコシステムを活用した本番環境デプロイメントも経験。',
+      purpose: t.skills.ml?.tensorflow?.purpose || (language === 'ja' ? '博士論文「外国語教育におけるLLMの応用」' : 
+               language === 'en' ? 'Doctoral thesis "Application of LLMs in Foreign Language Education"' : 
+               '博士论文"大型语言模型在外语教育中的应用"'),
+      description: t.skills.ml?.tensorflow?.description || (language === 'ja' ? '大規模言語モデル（LLM）のファインチューニング・構築に取り組む。外国語教育への応用を念頭におき、パラメータ調整やトレーニングプロセスの最適化を実施。TensorFlowのエコシステムを活用した本番環境デプロイメントも経験。' : 
+                  language === 'en' ? 'Working on fine-tuning and building large language models (LLMs). With applications in foreign language education in mind, I implement parameter adjustment and optimization of training processes. I also have experience with production environment deployment using the TensorFlow ecosystem.' : 
+                  '从事大型语言模型（LLM）的微调和构建工作。以外语教育应用为目标，实施参数调整和训练过程优化。也有使用TensorFlow生态系统进行生产环境部署的经验。'),
       main: true
     },
     {
       library: 'PyTorch',
       icon: <SiPytorch className="skill-icon" />,
       color: '#EE4C2C',
-      purpose: '自然言語処理モデルの研究開発',
-      description: '最新の言語モデルアーキテクチャの実装と実験に使用。動的計算グラフの柔軟性を活かし、カスタムレイヤーや損失関数を実装。分散学習を活用した大規模モデルのトレーニングや、量子化技術によるモデル最適化も実施。'
+      purpose: t.skills.ml?.pytorch?.purpose || (language === 'ja' ? '自然言語処理モデルの研究開発' : 
+               language === 'en' ? 'Research and development of natural language processing models' : 
+               '自然语言处理模型的研究开发'),
+      description: t.skills.ml?.pytorch?.description || (language === 'ja' ? '最新の言語モデルアーキテクチャの実装と実験に使用。動的計算グラフの柔軟性を活かし、カスタムレイヤーや損失関数を実装。分散学習を活用した大規模モデルのトレーニングや、量子化技術によるモデル最適化も実施。' : 
+                  language === 'en' ? 'Used for implementation and experimentation with the latest language model architectures. Leveraging the flexibility of dynamic computation graphs to implement custom layers and loss functions. Also conducting training of large-scale models using distributed learning and model optimization using quantization techniques.' : 
+                  '用于实现和试验最新的语言模型架构。利用动态计算图的灵活性实现自定义层和损失函数。还使用分布式学习进行大规模模型训练，以及使用量化技术进行模型优化。')
     },
     {
       library: 'Transformers (Hugging Face)',
       icon: <FaPython className="skill-icon" />,
       color: '#FFD21E',
-      purpose: '最先端NLPモデルの研究と応用',
-      description: '事前学習済み言語モデルを活用した様々なNLPタスクの実装。テキスト生成、分類、要約などの機能を統合した教育支援システムの開発に貢献。モデルのカスタマイズとファインチューニングにより、教育コンテンツの自動生成の精度向上を実現。'
+      purpose: t.skills.ml?.transformers?.purpose || (language === 'ja' ? '最先端NLPモデルの研究と応用' : 
+               language === 'en' ? 'Research and application of cutting-edge NLP models' : 
+               '前沿NLP模型的研究和应用'),
+      description: t.skills.ml?.transformers?.description || (language === 'ja' ? '事前学習済み言語モデルを活用した様々なNLPタスクの実装。テキスト生成、分類、要約などの機能を統合した教育支援システムの開発に貢献。モデルのカスタマイズとファインチューニングにより、教育コンテンツの自動生成の精度向上を実現。' : 
+                  language === 'en' ? 'Implementation of various NLP tasks using pre-trained language models. Contributing to the development of educational support systems that integrate functions such as text generation, classification, and summarization. Improving the accuracy of automatic generation of educational content through model customization and fine-tuning.' : 
+                  '使用预训练语言模型实现各种NLP任务。为整合文本生成、分类、摘要等功能的教育支持系统开发做出贡献。通过模型定制和微调提高教育内容自动生成的准确性。')
     },
     {
       library: 'Axolotl',
       icon: <FaPython className="skill-icon" />,
       color: '#36B3A1',
-      purpose: 'LLMファインチューニングの効率化',
-      description: '計算リソース制約下での効率的なモデル調整に活用。QLoRA、LoRAなどの技術を用いて、GPU要件を最小化しながら教育特化型LLMを開発。正規言語学習者の特性を考慮した独自データセットによるファインチューニングを実施。'
+      purpose: t.skills.ml?.axolotl?.purpose || (language === 'ja' ? 'LLMファインチューニングの効率化' : 
+               language === 'en' ? 'Efficient LLM fine-tuning' : 
+               'LLM微调的效率化'),
+      description: t.skills.ml?.axolotl?.description || (language === 'ja' ? '計算リソース制約下での効率的なモデル調整に活用。QLoRA、LoRAなどの技術を用いて、GPU要件を最小化しながら教育特化型LLMを開発。正規言語学習者の特性を考慮した独自データセットによるファインチューニングを実施。' : 
+                  language === 'en' ? 'Utilized for efficient model adjustment under computational resource constraints. Developing education-specialized LLMs while minimizing GPU requirements using techniques such as QLoRA and LoRA. Conducting fine-tuning with original datasets that consider the characteristics of formal language learners.' : 
+                  '用于在计算资源限制下高效调整模型。使用QLoRA、LoRA等技术，在最小化GPU需求的同时开发教育专用LLM。使用考虑正规语言学习者特点的原创数据集进行微调。')
     }
   ];
 
   const languageSkills = [
     {
-      language: '日本語',
+      language: t.skills.languages?.japanese?.name || (language === 'ja' ? '日本語' : language === 'en' ? 'Japanese' : '日语'),
       icon: '🇯🇵',
       color: '#BC002D',
-      level: '日本で生活経験15年',
-      details: 'JLPT N1 180点（満点）。新東方日本語教師として7年、5,000時間以上の教育経験あり。'
+      level: t.skills.languages?.japanese?.level || (language === 'ja' ? '日本で生活経験15年' : 
+             language === 'en' ? '15 years of living experience in Japan' :
+             '在日本生活15年的经验'),
+      details: t.skills.languages?.japanese?.details || (language === 'ja' ? 'JLPT N1 180点（満点）。新東方日本語教師として7年、5,000時間以上の教育経験あり。' : 
+              language === 'en' ? 'JLPT N1 180 points (perfect score). 7 years and over 5,000 hours of experience as a Japanese teacher at New Oriental.' :
+              'JLPT N1 180分（满分）。作为新东方日语教师，有7年、5,000多小时的教学经验。')
     },
     {
-      language: '中国語',
+      language: t.skills.languages?.chinese?.name || (language === 'ja' ? '中国語' : language === 'en' ? 'Chinese' : '中文'),
       icon: '🇨🇳',
       color: '#DE2910',
-      level: 'ネイティブレベル',
-      details: '北京出身で母国語。'
+      level: t.skills.languages?.chinese?.level || (language === 'ja' ? 'ネイティブレベル' : 
+             language === 'en' ? 'Native level' :
+             '母语水平'),
+      details: t.skills.languages?.chinese?.details || (language === 'ja' ? '北京出身で母国語。' : 
+              language === 'en' ? 'Native language as I am from Beijing.' :
+              '北京出身，母语。')
     },
     {
-      language: '英語',
+      language: t.skills.languages?.english?.name || (language === 'ja' ? '英語' : language === 'en' ? 'English' : '英语'),
       icon: '🇬🇧',
       color: '#012169',
-      level: 'TOEIC 625点',
-      details: '研究論文の執筆や読解で使用。'
+      level: t.skills.languages?.english?.level || (language === 'ja' ? 'TOEIC 625点' : 
+             language === 'en' ? 'TOEIC 625 points' :
+             'TOEIC 625分'),
+      details: t.skills.languages?.english?.details || (language === 'ja' ? '研究論文の執筆や読解で使用。' : 
+              language === 'en' ? 'Used for writing and reading research papers.' :
+              '用于研究论文的写作和阅读。')
     }
   ];
 
@@ -486,86 +519,122 @@ const Skills = () => {
   const [activeCategory, setActiveCategory] = useState('languages');
 
   // プロジェクトごとの技術スタック定義
-  const projectsTechStack = [
-    {
-      id: 'japanese-learning',
-      name: '日本語学習アプリ',
-      description: '効率的な日本語単語学習とリスニング練習を提供するモバイルアプリ',
-      icon: <FaMobile />,
-      color: '#FF5757',
-      technologies: [
-        { name: 'React Native', icon: <FaReact />, category: 'フロントエンド', color: '#61DAFB' },
-        { name: 'Swift', icon: <FaSwift />, category: 'ネイティブ開発', color: '#FF7F50' },
-        { name: 'Node.js', icon: <FaNode />, category: 'バックエンド', color: '#339933' },
-        { name: 'MongoDB', icon: <SiMongodb />, category: 'データベース', color: '#47A248' },
-        { name: 'AliCloud Function Compute', icon: <FaCloud />, category: 'サーバーレス', color: '#FF6A00' }
-      ],
-      connections: [
-        { from: 'React Native', to: 'Node.js', label: 'API通信' },
-        { from: 'Swift', to: 'Node.js', label: 'API通信' },
-        { from: 'Node.js', to: 'MongoDB', label: 'データ永続化' },
-        { from: 'Node.js', to: 'AliCloud Function Compute', label: '処理実行' }
-      ]
-    },
-    {
-      id: 'vocabulary-profiler',
-      name: '語彙プロファイラー',
-      description: 'テキスト解析で単語の難易度を判定し、語彙レベルを可視化するウェブツール',
-      icon: <FaCode />,
-      color: '#4361EE',
-      technologies: [
-        { name: 'Next.js (フロントエンド)', icon: <SiNextdotjs />, category: 'フロントエンド', color: '#000000' },
-        { name: 'Next.js (バックエンド)', icon: <SiNextdotjs />, category: 'API Routes', color: '#000000' },
-        { name: 'AWS Lambda', icon: <FaAws />, category: 'MeCab形態素解析', color: '#FF9900' },
-        { name: 'Node.js', icon: <FaNode />, category: 'ランタイム', color: '#339933' },
-        { name: 'Vercel Postgres', icon: <FaDatabase />, category: 'データベース', color: '#000000' },
-        { name: 'TypeScript', icon: <SiTypescript />, category: '言語', color: '#3178C6' }
-      ],
-      connections: [
-        { from: 'Next.js (フロントエンド)', to: 'Next.js (バックエンド)', label: '内部API通信' },
-        { from: 'Next.js (バックエンド)', to: 'AWS Lambda', label: 'MeCab形態素解析実行' },
-        { from: 'Next.js (バックエンド)', to: 'Vercel Postgres', label: 'データ永続化' },
-        { from: 'TypeScript', to: 'Next.js (フロントエンド)', label: 'フロントエンド型安全化' },
-        { from: 'TypeScript', to: 'Next.js (バックエンド)', label: 'バックエンド型安全化' }
-      ]
-    },
-    {
-      id: 'lands-english',
-      name: 'LandS英語学習アプリ',
-      description: 'リスニングとスピーキングに特化した英語学習アプリケーション',
-      icon: <FaLaptopCode />,
-      color: '#10B981',
-      technologies: [
-        { name: 'Google Cloud Platform', icon: <FaGoogle />, category: 'クラウド', color: '#4285F4' },
-        { name: 'Swift', icon: <FaSwift />, category: 'フロントエンド', color: '#FF7F50' },
-        { name: 'Nginx', icon: <SiNginx />, category: 'Webサーバー', color: '#009639' },
-        { name: 'MariaDB', icon: <SiMariadb />, category: 'データベース', color: '#003545' }
-      ],
-      connections: [
-        { from: 'Swift', to: 'Nginx', label: 'API通信' },
-        { from: 'Nginx', to: 'MariaDB', label: 'データアクセス' },
-        { from: 'Google Cloud Platform', to: 'Nginx', label: 'ホスティング' },
-        { from: 'Google Cloud Platform', to: 'MariaDB', label: 'ホスティング' }
-      ]
-    },
-    {
-      id: 'llm-analysis',
-      name: 'LLM分析・ファインチューニング',
-      description: '外国語教育に特化したLLMの分析・カスタマイズ研究プロジェクト',
-      icon: <FaLaptopCode />,
-      color: '#8B5CF6',
-      technologies: [
-        { name: 'Python', icon: <FaPython />, category: '言語', color: '#3776AB' },
-        { name: 'TensorFlow', icon: <SiTensorflow />, category: 'フレームワーク', color: '#FF6F00' },
-        { name: 'Transformers', icon: <FaPython />, category: 'ライブラリ', color: '#FFD21E' }
-      ],
-      connections: [
-        { from: 'Python', to: 'TensorFlow', label: 'モデル構築' },
-        { from: 'Python', to: 'Transformers', label: 'モデル操作' },
-        { from: 'TensorFlow', to: 'Transformers', label: '連携' }
-      ]
-    }
-  ];
+  const getProjectsTechStack = () => {
+    return [
+      {
+        id: 'japanese-learning',
+        name: t.skills.projects?.japaneseApp?.name || (language === 'ja' ? '日本語学習アプリ' : language === 'en' ? 'Japanese Learning App' : '日语学习应用'),
+        description: t.skills.projects?.japaneseApp?.description || (language === 'ja' ? '効率的な日本語単語学習とリスニング練習を提供するモバイルアプリ' : language === 'en' ? 'Mobile app that provides efficient Japanese vocabulary learning and listening practice' : '提供高效日语单词学习和听力练习的移动应用'),
+        icon: <FaMobile />,
+        color: '#FF5757',
+        technologies: [
+          { 
+            name: 'Swift', 
+            icon: <FaSwift />, 
+            category: t.skills.projects?.categories?.language || (language === 'ja' ? '言語' : language === 'en' ? 'Language' : '语言'), 
+            color: '#FF7F50' 
+          },
+          { 
+            name: 'Nginx', 
+            icon: <SiNginx />, 
+            category: t.skills.projects?.categories?.server || (language === 'ja' ? 'サーバー' : language === 'en' ? 'Server' : '服务器'), 
+            color: '#009639' 
+          },
+          { 
+            name: 'MariaDB', 
+            icon: <SiMariadb />, 
+            category: t.skills.projects?.categories?.database || (language === 'ja' ? 'データベース' : language === 'en' ? 'Database' : '数据库'), 
+            color: '#003545' 
+          },
+          { 
+            name: 'Google Cloud Platform', 
+            icon: <FaGoogle />, 
+            category: t.skills.projects?.categories?.infrastructure || (language === 'ja' ? 'インフラ' : language === 'en' ? 'Infrastructure' : '基础设施'), 
+            color: '#4285F4' 
+          }
+        ],
+        connections: [
+          { 
+            from: 'Swift', 
+            to: 'Nginx', 
+            label: t.skills.projects?.connections?.apiComm || (language === 'ja' ? 'API通信' : language === 'en' ? 'API Communication' : 'API通信') 
+          },
+          { 
+            from: 'Nginx', 
+            to: 'MariaDB', 
+            label: t.skills.projects?.connections?.dataAccess || (language === 'ja' ? 'データアクセス' : language === 'en' ? 'Data Access' : '数据访问') 
+          },
+          { 
+            from: 'Google Cloud Platform', 
+            to: 'Nginx', 
+            label: t.skills.projects?.connections?.hosting || (language === 'ja' ? 'ホスティング' : language === 'en' ? 'Hosting' : '托管') 
+          },
+          { 
+            from: 'Google Cloud Platform', 
+            to: 'MariaDB', 
+            label: t.skills.projects?.connections?.hosting || (language === 'ja' ? 'ホスティング' : language === 'en' ? 'Hosting' : '托管') 
+          }
+        ]
+      },
+      {
+        id: 'llm-analysis',
+        name: t.skills.projects?.llmAnalysis?.name || (language === 'ja' ? 'LLM分析・ファインチューニング' : language === 'en' ? 'LLM Analysis & Fine-tuning' : 'LLM分析与微调'),
+        description: t.skills.projects?.llmAnalysis?.description || (language === 'ja' ? '外国語教育に特化したLLMの分析・カスタマイズ研究プロジェクト' : language === 'en' ? 'Research project analyzing and customizing LLMs specialized for foreign language education' : '面向外语教育的LLM分析和定制研究项目'),
+        icon: <FaLaptopCode />,
+        color: '#8B5CF6',
+        technologies: [
+          { 
+            name: 'Python', 
+            icon: <FaPython />, 
+            category: t.skills.projects?.categories?.language || (language === 'ja' ? '言語' : language === 'en' ? 'Language' : '语言'), 
+            color: '#3776AB' 
+          },
+          { 
+            name: 'TensorFlow', 
+            icon: <SiTensorflow />, 
+            category: t.skills.projects?.categories?.framework || (language === 'ja' ? 'フレームワーク' : language === 'en' ? 'Framework' : '框架'), 
+            color: '#FF6F00' 
+          },
+          { 
+            name: 'Transformers', 
+            icon: <FaPython />, 
+            category: t.skills.projects?.categories?.library || (language === 'ja' ? 'ライブラリ' : language === 'en' ? 'Library' : '库'), 
+            color: '#FFD21E' 
+          },
+          { 
+            name: 'PyTorch', 
+            icon: <SiPytorch />, 
+            category: t.skills.projects?.categories?.framework || (language === 'ja' ? 'フレームワーク' : language === 'en' ? 'Framework' : '框架'), 
+            color: '#EE4C2C' 
+          }
+        ],
+        connections: [
+          { 
+            from: 'Python', 
+            to: 'TensorFlow', 
+            label: t.skills.projects?.connections?.modelTraining || (language === 'ja' ? 'モデル訓練' : language === 'en' ? 'Model Training' : '模型训练') 
+          },
+          { 
+            from: 'Python', 
+            to: 'PyTorch', 
+            label: t.skills.projects?.connections?.modelTraining || (language === 'ja' ? 'モデル訓練' : language === 'en' ? 'Model Training' : '模型训练') 
+          },
+          { 
+            from: 'TensorFlow', 
+            to: 'Transformers', 
+            label: t.skills.projects?.connections?.integration || (language === 'ja' ? '連携' : language === 'en' ? 'Integration' : '集成') 
+          },
+          { 
+            from: 'PyTorch', 
+            to: 'Transformers', 
+            label: t.skills.projects?.connections?.integration || (language === 'ja' ? '連携' : language === 'en' ? 'Integration' : '集成') 
+          }
+        ]
+      },
+    ];
+  };
+  
+  const projectsTechStack = getProjectsTechStack();
 
   // 主力スキルをフィルタリングする関数
   const getMainSkills = () => {
@@ -603,9 +672,7 @@ const Skills = () => {
           <div className="section-subtitle">TECH STACK & SKILLS</div>
           <h2 className="with-decoration">{t.skills.title}</h2>
           <p className="section-description">
-            {language === 'ja' && '普段使用している技術スタックをご紹介します'}
-            {language === 'en' && 'Introducing the tech stack that I regularly use'}
-            {language === 'zh' && '介绍我日常使用的技术栈'}
+            {t.skills.intro}
           </p>
         </motion.div>
         
@@ -620,9 +687,7 @@ const Skills = () => {
             className="primary-skills-title"
             variants={fadeInUp}
           >
-            {language === 'ja' && 'プロジェクト別技術スタック'}
-            {language === 'en' && 'Tech Stack by Project'}
-            {language === 'zh' && '按项目分类的技术栈'}
+            {t.skills.projectsTitle}
           </motion.h3>
           
           {/* プロジェクトセレクター */}
@@ -842,28 +907,14 @@ const Skills = () => {
                           <>
                             <li>React NativeとSwiftでクロスプラットフォーム対応</li>
                             <li>MongoDBによる柔軟なデータモデリング</li>
-                            <li>AliCloudでのサーバーレス処理</li>
-                          </>
-                        )}
-                        {project.id === 'vocabulary-profiler' && (
-                          <>
-                            <li>Next.jsによるフルスタック開発</li>
-                            <li>AWS Lambda上でのMeCab形態素解析</li>
-                            <li>TypeScriptによる堅牢なコード設計</li>
-                          </>
-                        )}
-                        {project.id === 'lands-english' && (
-                          <>
-                            <li>Google Cloudベースの堅牢なインフラ</li>
-                            <li>Swiftによるネイティブ体験の実現</li>
-                            <li>Nginxによる高速レスポンス</li>
+                            <li>Google Cloud Platformによる堅牢なインフラ</li>
                           </>
                         )}
                         {project.id === 'llm-analysis' && (
                           <>
-                            <li>TensorFlowによる大規模言語モデルの分析</li>
-                            <li>外国語教育向けLLMカスタマイズ</li>
-                            <li>Transformersライブラリ活用</li>
+                            <li>Pythonによる大規模言語モデルの分析</li>
+                            <li>TensorFlowとPyTorchによるモデル訓練</li>
+                            <li>Transformersライブラリの活用</li>
                           </>
                         )}
                       </ul>
@@ -981,9 +1032,7 @@ const Skills = () => {
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          {language === 'ja' && '機械学習関連'}
-          {language === 'en' && 'Machine Learning'}
-          {language === 'zh' && '机器学习相关'}
+          {t.skills.mlTitle}
         </motion.h2>
         <motion.h3 
           className="ml-subtitle"
@@ -992,9 +1041,7 @@ const Skills = () => {
           viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          {language === 'ja' && '使用ライブラリと主なアルゴリズム'}
-          {language === 'en' && 'Libraries and Main Algorithms'}
-          {language === 'zh' && '使用的库和主要算法'}
+          {t.skills.mlSubtitle}
         </motion.h3>
         <motion.div 
           className="ml-skills"
@@ -1070,9 +1117,7 @@ const Skills = () => {
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          {language === 'ja' && '言語スキル'}
-          {language === 'en' && 'Language Skills'}
-          {language === 'zh' && '语言能力'}
+          {t.skills.languageTitle}
         </motion.h2>
         <motion.div 
           className="language-skills"
@@ -1153,9 +1198,7 @@ const Skills = () => {
           <motion.h3 
             variants={fadeInUp}
           >
-            {language === 'ja' && 'アピールポイント・今後のビジョン'}
-            {language === 'en' && 'Strengths & Future Vision'}
-            {language === 'zh' && '优势特点与未来愿景'}
+            {t.skills.highlightTitle}
           </motion.h3>
           <motion.div 
             className="highlight-item"
@@ -1168,9 +1211,9 @@ const Skills = () => {
               transition: { duration: 0.3 }
             }}
           >
-            <h4>多言語・多文化バックグラウンド</h4>
+            <h4>{t.skills.highlight1Title}</h4>
             <p>
-              日中バイリンガルとして、異なる文化や言語環境での生活経験を強みとしています。この経験は、国際的なチーム環境での円滑なコミュニケーションや、多様な視点からの問題解決に役立っています。さらに、新東方での日本語教師としての経験（7年、5,000時間以上）は、教育コンテンツ開発や効果的な知識伝達の基盤となっています。
+              {t.skills.highlight1Description}
             </p>
           </motion.div>
           <motion.div 
@@ -1184,9 +1227,9 @@ const Skills = () => {
               transition: { duration: 0.3 }
             }}
           >
-            <h4>教育テクノロジーにおけるイノベーション</h4>
+            <h4>{t.skills.highlight2Title}</h4>
             <p>
-              研究者としての専門知識とエンジニアとしての技術スキルを組み合わせ、教育と技術の融合に独自の価値を提供できます。語彙問題自動生成アルゴリズムの開発実績や、語彙難易度推定モデルの構築経験は、効率的な学習支援ツールの設計に直結します。国立国語研究所のプロジェクトでは、理論研究を実践的なWebアプリケーションとして具現化した経験があります。
+              {t.skills.highlight2Description}
             </p>
           </motion.div>
           <motion.div 
@@ -1200,9 +1243,9 @@ const Skills = () => {
               transition: { duration: 0.3 }
             }}
           >
-            <h4>LLM特化型の言語学習プラットフォーム構築</h4>
+            <h4>{t.skills.highlight3Title}</h4>
             <p>
-              今後5年間のビジョンとして、言語学習に特化した独自LLMの開発と、それを活用した包括的な学習プラットフォームの構築を目指しています。言語学の知見を取り入れた独自のトレーニングデータセットによる高精度なモデル構築、パーソナライズされた学習体験の提供、そして学習者の習熟度に合わせた適応型学習システムの実現に取り組みたいと考えています。また、これらの技術を通じて、言語教育のアクセシビリティ向上にも貢献していきたいです。
+              {t.skills.highlight3Description}
             </p>
           </motion.div>
         </motion.div>

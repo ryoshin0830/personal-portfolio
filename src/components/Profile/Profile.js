@@ -11,10 +11,10 @@ const Profile = () => {
         <div className="profile-content">
           <div className="profile-details">
             <ul>
-              <li><strong>{t.language === 'ja' ? '名前:' : t.language === 'en' ? 'Name:' : '姓名:'}</strong> {t.profile.basicInfo.name}</li>
-              <li><strong>{t.language === 'ja' ? '生年月日:' : t.language === 'en' ? 'Birth Date:' : '出生日期:'}</strong> {t.profile.basicInfo.birthdate}</li>
-              <li><strong>{t.language === 'ja' ? '出身地:' : t.language === 'en' ? 'Birthplace:' : '出生地:'}</strong> {t.profile.basicInfo.birthplace}</li>
-              <li><strong>{t.language === 'ja' ? '現住所:' : t.language === 'en' ? 'Residence:' : '现居地:'}</strong> {t.profile.basicInfo.residence}</li>
+              <li><strong>{t.profile.labels.name}</strong> {t.profile.basicInfo.name}</li>
+              <li><strong>{t.profile.labels.birthdate}</strong> {t.profile.basicInfo.birthdate}</li>
+              <li><strong>{t.profile.labels.birthplace}</strong> {t.profile.basicInfo.birthplace}</li>
+              <li><strong>{t.profile.labels.residence}</strong> {t.profile.basicInfo.residence}</li>
             </ul>
           </div>
           <div className="profile-summary">

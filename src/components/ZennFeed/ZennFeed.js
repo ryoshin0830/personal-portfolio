@@ -3,7 +3,7 @@ import './ZennFeed.css';
 import { LanguageContext } from '../../contexts/LanguageContext';
 
 const ZennFeed = () => {
-  const { language } = useContext(LanguageContext);
+  const { t } = useContext(LanguageContext);
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,43 +21,7 @@ const ZennFeed = () => {
   }, []);
 
   useEffect(() => {
-    // RSSフィードの解析に関する問題を避けるため、静的データを使用
-    const zennArticles = [
-      {
-        id: '1',
-        title: 'コマンドラインでGitログをおしゃれに表示！',
-        description: 'Gitログに変更行数も表示！ コミットの内訳をひも解くカラフルな冒険 Gitのコミット履歴を眺めると、まるで無機質なタイムカプセルのよう。でも、あなたの変更がどのくらいの情熱（行数）を伴っていたのか、もっと詳しく見てみたくありませんか？',
-        link: 'https://zenn.dev/ryoushin/articles/e62c5e0c0a3d8f',
-        pubDate: 'Sun, 16 Feb 2025 02:59:32 GMT',
-        creator: 'Shin'
-      },
-      {
-        id: '2',
-        title: 'Githubのレポジトリを全てPrivateにする方法',
-        description: '「世界から見られている」というと、一見華やかでカッコいいかもしれません。しかし、あなたのGitHubリポジトリが「おっと、うっかり中身を公開していた…」となっていたらどうでしょう。そもそも間違ってAPIキー丸出しのコミットをしていたり、秘伝のソースコードを晒していたり…',
-        link: 'https://zenn.dev/ryoushin/articles/6a07f7935f6966',
-        pubDate: 'Thu, 30 Jan 2025 12:00:03 GMT',
-        creator: 'Shin'
-      },
-      {
-        id: '3',
-        title: 'エンジニアよ、さらばPowerPoint！VS CodeでCoolなスライドを作ろう',
-        description: 'GitHubリポジトリー:https://github.com/ryoshin0830/markdown_slide こんな人にオススメ！ 「PowerPointを開くとため息が出る」エンジニア 「スライド作成中にコード書きたくなる」プログラマー 「バージョン管理したい！」という潔癖性GitHuber',
-        link: 'https://zenn.dev/ryoushin/articles/dac1c7058e08b7',
-        pubDate: 'Fri, 10 Jan 2025 02:04:29 GMT',
-        creator: 'Shin'
-      },
-      {
-        id: '4',
-        title: '日本語で論文を書く際のLaTeXテンプレート',
-        description: '日本語で論文（博士論文など）を書く際に、BibLaTeX管理を簡単にしながら日本語と英語の文献をきちんと整理したい人向けのテンプレート紹介記事です。「日本語の論文をLaTeXで書きたい」「参考文献管理が面倒…」「日本語論文引用のスタイルが違いすぎる…」',
-        link: 'https://zenn.dev/ryoushin/articles/d3e815a2af8a1e',
-        pubDate: 'Fri, 03 Jan 2025 12:27:16 GMT',
-        creator: 'Shin'
-      }
-    ];
-    
-    // 画面幅に応じて表示数を決定
+    // Use translated articles from translation files
     const getArticleCount = () => {
       if (windowWidth <= 480) {
         return 2; // スマホサイズでは2記事
@@ -70,10 +34,50 @@ const ZennFeed = () => {
     
     // 少し遅延を入れてロード感を出す
     setTimeout(() => {
-      setArticles(zennArticles.slice(0, getArticleCount()));
+      // Use articles from translation file if available
+      if (t.zennFeed.articles && t.zennFeed.articles.length > 0) {
+        setArticles(t.zennFeed.articles.slice(0, getArticleCount()));
+      } else {
+        // Fallback to Japanese articles if translations not available
+        const zennArticles = [
+          {
+            id: '1',
+            title: 'コマンドラインでGitログをおしゃれに表示！',
+            description: 'Gitログに変更行数も表示！ コミットの内訳をひも解くカラフルな冒険 Gitのコミット履歴を眺めると、まるで無機質なタイムカプセルのよう。でも、あなたの変更がどのくらいの情熱（行数）を伴っていたのか、もっと詳しく見てみたくありませんか？',
+            link: 'https://zenn.dev/ryoushin/articles/e62c5e0c0a3d8f',
+            pubDate: 'Sun, 16 Feb 2025 02:59:32 GMT',
+            creator: 'Shin'
+          },
+          {
+            id: '2',
+            title: 'Githubのレポジトリを全てPrivateにする方法',
+            description: '「世界から見られている」というと、一見華やかでカッコいいかもしれません。しかし、あなたのGitHubリポジトリが「おっと、うっかり中身を公開していた…」となっていたらどうでしょう。そもそも間違ってAPIキー丸出しのコミットをしていたり、秘伝のソースコードを晒していたり…',
+            link: 'https://zenn.dev/ryoushin/articles/6a07f7935f6966',
+            pubDate: 'Thu, 30 Jan 2025 12:00:03 GMT',
+            creator: 'Shin'
+          },
+          {
+            id: '3',
+            title: 'エンジニアよ、さらばPowerPoint！VS CodeでCoolなスライドを作ろう',
+            description: 'GitHubリポジトリー:https://github.com/ryoshin0830/markdown_slide こんな人にオススメ！ 「PowerPointを開くとため息が出る」エンジニア 「スライド作成中にコード書きたくなる」プログラマー 「バージョン管理したい！」という潔癖性GitHuber',
+            link: 'https://zenn.dev/ryoushin/articles/dac1c7058e08b7',
+            pubDate: 'Fri, 10 Jan 2025 02:04:29 GMT',
+            creator: 'Shin'
+          },
+          {
+            id: '4',
+            title: '日本語で論文を書く際のLaTeXテンプレート',
+            description: '日本語で論文（博士論文など）を書く際に、BibLaTeX管理を簡単にしながら日本語と英語の文献をきちんと整理したい人向けのテンプレート紹介記事です。「日本語の論文をLaTeXで書きたい」「参考文献管理が面倒…」「日本語論文引用のスタイルが違いすぎる…」',
+            link: 'https://zenn.dev/ryoushin/articles/d3e815a2af8a1e',
+            pubDate: 'Fri, 03 Jan 2025 12:27:16 GMT',
+            creator: 'Shin'
+          }
+        ];
+        setArticles(zennArticles.slice(0, getArticleCount()));
+      }
       setLoading(false);
     }, 800);
-  }, [windowWidth]);
+  }, [windowWidth, t.zennFeed.articles]);
 
   // 日付フォーマット関数
   const formatDate = (dateString) => {
@@ -103,38 +107,28 @@ const ZennFeed = () => {
       <div className="container">
         <div className="section-header">
           <h2>
-            {language === 'ja' && '最新のZenn記事'}
-            {language === 'en' && 'Latest Zenn Articles'}
-            {language === 'zh' && '最新Zenn文章'}
+            {t.zennFeed.title}
           </h2>
           <p>
-            {language === 'ja' && '技術ブログでの発信内容をご覧いただけます'}
-            {language === 'en' && 'Check out my technical blog posts'}
-            {language === 'zh' && '查看我的技术博客内容'}
+            {t.zennFeed.description}
           </p>
         </div>
         
         {loading ? (
           <div className="zenn-loading">
-            <div className="spinner"></div>
-            <p>
-              {language === 'ja' && '記事を読み込み中...'}
-              {language === 'en' && 'Loading articles...'}
-              {language === 'zh' && '正在加载文章...'}
-            </p>
+            <div className="loader"></div>
+            <p>{t.zennFeed.loading}</p>
           </div>
         ) : error ? (
           <div className="zenn-error">
-            <p>{error}</p>
+            <p>{t.zennFeed.error}</p>
             <a 
               href="https://zenn.dev/ryoushin" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="btn btn-primary"
+              className="btn btn-glass"
             >
-              {language === 'ja' && 'Zennで直接見る'}
-              {language === 'en' && 'View directly on Zenn'}
-              {language === 'zh' && '直接在Zenn上查看'}
+              {t.zennFeed.viewOnZenn}
             </a>
           </div>
         ) : (
@@ -167,9 +161,7 @@ const ZennFeed = () => {
                 rel="noopener noreferrer"
                 className="btn btn-glass"
               >
-                {language === 'ja' && 'もっと見る'}
-                {language === 'en' && 'View More'}
-                {language === 'zh' && '查看更多'}
+                {t.zennFeed.viewMore}
               </a>
             </div>
           </>

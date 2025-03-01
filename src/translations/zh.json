@@ -16,7 +16,13 @@
     "research": "研究内容"
   },
   "profile": {
-    "title": "简介",
+    "title": "个人资料",
+    "labels": {
+      "name": "姓名:",
+      "birthdate": "出生日期:",
+      "birthplace": "出生地:",
+      "residence": "现居地:"
+    },
     "basicInfo": {
       "name": "梁 震",
       "birthdate": "1997年8月30日",
@@ -123,6 +129,7 @@
   },
   "publications": {
     "title": "论文列表",
+    "paperLink": "论文链接",
     "papers": [
       {
         "title": "外语教育中AI应用的趋势",
@@ -169,83 +176,202 @@
     ]
   },
   "skills": {
-    "title": "编程技能与使用技术",
+    "title": "编程技能和使用技术",
+    "introduction": "介绍我日常使用的技术栈",
+    "projectsTitle": "按项目分类的技术栈",
+    "mlTitle": "机器学习相关",
+    "mlSubtitle": "使用的库和主要算法",
+    "languageTitle": "语言能力",
+    "strengthsTitle": "优势特点与未来愿景",
+    "highlightTitle": "优势特点与未来愿景",
+    "highlight1Title": "多语言和多文化背景",
+    "highlight1Description": "作为一名中日双语人士，我善于利用在不同文化和语言环境中生活的经验。这些经验帮助我在国际团队环境中顺畅沟通，并从多元视角解决问题。此外，在新东方担任日语教师的经验（7年，超过5,000小时）为我开发教育内容和有效传递知识奠定了基础。",
+    "highlight2Title": "教育技术创新",
+    "highlight2Description": "通过结合研究者的专业知识和工程师的技术技能，我能在教育与技术的融合领域提供独特价值。我在开发自动词汇问题生成算法和构建词汇难度估计模型方面的经验，直接应用于高效学习支持工具的设计。在国立国语研究所的项目中，我将理论研究转化为实用Web应用的经验。",
+    "highlight3Title": "构建专注于LLM的语言学习平台",
+    "highlight3Description": "我未来5年的愿景是开发专为语言学习定制的LLM，并建立利用这些模型的综合学习平台。我的目标是使用融合语言学见解的独特训练数据集构建高精度模型，提供个性化学习体验，并实现根据学习者熟练程度调整的自适应学习系统。通过这些技术，我也希望为提高语言教育的可及性做出贡献。",
     "programming": {
       "title": "编程语言",
-      "skills": ["JavaScript", "TypeScript", "Python", "Swift", "Objective-C", "C", "Java", "R"]
+      "skills": ["JavaScript", "TypeScript", "Python", "Swift", "Objective-C", "C", "Java", "R"],
+      "description": "具有实际经验的编程语言"
     },
     "frontend": {
       "title": "前端开发",
-      "skills": ["React", "Next.js"]
+      "skills": ["React", "Next.js"],
+      "description": "现代UI开发技术"
     },
     "backend": {
       "title": "后端开发",
-      "skills": ["Next.js", "Node.js", "Django"]
+      "skills": ["Next.js", "Node.js", "Django"],
+      "description": "服务器端开发技术"
     },
     "database": {
       "title": "数据库",
-      "skills": ["MongoDB", "MariaDB"]
+      "skills": ["MongoDB", "MariaDB"],
+      "description": "数据管理和存储技术"
     },
     "mobile": {
       "title": "移动应用开发",
-      "skills": ["React Native", "Swift"]
+      "skills": ["React Native", "Swift"],
+      "description": "iOS/Android应用开发"
     },
     "infrastructure": {
       "title": "基础设施与中间件",
-      "skills": ["Linux", "Caddy2", "Nginx", "Apache"]
+      "skills": ["Linux", "Caddy2", "Nginx", "Apache"],
+      "description": "服务器/部署技术"
     },
     "cloud": {
       "title": "云服务与部署",
-      "skills": ["AWS", "Google Cloud Platform", "Vercel", "Alibaba Cloud"]
+      "skills": ["AWS", "Google Cloud Platform", "Vercel", "Alibaba Cloud"],
+      "description": "云服务利用技术"
     },
     "tools": {
       "title": "工具",
-      "skills": ["Docker", "Git & Git LFS", "PyTorch", "Axolotl"]
+      "skills": ["Docker", "Git & Git LFS", "PyTorch", "Axolotl"],
+      "description": "开发效率工具"
     },
     "ml": {
       "title": "机器学习相关",
-      "skills": ["TensorFlow", "PyTorch", "Transformers", "Axolotl"]
+      "skills": ["TensorFlow", "PyTorch", "Transformers", "Axolotl"],
+      "tensorflow": {
+        "purpose": "博士论文\"大型语言模型在外语教育中的应用\"",
+        "description": "从事大型语言模型（LLM）的微调和构建工作。以外语教育应用为目标，实施参数调整和训练过程优化。也有使用TensorFlow生态系统进行生产环境部署的经验。"
+      },
+      "pytorch": {
+        "purpose": "自然语言处理模型的研究开发",
+        "description": "用于实现和试验最新的语言模型架构。利用动态计算图的灵活性实现自定义层和损失函数。还使用分布式学习进行大规模模型训练，以及使用量化技术进行模型优化。"
+      },
+      "transformers": {
+        "purpose": "前沿NLP模型的研究和应用",
+        "description": "使用预训练语言模型实现各种NLP任务。为整合文本生成、分类、摘要等功能的教育支持系统开发做出贡献。通过模型定制和微调提高教育内容自动生成的准确性。"
+      },
+      "axolotl": {
+        "purpose": "LLM微调的效率化",
+        "description": "用于在计算资源限制下高效调整模型。使用QLoRA、LoRA等技术，在最小化GPU需求的同时开发教育专用LLM。使用考虑正规语言学习者特点的原创数据集进行微调。"
+      }
     },
     "languages": {
       "title": "语言技能",
-      "japanese": "日语：JLPT N1 180分（满分），7年日语教师经验",
-      "chinese": "中文：母语水平",
-      "english": "英语：TOEIC 625分"
+      "japanese": {
+        "name": "日语",
+        "level": "在日本生活15年的经验",
+        "details": "JLPT N1 180分（满分）。作为新东方日语教师，有7年、5,000多小时的教学经验。"
+      },
+      "chinese": {
+        "name": "中文",
+        "level": "母语水平",
+        "details": "北京出身，母语。"
+      },
+      "english": {
+        "name": "英语",
+        "level": "TOEIC 625分",
+        "details": "用于研究论文的写作和阅读。"
+      }
+    },
+    "projects": {
+      "japaneseApp": {
+        "name": "日语学习应用",
+        "description": "提供高效日语单词学习和听力练习的移动应用"
+      },
+      "llmAnalysis": {
+        "name": "LLM分析与微调",
+        "description": "面向外语教育的LLM分析和定制研究项目"
+      },
+      "categories": {
+        "language": "语言",
+        "server": "服务器",
+        "database": "数据库",
+        "infrastructure": "基础设施",
+        "framework": "框架",
+        "library": "库"
+      },
+      "connections": {
+        "apiComm": "API通信",
+        "dataAccess": "数据访问",
+        "hosting": "托管",
+        "modelTraining": "模型训练",
+        "integration": "集成"
+      }
     }
   },
   "about": {
-    "title": "公司与愿景信息",
+    "title": "公司信息",
     "company": {
       "name": "EastLinker株式会社",
-      "established": "成立：2023年",
-      "business": "业务内容：系统开发、AI开发、教育技术",
+      "established": "成立时间: 2023年10月",
+      "business": "业务内容: 系统开发、AI开发、教育技术",
+      "achievementsLabel": "主要成就:",
       "achievements": [
-        "承接国立国语研究所的词汇分析器开发",
-        "语言学习应用原型开发",
+        "受国立国语研究所委托开发词汇分析工具",
+        "语言学习应用程序原型开发",
         "为教育机构提供定制AI解决方案"
       ]
     },
     "mission": {
-      "title": "企业使命",
-      "statement": "『创造跨越语言障碍，连接人与人的技术』"
+      "title": "公司使命",
+      "statement": "「创造消除语言障碍、连接人与人的技术」",
+      "description": "EastLinker通过融合前沿AI技术和语言教育学专业知识，提供消除语言学习和跨文化交流障碍的解决方案。作为中日文化和语言的桥梁，我们通过教育和技术的力量，开创更丰富的国际交流未来。"
     },
     "vision": {
       "title": "职业愿景",
-      "statement": "『始终站在开发最前沿，推动AI与先进Web技术的融合』",
+      "statement": "「始终站在开发前沿，推动AI与尖端Web技术的融合」",
+      "description": "我希望在Web领域企业中发展职业，在前沿开发环境中始终站在技术最前沿。特别是通过参与使用React、Node.js和现代前端技术的Web应用程序开发，以及AI和大型语言模型（LLM）的实际应用，我希望在技术创新的中心发挥作用。",
       "details": [
         "Web领域企业的职业发展方向",
-        "运用React、Node.js、现代前端技术",
-        "AI及大型语言模型（LLM）的实用应用"
+        "React、Node.js和现代前端技术的应用",
+        "AI和大型语言模型（LLM）的实际应用"
       ]
     }
   },
   "footer": {
-    "contact": "联系我们",
-    "inquiry": "如有工作委托或问题，请通过以下方式联系我们。",
+    "contact": "联系方式",
+    "inquiry": "如有工作咨询或问题，请通过以下方式联系我。",
     "email": "邮箱",
-    "emailNote": "※为防止垃圾邮件，邮箱地址已被分割显示且使用字符引用。请手动输入。",
+    "emailNote": "* 为防止垃圾邮件，邮箱地址使用字符引用分段显示。请手动输入。",
     "socialMedia": "社交媒体",
-    "socialNote": "请查看我在各平台上的活动。",
-    "copyright": "© 2024 梁 震. 版权所有。"
+    "socialNote": "欢迎查看我在各平台上的活动。",
+    "copyright": "© 2024 梁震. All rights reserved."
+  },
+  "zennFeed": {
+    "title": "最新Zenn文章",
+    "description": "查看我的技术博客内容",
+    "viewMore": "查看更多",
+    "loading": "正在加载文章...",
+    "error": "无法加载文章。",
+    "viewOnZenn": "直接在Zenn上查看",
+    "articles": [
+      {
+        "id": "1",
+        "title": "在命令行中优雅地显示Git日志！",
+        "description": "在Git日志中显示变更行数！探索提交详情的多彩冒险。查看Git提交历史时，感觉就像阅读机械时间胶囊。但您是否想了解您的变更包含了多少热情（行数）？",
+        "link": "https://zenn.dev/ryoushin/articles/e62c5e0c0a3d8f",
+        "pubDate": "Sun, 16 Feb 2025 02:59:32 GMT",
+        "creator": "梁震"
+      },
+      {
+        "id": "2",
+        "title": "如何将所有Github仓库设为私有",
+        "description": "\"被全世界看到\"听起来可能很光鲜。但如果您的GitHub仓库变成了\"哎呀，我不小心公开了所有内容...\"怎么办？如果您不小心提交了API密钥或泄露了秘密源代码怎么办？",
+        "link": "https://zenn.dev/ryoushin/articles/6a07f7935f6966",
+        "pubDate": "Thu, 30 Jan 2025 12:00:03 GMT",
+        "creator": "梁震"
+      },
+      {
+        "id": "3",
+        "title": "工程师们，告别PowerPoint！用VS Code创建酷炫幻灯片",
+        "description": "GitHub仓库：https://github.com/ryoshin0830/markdown_slide 推荐给：打开PowerPoint就叹气的工程师，创建幻灯片时想编码的程序员，以及想要对演示文稿进行版本控制的GitHub用户！",
+        "link": "https://zenn.dev/ryoushin/articles/dac1c7058e08b7",
+        "pubDate": "Fri, 10 Jan 2025 02:04:29 GMT",
+        "creator": "梁震"
+      },
+      {
+        "id": "4",
+        "title": "用日语撰写论文的LaTeX模板",
+        "description": "本文介绍了一个模板，适用于那些想用日语撰写论文（如博士论文）的人，可以轻松管理BibLaTeX并妥善组织日语和英语参考文献。适合\"想用LaTeX撰写日语论文\"、\"觉得参考文献管理麻烦\"或\"发现日语引用样式差异太大\"的人。",
+        "link": "https://zenn.dev/ryoushin/articles/d3e815a2af8a1e",
+        "pubDate": "Fri, 03 Jan 2025 12:27:16 GMT",
+        "creator": "梁震"
+      }
+    ]
   }
 }

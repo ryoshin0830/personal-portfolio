@@ -17,6 +17,12 @@
   },
   "profile": {
     "title": "Profile",
+    "labels": {
+      "name": "Name:",
+      "birthdate": "Birth Date:",
+      "birthplace": "Birthplace:",
+      "residence": "Residence:"
+    },
     "basicInfo": {
       "name": "Shin Ryo",
       "birthdate": "August 30, 1997",
@@ -123,6 +129,7 @@
   },
   "publications": {
     "title": "Publications",
+    "paperLink": "Paper Link",
     "papers": [
       {
         "title": "Trends in AI Applications in Foreign Language Education",
@@ -169,48 +176,122 @@
     ]
   },
   "skills": {
-    "title": "Programming Skills & Technologies",
+    "title": "Skills",
+    "introduction": "Introducing the tech stack that I regularly use",
+    "projectsTitle": "Tech Stack by Project",
+    "mlTitle": "Machine Learning",
+    "mlSubtitle": "Libraries and Main Algorithms",
+    "languageTitle": "Language Skills",
+    "strengthsTitle": "Strengths & Future Vision",
+    "highlightTitle": "Strengths & Future Vision",
+    "highlight1Title": "Multilingual & Multicultural Background",
+    "highlight1Description": "As a Japanese-Chinese bilingual, I leverage my experiences of living in different cultural and linguistic environments. This experience helps me communicate smoothly in international team environments and solve problems from diverse perspectives. Additionally, my experience as a Japanese language teacher at New Oriental (7 years, 5,000+ hours) forms the foundation for educational content development and effective knowledge transfer.",
+    "highlight2Title": "Innovation in Educational Technology",
+    "highlight2Description": "By combining my expertise as a researcher and technical skills as an engineer, I can provide unique value in the fusion of education and technology. My experience in developing automatic vocabulary question generation algorithms and building vocabulary difficulty estimation models directly translates to the design of efficient learning support tools. In a project for the National Institute for Japanese Language and Linguistics, I have experience in turning theoretical research into practical web applications.",
+    "highlight3Title": "Building LLM-Specialized Language Learning Platforms",
+    "highlight3Description": "My vision for the next 5 years is to develop proprietary LLMs specialized for language learning and build a comprehensive learning platform utilizing them. I aim to construct high-precision models using unique training datasets incorporating linguistic insights, provide personalized learning experiences, and implement adaptive learning systems tailored to learners' proficiency levels. Through these technologies, I also want to contribute to improving accessibility in language education.",
     "programming": {
       "title": "Programming Languages",
-      "skills": ["JavaScript", "TypeScript", "Python", "Swift", "Objective-C", "C", "Java", "R"]
+      "skills": ["JavaScript", "TypeScript", "Python", "Swift", "Objective-C", "C", "Java", "R"],
+      "description": "Programming languages with practical experience"
     },
     "frontend": {
       "title": "Frontend Development",
-      "skills": ["React", "Next.js"]
+      "skills": ["React", "Next.js"],
+      "description": "Modern UI development technologies"
     },
     "backend": {
       "title": "Backend Development",
-      "skills": ["Next.js", "Node.js", "Django"]
+      "skills": ["Next.js", "Node.js", "Django"],
+      "description": "Server-side development technologies"
     },
     "database": {
       "title": "Databases",
-      "skills": ["MongoDB", "MariaDB"]
+      "skills": ["MongoDB", "MariaDB"],
+      "description": "Data management and storage technologies"
     },
     "mobile": {
       "title": "Mobile App Development",
-      "skills": ["React Native", "Swift"]
+      "skills": ["React Native", "Swift"],
+      "description": "iOS/Android app development"
     },
     "infrastructure": {
       "title": "Infrastructure & Middleware",
-      "skills": ["Linux", "Caddy2", "Nginx", "Apache"]
+      "skills": ["Linux", "Caddy2", "Nginx", "Apache"],
+      "description": "Server/deployment technologies"
     },
     "cloud": {
       "title": "Cloud & Deployment",
-      "skills": ["AWS", "Google Cloud Platform", "Vercel", "Alibaba Cloud"]
+      "skills": ["AWS", "Google Cloud Platform", "Vercel", "Alibaba Cloud"],
+      "description": "Cloud service utilization technologies"
     },
     "tools": {
       "title": "Tools",
-      "skills": ["Docker", "Git & Git LFS", "PyTorch", "Axolotl"]
+      "skills": ["Docker", "Git & Git LFS", "PyTorch", "Axolotl"],
+      "description": "Development productivity tools"
     },
     "ml": {
       "title": "Machine Learning",
-      "skills": ["TensorFlow", "PyTorch", "Transformers", "Axolotl"]
+      "skills": ["TensorFlow", "PyTorch", "Transformers", "Axolotl"],
+      "tensorflow": {
+        "purpose": "Doctoral thesis \"Application of LLMs in Foreign Language Education\"",
+        "description": "Working on fine-tuning and building large language models (LLMs). With applications in foreign language education in mind, I implement parameter adjustment and optimization of training processes. I also have experience with production environment deployment using the TensorFlow ecosystem."
+      },
+      "pytorch": {
+        "purpose": "Research and development of natural language processing models",
+        "description": "Used for implementation and experimentation with the latest language model architectures. Leveraging the flexibility of dynamic computation graphs to implement custom layers and loss functions. Also conducting training of large-scale models using distributed learning and model optimization using quantization techniques."
+      },
+      "transformers": {
+        "purpose": "Research and application of cutting-edge NLP models",
+        "description": "Implementation of various NLP tasks using pre-trained language models. Contributing to the development of educational support systems that integrate functions such as text generation, classification, and summarization. Improving the accuracy of automatic generation of educational content through model customization and fine-tuning."
+      },
+      "axolotl": {
+        "purpose": "Efficient LLM fine-tuning",
+        "description": "Utilized for efficient model adjustment under computational resource constraints. Developing education-specialized LLMs while minimizing GPU requirements using techniques such as QLoRA and LoRA. Conducting fine-tuning with original datasets that consider the characteristics of formal language learners."
+      }
     },
     "languages": {
       "title": "Language Skills",
-      "japanese": "Japanese: JLPT N1 180 points (perfect score), 7 years experience as a Japanese teacher",
-      "chinese": "Chinese: Native level",
-      "english": "English: TOEIC 625 points"
+      "japanese": {
+        "name": "Japanese",
+        "level": "15 years of living experience in Japan",
+        "details": "JLPT N1 180 points (perfect score). 7 years and over 5,000 hours of experience as a Japanese teacher at New Oriental."
+      },
+      "chinese": {
+        "name": "Chinese",
+        "level": "Native level",
+        "details": "Native language as I am from Beijing."
+      },
+      "english": {
+        "name": "English",
+        "level": "TOEIC 625 points",
+        "details": "Used for writing and reading research papers."
+      }
+    },
+    "projects": {
+      "japaneseApp": {
+        "name": "Japanese Learning App",
+        "description": "Mobile app that provides efficient Japanese vocabulary learning and listening practice"
+      },
+      "llmAnalysis": {
+        "name": "LLM Analysis & Fine-tuning",
+        "description": "Research project analyzing and customizing LLMs specialized for foreign language education"
+      },
+      "categories": {
+        "language": "Language",
+        "server": "Server",
+        "database": "Database",
+        "infrastructure": "Infrastructure",
+        "framework": "Framework",
+        "library": "Library"
+      },
+      "connections": {
+        "apiComm": "API Communication",
+        "dataAccess": "Data Access",
+        "hosting": "Hosting",
+        "modelTraining": "Model Training",
+        "integration": "Integration"
+      }
     }
   },
   "about": {
@@ -219,6 +300,7 @@
       "name": "EastLinker Inc.",
       "established": "Established: 2023",
       "business": "Business: System Development, AI Development, Educational Technology",
+      "achievementsLabel": "Main Achievements:",
       "achievements": [
         "Commissioned to develop a vocabulary analysis profiler for the National Institute for Japanese Language and Linguistics",
         "Development of language learning app prototypes",
@@ -227,11 +309,13 @@
     },
     "mission": {
       "title": "Company Mission",
-      "statement": "\"Creating technology that connects people by breaking language barriers\""
+      "statement": "\"Creating technology that connects people by breaking language barriers\"",
+      "description": "EastLinker provides solutions that remove barriers to language learning and intercultural communication by combining cutting-edge AI technology with expertise in language education. As a cultural and linguistic bridge between Japan and China, we pioneer a richer future of international exchange through the power of education and technology."
     },
     "vision": {
       "title": "Career Vision",
       "statement": "\"Always standing at the forefront of development, promoting the fusion of AI and cutting-edge web technologies\"",
+      "description": "I aim for a career in web-based companies, wanting to constantly stand at the forefront of technology in cutting-edge development environments. I particularly want to be at the center of technological innovation by engaging in web application development using React, Node.js, and modern frontend technologies, as well as practical applications of AI and large language models (LLMs).",
       "details": [
         "Career orientation in web-based companies",
         "Utilization of React, Node.js, and modern frontend technologies",
@@ -247,5 +331,47 @@
     "socialMedia": "Social Media",
     "socialNote": "Check out my activities on various platforms.",
     "copyright": "© 2024 Shin Ryo. All rights reserved."
+  },
+  "zennFeed": {
+    "title": "Latest Zenn Articles",
+    "description": "Check out my technical blog posts",
+    "viewMore": "View More",
+    "loading": "Loading articles...",
+    "error": "Could not load articles.",
+    "viewOnZenn": "View directly on Zenn",
+    "articles": [
+      {
+        "id": "1",
+        "title": "Display Git Logs Beautifully in Command Line!",
+        "description": "Show line changes in Git logs! A colorful adventure into commit details. Looking at Git commit history can feel like reading a mechanical time capsule. But wouldn't you like to see how much passion (line count) was involved in your changes?",
+        "link": "https://zenn.dev/ryoushin/articles/e62c5e0c0a3d8f",
+        "pubDate": "Sun, 16 Feb 2025 02:59:32 GMT",
+        "creator": "Shin"
+      },
+      {
+        "id": "2",
+        "title": "How to Make All Your Github Repositories Private",
+        "description": "Being 'visible to the world' might sound glamorous. But what if your GitHub repositories have 'Oops, I accidentally made everything public...'? What if you've committed API keys or exposed secret source code?",
+        "link": "https://zenn.dev/ryoushin/articles/6a07f7935f6966",
+        "pubDate": "Thu, 30 Jan 2025 12:00:03 GMT",
+        "creator": "Shin"
+      },
+      {
+        "id": "3",
+        "title": "Engineers, Farewell PowerPoint! Create Cool Slides with VS Code",
+        "description": "GitHub repository: https://github.com/ryoshin0830/markdown_slide Recommended for: Engineers who sigh when opening PowerPoint, Programmers who want to code while creating slides, and GitHub users who want version control for their presentations!",
+        "link": "https://zenn.dev/ryoushin/articles/dac1c7058e08b7",
+        "pubDate": "Fri, 10 Jan 2025 02:04:29 GMT",
+        "creator": "Shin"
+      },
+      {
+        "id": "4",
+        "title": "LaTeX Template for Writing Papers in Japanese",
+        "description": "This article introduces a template for those who want to write papers (such as doctoral theses) in Japanese, with easy BibLaTeX management and proper organization of Japanese and English references. For people who 'want to write Japanese papers in LaTeX', find 'reference management troublesome', or notice 'Japanese citation styles are too different'.",
+        "link": "https://zenn.dev/ryoushin/articles/d3e815a2af8a1e",
+        "pubDate": "Fri, 03 Jan 2025 12:27:16 GMT",
+        "creator": "Shin"
+      }
+    ]
   }
 }

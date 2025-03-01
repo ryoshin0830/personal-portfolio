@@ -11,7 +11,7 @@ import { ReactComponent as StartupIcon } from '../../assets/icons/startup.svg';
 import { ReactComponent as VerticalFlightPath } from '../../assets/icons/vertical-flight-path.svg';
 
 const TimeLine = () => {
-  const { t, language } = useContext(LanguageContext);
+  const { t } = useContext(LanguageContext);
   // タイムラインデータをt.education.eventsから取得
   const timelineData = t.education.events.map(event => {
     // アイコンとロケーションのマッピング

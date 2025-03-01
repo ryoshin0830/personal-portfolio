@@ -3,7 +3,7 @@ import './Publications.css';
 import { LanguageContext } from '../../contexts/LanguageContext';
 
 const Publications = () => {
-  const { t, language } = useContext(LanguageContext);
+  const { t } = useContext(LanguageContext);
   const publications = [
     {
       id: 1,
@@ -93,7 +93,7 @@ const Publications = () => {
                 </p>
                 {pub.doi && (
                   <a href={pub.doi} target="_blank" rel="noopener noreferrer" className="publication-link">
-                    {language === 'ja' ? '論文リンク' : language === 'en' ? 'Paper Link' : '论文链接'}
+                    {t.publications.paperLink}
                   </a>
                 )}
               </div>
