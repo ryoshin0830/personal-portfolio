@@ -3,14 +3,12 @@ import './App.css';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Profile from './components/Profile/Profile';
-import TimeLine from './components/Education/Education';
+import Education from './components/Education/Education';
 import Research from './components/Research/Research';
 import Publications from './components/Publications/Publications';
 import Skills from './components/Skills/Skills';
-import ZennFeed from './components/ZennFeed/ZennFeed';
 import About from './components/About/About';
 import Footer from './components/Footer/Footer';
-import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
   // Animation effect for scroll reveal
@@ -50,20 +48,17 @@ function App() {
   }, []);
   
   return (
-    <LanguageProvider>
-      <div className="App">
-        <Header />
-        <Hero />
-        <Profile />
-        <TimeLine />
-        <Research />
-        <Publications />
-        <Skills />
-        <ZennFeed />
-        <About />
-        <Footer />
-      </div>
-    </LanguageProvider>
+    <div className="App">
+      <Header />
+      <Hero />
+      <Profile />
+      <Education />
+      <Research />
+      <Publications />
+      <Skills />
+      <About />
+      <Footer />
+    </div>
   );
 }
 

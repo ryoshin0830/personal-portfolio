@@ -1,63 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
 :root {
   /* Modern vibrant accent colors */
-  --primary-color: #3A86FF;
-  --secondary-color: #00D4FF;
-  --accent-color: #FF3DCA;
-  --purple-color: #5E17EB;
-  --orange-color: #FF9F1C;
-  --teal-color: #2EC4B6;
+  --primary-color: #4361ee;
+  --secondary-color: #4cc9f0;
+  --accent-color: #f72585;
+  --purple-color: #7209b7;
+  --orange-color: #fb8500;
+  --teal-color: #2ec4b6;
   
   /* Dark theme colors */
-  --dark-color: #0A0E17;
-  --dark-secondary: #111827;
-  --dark-tertiary: #1F2937;
-  --light-color: #FFFFFF;
-  --off-white: #F9FAFB;
-  --gray-color: #9CA3AF;
+  --dark-color: #0f0e17;
+  --dark-secondary: #1b1a2e;
+  --dark-tertiary: #252440;
+  --light-color: #fffffe;
+  --off-white: rgba(255, 255, 255, 0.87);
+  --gray-color: #9e9eaf;
   --gray-light: rgba(255, 255, 255, 0.12);
-  --gray-dark: #374151;
-  --gray-medium: #6B7280;
+  --gray-dark: #2e2e3a;
+  --gray-medium: #6e6e8a;
   
-  --border-radius: 16px;
-  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
   --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   
   /* Modern gradient backgrounds */
-  --gradient-blue: linear-gradient(135deg, #3A86FF, #00D4FF);
-  --gradient-purple: linear-gradient(135deg, #5E17EB, #FF3DCA);
-  --gradient-pink: linear-gradient(135deg, #FF3DCA, #FF9F1C);
-  --gradient-teal: linear-gradient(135deg, #2EC4B6, #00D4FF);
-  --gradient-dark: linear-gradient(135deg, #0A0E17, #1F2937);
+  --gradient-blue: linear-gradient(135deg, #4361ee, #4cc9f0);
+  --gradient-purple: linear-gradient(135deg, #7209b7, #f72585);
+  --gradient-pink: linear-gradient(135deg, #f72585, #ff9e00);
+  --gradient-teal: linear-gradient(135deg, #2ec4b6, #4cc9f0);
+  --gradient-dark: linear-gradient(135deg, #0f0e17, #252440);
   
   /* Card components */
-  --card-bg: #FFFFFF;
-  --card-bg-light: rgba(255, 255, 255, 0.05);
-  --card-border: rgba(229, 231, 235, 0.5);
-  --backdrop-blur: blur(15px);
+  --card-bg: #1b1a2e;
+  --card-bg-light: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --backdrop-blur: blur(10px);
   
   /* Text contrast */
-  --text-on-light: #111827;
-  --text-on-dark: #FFFFFF;
-  --text-secondary-on-light: #4B5563;
-  --text-secondary-on-dark: rgba(255, 255, 255, 0.8);
+  --text-on-light: #0f0e17;
+  --text-on-dark: #fffffe;
+  --text-secondary-on-light: #6e6e8a;
+  --text-secondary-on-dark: rgba(255, 255, 255, 0.7);
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'SF Pro Display', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background-color: var(--light-color);
-  color: var(--text-on-light);
-  font-size: 16px;
-  line-height: 1.7;
+  background-color: var(--dark-color);
+  color: var(--text-on-dark);
+  font-size: 17px;
+  line-height: 1.6;
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(58, 134, 255, 0.05), transparent 35%),
-    radial-gradient(circle at 90% 90%, rgba(255, 61, 202, 0.03), transparent 35%),
-    radial-gradient(circle at 90% 10%, rgba(0, 212, 255, 0.05), transparent 35%);
+    radial-gradient(circle at 10% 10%, rgba(67, 97, 238, 0.1), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(247, 37, 133, 0.07), transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(76, 201, 240, 0.05), transparent 30%);
 }
 
 code {
@@ -281,51 +281,15 @@ section {
 /* Media queries */
 @media (max-width: 768px) {
   .heading-large {
-    font-size: 40px;
+    font-size: 42px;
   }
   
   .heading-medium {
-    font-size: 30px;
-  }
-  
-  .heading-small {
-    font-size: 20px;
-  }
-  
-  section {
-    padding: 70px 0;
-  }
-  
-  button, .btn {
-    padding: 14px 28px;
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .heading-large {
     font-size: 32px;
   }
   
-  .heading-medium {
-    font-size: 26px;
-  }
-  
-  .heading-small {
-    font-size: 18px;
-  }
-  
   section {
-    padding: 60px 0;
-  }
-  
-  button, .btn {
-    padding: 12px 24px;
-    font-size: 14px;
-  }
-  
-  .card, .glass-card {
-    padding: 24px;
+    padding: 80px 0;
   }
 }
 
