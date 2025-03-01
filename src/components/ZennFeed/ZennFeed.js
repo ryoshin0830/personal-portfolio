@@ -19,42 +19,6 @@ const ZennFeed = () => {
   }, []);
 
   useEffect(() => {
-    // RSSフィードの解析に関する問題を避けるため、静的データを使用
-    const zennArticles = [
-      {
-        id: '1',
-        title: 'コマンドラインでGitログをおしゃれに表示！',
-        description: 'Gitログに変更行数も表示！ コミットの内訳をひも解くカラフルな冒険 Gitのコミット履歴を眺めると、まるで無機質なタイムカプセルのよう。でも、あなたの変更がどのくらいの情熱（行数）を伴っていたのか、もっと詳しく見てみたくありませんか？',
-        link: 'https://zenn.dev/ryoushin/articles/e62c5e0c0a3d8f',
-        pubDate: 'Sun, 16 Feb 2025 02:59:32 GMT',
-        creator: 'Shin'
-      },
-      {
-        id: '2',
-        title: 'Githubのレポジトリを全てPrivateにする方法',
-        description: '「世界から見られている」というと、一見華やかでカッコいいかもしれません。しかし、あなたのGitHubリポジトリが「おっと、うっかり中身を公開していた…」となっていたらどうでしょう。そもそも間違ってAPIキー丸出しのコミットをしていたり、秘伝のソースコードを晒していたり…',
-        link: 'https://zenn.dev/ryoushin/articles/6a07f7935f6966',
-        pubDate: 'Thu, 30 Jan 2025 12:00:03 GMT',
-        creator: 'Shin'
-      },
-      {
-        id: '3',
-        title: 'エンジニアよ、さらばPowerPoint！VS CodeでCoolなスライドを作ろう',
-        description: 'GitHubリポジトリー:https://github.com/ryoshin0830/markdown_slide こんな人にオススメ！ 「PowerPointを開くとため息が出る」エンジニア 「スライド作成中にコード書きたくなる」プログラマー 「バージョン管理したい！」という潔癖性GitHuber',
-        link: 'https://zenn.dev/ryoushin/articles/dac1c7058e08b7',
-        pubDate: 'Fri, 10 Jan 2025 02:04:29 GMT',
-        creator: 'Shin'
-      },
-      {
-        id: '4',
-        title: '日本語で論文を書く際のLaTeXテンプレート',
-        description: '日本語で論文（博士論文など）を書く際に、BibLaTeX管理を簡単にしながら日本語と英語の文献をきちんと整理したい人向けのテンプレート紹介記事です。「日本語の論文をLaTeXで書きたい」「参考文献管理が面倒…」「日本語論文引用のスタイルが違いすぎる…」',
-        link: 'https://zenn.dev/ryoushin/articles/d3e815a2af8a1e',
-        pubDate: 'Fri, 03 Jan 2025 12:27:16 GMT',
-        creator: 'Shin'
-      }
-    ];
-    
     // 画面幅に応じて表示数を決定
     const getArticleCount = () => {
       if (windowWidth <= 480) {
@@ -65,12 +29,57 @@ const ZennFeed = () => {
         return 4; // デスクトップでは4記事
       }
     };
+
+    const fetchRssFeed = async () => {
+      try {
+        setLoading(true);
+        
+        // CORS問題を回避するためにプロキシサービスを使用
+        const proxyUrl = 'https://api.allorigins.win/raw?url=';
+        const rssUrl = 'https://zenn.dev/ryoushin/feed';
+        const response = await fetch(`${proxyUrl}${encodeURIComponent(rssUrl)}`);
+        
+        if (!response.ok) {
+          throw new Error('RSSフィードの取得に失敗しました');
+        }
+        
+        const xmlText = await response.text();
+        
+        // XMLをパースする
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        
+        // 記事データを抽出
+        const items = xmlDoc.querySelectorAll('item');
+        const parsedArticles = [];
+        
+        items.forEach((item, index) => {
+          const getElementText = (tagName) => {
+            const element = item.querySelector(tagName);
+            return element ? element.textContent : '';
+          };
+          
+          parsedArticles.push({
+            id: index.toString(),
+            title: getElementText('title'),
+            description: getElementText('description'),
+            link: getElementText('link'),
+            pubDate: getElementText('pubDate'),
+            creator: getElementText('dc\\:creator') || getElementText('creator')
+          });
+        });
+        
+        // 表示数を制限
+        setArticles(parsedArticles.slice(0, getArticleCount()));
+        setLoading(false);
+      } catch (err) {
+        console.error('RSSフィード取得エラー:', err);
+        setError('記事の読み込みに失敗しました。後でもう一度お試しください。');
+        setLoading(false);
+      }
+    };
     
-    // 少し遅延を入れてロード感を出す
-    setTimeout(() => {
-      setArticles(zennArticles.slice(0, getArticleCount()));
-      setLoading(false);
-    }, 800);
+    fetchRssFeed();
   }, [windowWidth]);
 
   // 日付フォーマット関数
