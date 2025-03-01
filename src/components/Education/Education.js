@@ -267,10 +267,7 @@ const TimeLine = () => {
                     </div>
                   )}
                   
-                  {/* 国旗やロケーションマーカー */}
-                  {period.location && (
-                    <div className={`location-marker ${period.location}`}></div>
-                  )}
+                  {/* 国旗やロケーションマーカーは削除 */}
                   
                   {/* 大学ロゴの表示 */}
                   {period.universityLogo === 'kyoto' && (
