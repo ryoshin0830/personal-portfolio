@@ -6,52 +6,81 @@ const useZennArticles = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isAccessible, setIsAccessible] = useState(true); // Zennへのアクセス可否
 
   useEffect(() => {
     const fetchRssFeed = async () => {
       try {
         setLoading(true);
         
+        // タイムアウト処理のためのAbortControllerを設定
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000); // 2秒のタイムアウト
+        
         // CORS問題を回避するためにプロキシサービスを使用
         const proxyUrl = 'https://api.allorigins.win/raw?url=';
         const rssUrl = 'https://zenn.dev/ryoushin/feed';
-        const response = await fetch(`${proxyUrl}${encodeURIComponent(rssUrl)}`);
         
-        if (!response.ok) {
-          throw new Error('RSSフィードの取得に失敗しました');
-        }
-        
-        const xmlText = await response.text();
-        
-        // XMLをパースする
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-        
-        // 記事データを抽出
-        const items = xmlDoc.querySelectorAll('item');
-        const parsedArticles = [];
-        
-        items.forEach((item, index) => {
-          const getElementText = (tagName) => {
-            const element = item.querySelector(tagName);
-            return element ? element.textContent : '';
-          };
-          
-          parsedArticles.push({
-            id: index.toString(),
-            title: getElementText('title'),
-            description: getElementText('description'),
-            link: getElementText('link'),
-            pubDate: getElementText('pubDate'),
-            creator: getElementText('dc\\:creator') || getElementText('creator')
+        try {
+          const response = await fetch(`${proxyUrl}${encodeURIComponent(rssUrl)}`, {
+            signal: controller.signal
           });
-        });
-        
-        setArticles(parsedArticles);
-        setLoading(false);
+          
+          // タイムアウトタイマーをクリア
+          clearTimeout(timeoutId);
+          
+          if (!response.ok) {
+            throw new Error('RSSフィードの取得に失敗しました');
+          }
+          
+          const xmlText = await response.text();
+          
+          // XMLをパースする
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+          
+          // 記事データを抽出
+          const items = xmlDoc.querySelectorAll('item');
+          const parsedArticles = [];
+          
+          items.forEach((item, index) => {
+            const getElementText = (tagName) => {
+              const element = item.querySelector(tagName);
+              return element ? element.textContent : '';
+            };
+            
+            parsedArticles.push({
+              id: index.toString(),
+              title: getElementText('title'),
+              description: getElementText('description'),
+              link: getElementText('link'),
+              pubDate: getElementText('pubDate'),
+              creator: getElementText('dc\\:creator') || getElementText('creator')
+            });
+          });
+          
+          setArticles(parsedArticles);
+          setLoading(false);
+          setIsAccessible(true);
+        } catch (fetchError) {
+          // AbortError（タイムアウト）またはその他のフェッチエラー
+          clearTimeout(timeoutId);
+          console.error('Zennへのアクセスエラー:', fetchError);
+          
+          if (fetchError.name === 'AbortError') {
+            console.log('Zennの記事取得がタイムアウトしました');
+            setIsAccessible(false);
+          } else {
+            setError('記事の読み込みに失敗しました');
+            setIsAccessible(false);
+          }
+          
+          setLoading(false);
+        }
       } catch (err) {
         console.error('RSSフィード取得エラー:', err);
         setError('記事の読み込みに失敗しました。後でもう一度お試しください。');
+        setIsAccessible(false);
         setLoading(false);
       }
     };
@@ -59,7 +88,7 @@ const useZennArticles = () => {
     fetchRssFeed();
   }, []);
 
-  return { articles, loading, error };
+  return { articles, loading, error, isAccessible };
 };
 
 // 共通ユーティリティ関数
@@ -85,7 +114,7 @@ const formatDescription = (description, maxLength = 100) => {
 
 // ハイライト記事コンポーネント
 export const ZennHighlight = () => {
-  const { articles, loading, error } = useZennArticles();
+  const { articles, loading, error, isAccessible } = useZennArticles();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -96,7 +125,8 @@ export const ZennHighlight = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading || error || articles.length === 0) return null;
+  // Zennにアクセスできない場合またはエラー時は非表示
+  if (!isAccessible || loading || error || articles.length === 0) return null;
 
   // 最新記事だけを表示
   const latestArticle = articles[0];
@@ -128,7 +158,7 @@ export const ZennHighlight = () => {
 
 // メインのZennフィードコンポーネント
 const ZennFeed = () => {
-  const { articles, loading, error } = useZennArticles();
+  const { articles, loading, error, isAccessible } = useZennArticles();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -140,6 +170,9 @@ const ZennFeed = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+  
+  // Zennにアクセスできない場合は何も表示しない
+  if (!isAccessible) return null;
 
   // 画面幅に応じて表示数を決定
   const getArticleCount = () => {
