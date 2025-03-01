@@ -7,6 +7,7 @@ import { ReactComponent as SchoolIcon } from '../../assets/icons/school.svg';
 import { ReactComponent as UniversityIcon } from '../../assets/icons/university.svg';
 import { ReactComponent as ResearchIcon } from '../../assets/icons/research.svg';
 import { ReactComponent as StartupIcon } from '../../assets/icons/startup.svg';
+import { ReactComponent as PermanentResidentIcon } from '../../assets/icons/permanent-resident.svg';
 import { ReactComponent as VerticalFlightPath } from '../../assets/icons/vertical-flight-path.svg';
 
 const TimeLine = () => {
@@ -50,6 +51,15 @@ const TimeLine = () => {
         to: 'china',
         type: 'international'
       }
+    },
+    { 
+      year: '2010', 
+      age: '', 
+      items: ['日本の永住許可を取得'],
+      title: '永住許可取得',
+      icon: 'permanent-resident',
+      highlight: true,
+      location: 'china',
     },
     { 
       year: '2013', 
@@ -196,6 +206,8 @@ const TimeLine = () => {
         return <StartupIcon className="timeline-icon startup" />;
       case 'birth':
         return <BirthIcon className="timeline-icon birth" />;
+      case 'permanent-resident':
+        return <PermanentResidentIcon className="timeline-icon permanent-resident" />;
       default:
         return null;
     }
