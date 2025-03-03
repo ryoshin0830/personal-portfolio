@@ -1,0 +1,316 @@
+.certifications-section {
+  padding: 100px 0;
+  background-color: var(--light-color);
+  overflow: hidden;
+  position: relative;
+}
+
+.certifications-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 20%, rgba(58, 134, 255, 0.05), transparent 60%);
+  pointer-events: none;
+}
+
+.certifications-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 50px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.jlpt-row {
+  width: 100%;
+}
+
+.other-certifications-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.jlpt-card {
+  background: linear-gradient(145deg, #fff, #f0f7ff);
+  border-left: 6px solid var(--primary-color);
+  box-shadow: 0 15px 35px rgba(58, 134, 255, 0.15);
+  transition: all 0.4s ease;
+  padding: 40px;
+}
+
+.jlpt-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(58, 134, 255, 0.2);
+}
+
+.certification-card {
+  background-color: white;
+  padding: 32px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--card-border);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 1;
+}
+
+.certification-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.certification-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.certification-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.certification-card:hover::before {
+  opacity: 0.6;
+}
+
+.certification-card.highlight {
+  box-shadow: 0 10px 30px rgba(58, 134, 255, 0.15);
+  border: 1px solid rgba(58, 134, 255, 0.2);
+  background: linear-gradient(180deg, white, rgba(240, 247, 255, 0.5));
+}
+
+.certification-card.highlight::before {
+  background: var(--gradient-blue);
+  opacity: 1;
+}
+
+.certification-card.featured {
+  padding: 40px;
+  background: linear-gradient(160deg, #fff, #f5f9ff);
+  border-left: 5px solid var(--primary-color);
+}
+
+.certification-icon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 32px;
+  opacity: 0.8;
+  transform: rotate(-5deg);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.certification-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  padding-right: 40px; /* アイコン用のスペース */
+}
+
+.certification-title {
+  font-weight: 700;
+  font-size: 22px;
+  margin: 0;
+  margin-right: 12px;
+  color: var(--primary-color);
+  line-height: 1.3;
+}
+
+.certification-level {
+  font-size: 14px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(58, 134, 255, 0.1);
+  color: var(--primary-color);
+  font-weight: 600;
+  white-space: nowrap;
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(58, 134, 255, 0.1);
+}
+
+.certification-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.certification-date {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.certification-details {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.highlight-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(135deg, #3a86ff, #4361ee);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 0 var(--border-radius) 0 var(--border-radius);
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.25);
+  letter-spacing: 0.05em;
+}
+
+/* 資格サマリー部分 */
+.cert-summary {
+  margin-top: 60px;
+  background: linear-gradient(145deg, rgba(240, 247, 255, 0.7), rgba(230, 240, 250, 0.9));
+  border-radius: var(--border-radius);
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  opacity: 1; /* 初期値を1に変更 */
+  transition: all 0.5s ease;
+}
+
+.cert-summary.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.cert-summary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 70%, rgba(58, 134, 255, 0.08), transparent 70%);
+  z-index: 0;
+}
+
+.cert-summary-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cert-summary h3 {
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+.cert-summary h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-blue);
+  border-radius: 2px;
+}
+
+.cert-summary p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  max-width: 900px;
+}
+
+/* アニメーション */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(58, 134, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(58, 134, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(58, 134, 255, 0);
+  }
+}
+
+.certification-card.highlight {
+  animation: pulse 2s infinite;
+}
+
+/* レスポンシブスタイル */
+@media (max-width: 1024px) {
+  .certifications-vertical {
+    gap: 24px;
+  }
+  
+  .other-certifications-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .jlpt-card {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .other-certifications-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .jlpt-card {
+    margin-bottom: 10px;
+  }
+  
+  .certification-card {
+    padding: 25px;
+  }
+  
+  .certification-icon {
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+  }
+  
+  .certification-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .cert-summary {
+    padding: 30px 20px;
+  }
+  
+  .cert-summary h3 {
+    font-size: 20px;
+  }
+  
+  .cert-summary p {
+    font-size: 15px;
+  }
+}

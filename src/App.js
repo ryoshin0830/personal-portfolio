@@ -8,6 +8,7 @@ import Research from './components/Research/Research';
 import Publications from './components/Publications/Publications';
 import Skills from './components/Skills/Skills';
 import Teaching from './components/Teaching/Teaching';
+import Certifications from './components/Certifications/Certifications';
 import Photos from './components/Photos/Photos';
 import ZennFeed, { ZennHighlight } from './components/ZennFeed/ZennFeed';
 import About from './components/About/About';
@@ -61,6 +62,7 @@ function App() {
       <Publications />
       <Skills />
       <Teaching />
+      <Certifications />
       <Photos />
       <ZennFeed />
       <About />

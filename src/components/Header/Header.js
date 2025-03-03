@@ -56,6 +56,7 @@ const Header = () => {
             <li><a href="#publications" onClick={closeMenu}>論文</a></li>
             <li><a href="#skills" onClick={closeMenu}>スキル</a></li>
             <li><a href="#teaching" onClick={closeMenu}>日本語教師</a></li>
+            <li><a href="#certifications" onClick={closeMenu}>資格・免許</a></li>
             <li><a href="#photos" onClick={closeMenu}>フォト</a></li>
             <li><a href="#zenn-feed" onClick={closeMenu}>Zenn記事</a></li>
             <li><a href="#about" onClick={closeMenu}>会社情報</a></li>
