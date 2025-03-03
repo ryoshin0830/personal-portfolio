@@ -7,6 +7,7 @@ import TimeLine from './components/Education/Education';
 import Research from './components/Research/Research';
 import Publications from './components/Publications/Publications';
 import Skills from './components/Skills/Skills';
+import Teaching from './components/Teaching/Teaching';
 import Photos from './components/Photos/Photos';
 import ZennFeed, { ZennHighlight } from './components/ZennFeed/ZennFeed';
 import About from './components/About/About';
@@ -59,6 +60,7 @@ function App() {
       <Research />
       <Publications />
       <Skills />
+      <Teaching />
       <Photos />
       <ZennFeed />
       <About />

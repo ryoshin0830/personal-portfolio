@@ -1,0 +1,344 @@
+.teaching-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.teaching-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(67, 97, 238, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(247, 37, 133, 0.05) 0%, transparent 30%);
+  z-index: 0;
+}
+
+.teaching-section .container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-subtitle {
+  color: #4361EE;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 1.5px;
+  font-size: 14px;
+}
+
+.with-decoration {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+.with-decoration::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 60px;
+  height: 3px;
+  background-color: #F72585;
+}
+
+.section-description {
+  font-size: 18px;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+/* 教師プロフィール */
+.teaching-profile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 60px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.teaching-profile-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.teaching-profile-skills {
+  flex: 1;
+  min-width: 300px;
+}
+
+.teaching-profile h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: #333;
+  position: relative;
+}
+
+.teaching-profile h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 40px;
+  height: 2px;
+  background-color: #4CC9F0;
+}
+
+.teaching-highlights {
+  list-style: none;
+  padding: 0;
+}
+
+.teaching-highlights li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.highlight-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.teaching-skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.teaching-skill {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.teaching-skill:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.teaching-skill h4 {
+  color: #4361EE;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.teaching-skill p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* コース紹介 */
+.teaching-courses {
+  margin-bottom: 60px;
+}
+
+.courses-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.course-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.course-card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.course-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.course-card h4 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.course-description {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.course-features {
+  list-style: none;
+  padding: 0;
+}
+
+.course-features li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #555;
+}
+
+.feature-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* 指導方針 */
+.teaching-philosophy {
+  margin-bottom: 60px;
+}
+
+.philosophy-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.philosophy-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.philosophy-item {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  background-color: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.philosophy-icon {
+  font-size: 2rem;
+  margin-right: 20px;
+}
+
+.philosophy-text h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.philosophy-text p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* 教育成果 */
+.teaching-results {
+  text-align: center;
+}
+
+.results-title {
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.results-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #F72585;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 16px;
+  color: #666;
+}
+
+.teaching-cta {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 30px;
+  border-left: 4px solid #4361EE;
+}
+
+.teaching-cta p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .teaching-profile {
+    flex-direction: column;
+  }
+  
+  .course-card {
+    min-width: 100%;
+  }
+  
+  .philosophy-item {
+    min-width: 100%;
+  }
+  
+  .results-stats {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .with-decoration {
+    font-size: 2rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+}
