@@ -361,7 +361,6 @@ const Skills = () => {
       language: '英語',
       icon: '🇬🇧',
       color: '#012169',
-      level: 'TOEIC 625点',
       details: '研究論文の執筆や読解で使用。'
     }
   ];
@@ -1093,7 +1092,6 @@ const Skills = () => {
                 </motion.span>
                 <h4>{lang.language}</h4>
               </div>
-              <p className="language-level">{lang.level}</p>
               <p>{lang.details}</p>
               {/* 言語固有のアニメーション要素 */}
               <motion.div 
