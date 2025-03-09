@@ -1,3 +1,9 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# サイトマップのリンク
+Sitemap: https://about.if.gy/sitemap.xml
+
+# クロールの頻度を指定する (オプション)
+Crawl-delay: 10

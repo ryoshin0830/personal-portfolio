@@ -1,9 +1,15 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import './Profile.css';
 
 const Profile = () => {
   return (
     <section id="profile" className="profile-section">
+      <Helmet>
+        <title>梁震のプロフィール | ポートフォリオ</title>
+        <meta name="description" content="梁震のプロフィール - 京都大学大学院で外国語教育と機械学習を研究、株式会社EastLinker代表。LLMやNLP研究、アプリ開発など多彩な経験を持つエンジニア・研究者。" />
+        <meta name="keywords" content="梁震, プロフィール, 京都大学, EastLinker, 機械学習, LLM, NLP, React開発" />
+      </Helmet>
       <div className="container">
         <h2>プロフィール</h2>
         <div className="profile-content">

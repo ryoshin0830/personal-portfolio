@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -31,11 +32,31 @@ const Header = () => {
     document.body.style.overflow = '';
   };
 
+  // メイン画面でのスムーズスクロール用
+  const handleSmoothScroll = (e, sectionId) => {
+    e.preventDefault();
+    
+    if (window.location.pathname !== '/') {
+      // ホームページ以外の場合は、ホームにリダイレクトしてからスクロール
+      return; // URL変更はLinkコンポーネントで行う
+    }
+
+    // ホームページ内でのスムーズスクロール
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    closeMenu();
+  };
+
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
         <div className="logo">
-          <h1 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>梁 震</h1>
+          <Link to="/" onClick={closeMenu}>
+            <h1 style={{ cursor: 'pointer' }}>梁 震</h1>
+          </Link>
         </div>
         <button 
           className={`nav-button ${isMenuOpen ? 'active' : ''}`}
@@ -50,16 +71,76 @@ const Header = () => {
         </button>
         <nav className={`main-nav ${isMenuOpen ? 'active' : ''}`}>
           <ul>
-            <li><a href="#profile" onClick={closeMenu}>プロフィール</a></li>
-            <li><a href="#timeline" onClick={closeMenu}>経歴</a></li>
-            <li><a href="#research" onClick={closeMenu}>研究</a></li>
-            <li><a href="#publications" onClick={closeMenu}>論文</a></li>
-            <li><a href="#skills" onClick={closeMenu}>スキル</a></li>
-            <li><a href="#teaching" onClick={closeMenu}>日本語教師</a></li>
-            <li><a href="#certifications" onClick={closeMenu}>資格・免許</a></li>
-            <li><a href="#photos" onClick={closeMenu}>フォト</a></li>
-            <li><a href="#zenn-feed" onClick={closeMenu}>Zenn記事</a></li>
-            <li><a href="#about" onClick={closeMenu}>会社情報</a></li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#profile" onClick={(e) => handleSmoothScroll(e, 'profile')}>プロフィール</a>
+              ) : (
+                <Link to="/profile" onClick={closeMenu}>プロフィール</Link>
+              )}
+            </li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#timeline" onClick={(e) => handleSmoothScroll(e, 'timeline')}>経歴</a>
+              ) : (
+                <Link to="/#timeline" onClick={closeMenu}>経歴</Link>
+              )}
+            </li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#research" onClick={(e) => handleSmoothScroll(e, 'research')}>研究</a>
+              ) : (
+                <Link to="/research" onClick={closeMenu}>研究</Link>
+              )}
+            </li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#publications" onClick={(e) => handleSmoothScroll(e, 'publications')}>論文</a>
+              ) : (
+                <Link to="/#publications" onClick={closeMenu}>論文</Link>
+              )}
+            </li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#skills" onClick={(e) => handleSmoothScroll(e, 'skills')}>スキル</a>
+              ) : (
+                <Link to="/#skills" onClick={closeMenu}>スキル</Link>
+              )}
+            </li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#teaching" onClick={(e) => handleSmoothScroll(e, 'teaching')}>日本語教師</a>
+              ) : (
+                <Link to="/#teaching" onClick={closeMenu}>日本語教師</Link>
+              )}
+            </li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#certifications" onClick={(e) => handleSmoothScroll(e, 'certifications')}>資格・免許</a>
+              ) : (
+                <Link to="/#certifications" onClick={closeMenu}>資格・免許</Link>
+              )}
+            </li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#photos" onClick={(e) => handleSmoothScroll(e, 'photos')}>フォト</a>
+              ) : (
+                <Link to="/#photos" onClick={closeMenu}>フォト</Link>
+              )}
+            </li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#zenn-feed" onClick={(e) => handleSmoothScroll(e, 'zenn-feed')}>Zenn記事</a>
+              ) : (
+                <Link to="/#zenn-feed" onClick={closeMenu}>Zenn記事</Link>
+              )}
+            </li>
+            <li>
+              {window.location.pathname === '/' ? (
+                <a href="#about" onClick={(e) => handleSmoothScroll(e, 'about')}>会社情報</a>
+              ) : (
+                <Link to="/#about" onClick={closeMenu}>会社情報</Link>
+              )}
+            </li>
           </ul>
         </nav>
       </div>
