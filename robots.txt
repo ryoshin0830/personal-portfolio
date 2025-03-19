@@ -5,5 +5,13 @@ Allow: /
 # サイトマップのリンク
 Sitemap: https://about.if.gy/sitemap.xml
 
-# クロールの頻度を指定する (オプション)
-Crawl-delay: 10
+# クロールの頻度を指定する (GoogleとBingに最適化)
+Crawl-delay: 3
+
+# 画像とJSへのアクセスを明示的に許可
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
