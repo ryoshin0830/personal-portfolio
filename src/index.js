@@ -7,8 +7,27 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+// Google Analytics 初期化コード
+const initializeGA = () => {
+  // Google Analytics タグを動的に追加
+  const script1 = document.createElement('script');
+  script1.async = true;
+  script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX'; // あなたのGoogle Analytics IDに置き換えてください
+  document.head.appendChild(script1);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX'); // あなたのGoogle Analytics IDに置き換えてください
+};
+
+// クライアントサイドのみでGoogle Analyticsを初期化
+if (typeof window !== 'undefined') {
+  initializeGA();
+}
+
+const rootElement = document.getElementById('root');
+const AppWithRouter = (
   <React.StrictMode>
     <BrowserRouter>
       <HelmetProvider>
@@ -18,18 +37,22 @@ root.render(
   </React.StrictMode>
 );
 
-// パフォーマンスメトリクスをコンソールに出力
-reportWebVitals(console.log);
+// React 19 での新しいレンダリング方法
+const root = ReactDOM.createRoot(rootElement);
+root.render(AppWithRouter);
 
-// Google Analyticsにパフォーマンスメトリクスを送信する例
-// function sendToAnalytics({ name, delta, id }) {
-//   // Google Analytics イベントとして送信
-//   ga('send', 'event', {
-//     eventCategory: 'Web Vitals',
-//     eventAction: name,
-//     eventValue: Math.round(name === 'CLS' ? delta * 1000 : delta),
-//     eventLabel: id,
-//     nonInteraction: true,
-//   });
-// }
-// reportWebVitals(sendToAnalytics);
+// Web Vitals をGoogle Analyticsに送信する関数
+const sendToAnalytics = ({ name, delta, id }) => {
+  // Google Analytics イベントとして送信
+  if (window.gtag) {
+    window.gtag('event', name, {
+      event_category: 'Web Vitals',
+      event_value: Math.round(name === 'CLS' ? delta * 1000 : delta),
+      event_label: id,
+      non_interaction: true,
+    });
+  }
+};
+
+// Web Vitals をGoogle Analyticsに送信
+reportWebVitals(sendToAnalytics);

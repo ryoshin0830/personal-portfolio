@@ -62,7 +62,7 @@ const HomePage = () => {
     "name": "梁 震",
     "url": "https://about.if.gy",
     "image": "https://about.if.gy/logo.png",
-    "jobTitle": "研究者・エンジニア",
+    "jobTitle": "機械学習・自然言語処理研究者 / Webエンジニア",
     "worksFor": {
       "@type": "Organization",
       "name": "株式会社EastLinker"
@@ -71,29 +71,37 @@ const HomePage = () => {
       "@type": "CollegeOrUniversity",
       "name": "京都大学"
     },
-    "knowsAbout": ["機械学習", "自然言語処理", "Web開発", "React", "教育工学"],
+    "knowsAbout": ["機械学習", "自然言語処理", "Web開発", "React", "教育工学", "データ分析"],
     "sameAs": [
       "https://zenn.dev/liang",
       "https://github.com/yourusername"
-    ]
+    ],
+    "description": "機械学習・自然言語処理を専門とする研究者兼Webエンジニア。教育工学分野にも造詣が深く、AI技術を教育現場に応用する研究を行っています。実用的なWebアプリケーション開発も得意としています。",
+    "telephone": "+81-XX-XXXX-XXXX",
+    "email": "mail@example.com",
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "研究者・エンジニア",
+      "skills": ["機械学習", "自然言語処理", "教育工学", "React", "Web開発"]
+    }
   };
 
   return (
     <>
       <Helmet>
-        <title>梁震のポートフォリオ | ホーム</title>
-        <meta name="description" content="梁震のポートフォリオサイト - Web開発、プログラミング、プロジェクト実績の紹介" />
-        <meta name="keywords" content="ポートフォリオ, Web開発, プログラミング, React, 梁震" />
+        <title>梁震 | 機械学習・自然言語処理研究者 | Web開発エンジニアポートフォリオ</title>
+        <meta name="description" content="梁震の専門ポートフォリオサイト - 機械学習・自然言語処理専門の研究者兼エンジニア。京都大学出身、教育工学およびWeb技術の専門家。研究実績、開発プロジェクト、スキル一覧など。" />
+        <meta name="keywords" content="梁震, ポートフォリオ, 機械学習, 自然言語処理, Web開発, React, 研究者, エンジニア, 教育工学, プログラミング" />
         <link rel="canonical" href="https://about.if.gy" />
-        <meta property="og:title" content="梁震のポートフォリオ" />
-        <meta property="og:description" content="梁震のポートフォリオサイト - Web開発、プログラミング、プロジェクト実績の紹介" />
+        <meta property="og:title" content="梁震 | 機械学習・Web開発の専門家 | 研究者・エンジニアポートフォリオ" />
+        <meta property="og:description" content="梁震の専門ポートフォリオサイト - 機械学習・自然言語処理専門の研究者兼エンジニア。京都大学出身、教育工学およびWeb技術の専門家。研究実績、開発プロジェクト、スキル一覧など。" />
         <meta property="og:url" content="https://about.if.gy" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/logo.png" />
+        <meta property="og:image" content="https://about.if.gy/logo.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="梁震のポートフォリオ" />
-        <meta name="twitter:description" content="梁震のポートフォリオサイト - Web開発、プログラミング、プロジェクト実績の紹介" />
-        <meta name="twitter:image" content="/logo.png" />
+        <meta name="twitter:title" content="梁震 | 機械学習・Web開発の専門家 | 研究者・エンジニアポートフォリオ" />
+        <meta name="twitter:description" content="梁震の専門ポートフォリオサイト - 機械学習・自然言語処理専門の研究者兼エンジニア。京都大学出身、教育工学およびWeb技術の専門家。研究実績、開発プロジェクト、スキル一覧など。" />
+        <meta name="twitter:image" content="https://about.if.gy/logo.png" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
@@ -115,27 +123,75 @@ const HomePage = () => {
 };
 
 // 個別ページのコンポーネント
-const ProfilePage = () => (
-  <>
-    <Helmet>
-      <title>梁震のプロフィール詳細 | ポートフォリオ</title>
-      <meta name="description" content="梁震のプロフィール詳細ページ - 経歴、専門分野、取り組んできたプロジェクトについての詳細情報" />
-      <link rel="canonical" href="https://about.if.gy/profile" />
-    </Helmet>
-    <Profile />
-  </>
-);
+const ProfilePage = () => {
+  const profileStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "梁 震",
+      "url": "https://about.if.gy/profile",
+      "jobTitle": "機械学習・自然言語処理研究者 / Webエンジニア",
+      "description": "京都大学出身の研究者兼エンジニア。機械学習・自然言語処理を専門とし、教育工学分野での応用研究も行っています。Webアプリケーション開発、データ分析など幅広いスキルセットを持っています。",
+      "knowsAbout": ["機械学習", "自然言語処理", "Web開発", "React", "教育工学", "データ分析"]
+    }
+  };
 
-const ResearchPage = () => (
-  <>
-    <Helmet>
-      <title>梁震の研究活動 | ポートフォリオ</title>
-      <meta name="description" content="梁震の研究活動と学術成果 - 機械学習、自然言語処理、教育工学分野における研究内容と成果" />
-      <link rel="canonical" href="https://about.if.gy/research" />
-    </Helmet>
-    <Research />
-  </>
-);
+  return (
+    <>
+      <Helmet>
+        <title>梁震のプロフィール | 機械学習研究者・Webエンジニア | 経歴と専門分野</title>
+        <meta name="description" content="梁震の詳細プロフィール - 京都大学出身の機械学習・自然言語処理研究者。教育工学分野の専門家でもあり、Webアプリケーション開発にも精通。経歴、専門分野、プロジェクト実績の詳細。" />
+        <meta name="keywords" content="梁震, プロフィール, 経歴, 専門分野, 機械学習, 自然言語処理, Web開発, 教育工学, ポートフォリオ" />
+        <link rel="canonical" href="https://about.if.gy/profile" />
+        <meta property="og:title" content="梁震のプロフィール | 機械学習研究者・Webエンジニア | 経歴と専門分野" />
+        <meta property="og:description" content="梁震の詳細プロフィール - 京都大学出身の機械学習・自然言語処理研究者。教育工学分野の専門家でもあり、Webアプリケーション開発にも精通。経歴、専門分野、プロジェクト実績の詳細。" />
+        <meta property="og:url" content="https://about.if.gy/profile" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://about.if.gy/logo.png" />
+        <script type="application/ld+json">
+          {JSON.stringify(profileStructuredData)}
+        </script>
+      </Helmet>
+      <Profile />
+    </>
+  );
+};
+
+const ResearchPage = () => {
+  const researchStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "headline": "梁震の研究活動と学術成果",
+    "description": "機械学習・自然言語処理・教育工学分野における梁震の研究活動と学術成果。AIの教育応用、言語モデルの開発、データ分析手法の革新などの取り組み。",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "梁 震",
+      "knowsAbout": ["機械学習", "自然言語処理", "教育工学", "深層学習", "データマイニング"],
+      "description": "機械学習と自然言語処理を専門とする研究者。教育工学分野での先進的なAI応用研究に従事。複数の学術論文を発表し、実用的なシステム開発も行っています。"
+    }
+  };
+
+  return (
+    <>
+      <Helmet>
+        <title>梁震の研究活動 | 機械学習・自然言語処理・教育工学の専門研究</title>
+        <meta name="description" content="梁震の研究活動と学術成果 - 機械学習・自然言語処理・教育工学分野における革新的な研究プロジェクト。AIの教育応用、言語処理技術の開発、データ分析手法の研究など。" />
+        <meta name="keywords" content="梁震, 研究, 機械学習, 自然言語処理, 教育工学, 学術成果, AI, 深層学習, データ分析" />
+        <link rel="canonical" href="https://about.if.gy/research" />
+        <meta property="og:title" content="梁震の研究活動 | 機械学習・自然言語処理・教育工学の専門研究" />
+        <meta property="og:description" content="梁震の研究活動と学術成果 - 機械学習・自然言語処理・教育工学分野における革新的な研究プロジェクト。AIの教育応用、言語処理技術の開発、データ分析手法の研究など。" />
+        <meta property="og:url" content="https://about.if.gy/research" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://about.if.gy/logo.png" />
+        <script type="application/ld+json">
+          {JSON.stringify(researchStructuredData)}
+        </script>
+      </Helmet>
+      <Research />
+    </>
+  );
+};
 
 function App() {
   const location = useLocation();
