@@ -41,7 +41,13 @@ const Hero = () => {
       
       <div className="container">
         <div className="hero-content">
+          <div className="recent-project">
+            <span className="project-highlight">NEW</span>
+            <span className="project-text">国立国語研究所向け日本語形態素解析ツール「<a href="https://matsunoha.eastlinker.com" target="_blank" rel="noopener noreferrer" className="project-name-link"><span className="project-name">まつのは</span></a>」を開発・納品</span>
+          </div>
+          
           <div className="hero-tag">京都大学博士課程 / 株式会社EastLinker代表</div>
+          
           <div className="name-container">
             <h1 className="hero-title">
               <span className="text-gradient-blue main-name">梁 震</span>
